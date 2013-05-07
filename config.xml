@@ -26,10 +26,8 @@
     <icon src="icon.png" />
     <icon src="icons/ios/icon-72.png" gap:platform="ios" width="72" height="72" />
     <icon src="icons/ios/icon_at_2x.png" gap:platform="ios" width="144" height="144" />
-    <icon src="img/bliss-blackberry.png" gap:platform="blackberry" /
-
+    <icon src="img/bliss-blackberry.png" gap:platform="blackberry" />
     <gap:splash src="splash.png" />
-
     <plugin name="Storage" value="org.apache.cordova.Storage" />
     <feature id="blackberry.widgetcache" required="true" version="1.0.0.0" />
     <feature name="http://api.phonegap.com/1.0/camera"/>
