@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="x-ua-compatible" content="IE=Edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div data-role='page' id='stscan'>
+      <div data-role="header" data-theme="b">
+        <a href="index.html" data-icon="home">Home</a>
+        <h1>BLISS - Stock File Scan</h1>
+        <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
+      </div>
+      <div data-role="content" class='scroll'>  <!-- scroll class needed for iScroll to scroll area -->
+        <form id='frm1' name='frm1'>
+
+          <label for='prodCode'> Product Code/Description/Package: </label>
+          <div data-role='fieldcontain'>
+          <input type='text' name='prodCode' id='prodCode' value='' />
+          <button type='button' name='btnLastProd' id='btnLastProd' data-inline='true'><img src="img/favourite.png" alt="Prev"></button>
+          </div>
+
+          <br/>
+
+          <select name="category" id="category">
+            <option>Category</option>
+            <option value="A">A - PACKAGING/CONTAINERS</option>
+            <option value="B">B - RAW MATERIALS 1</option>
+            <option value="C">C - RAW MATERIALS 2</option>
+            <option value="D">D - INTERMEDIATES</option>
+            <option value="E">E - PACKAGED PRODUCTS</option>
+          </select>
+
+          <br/>
+
+          <fieldset data-role="controlgroup" data-type="horizontal">
+
+            <input type="radio" name="radio-group-1" id="radio1" value="allProducts" checked="checked" />
+            <label for="radio1">All Products</label>
+
+            <input type="radio" name="radio-group-1" id="radio2" value="purchased" />
+            <label for="radio2">Purchased</label>
+
+            <input type="radio" name="radio-group-1" id="radio3" value="manufactured" />
+            <label for="radio3">Manufactured</label>
+
+          </fieldset>
+
+          <br/>
+
+          <fieldset data-role="controlgroup" data-type="horizontal">
+
+            <input type="radio" name="radio-group-2" id="radio4" value="allProducts" checked="checked" />
+            <label for="radio4">All Products</label>
+
+            <input type="radio" name="radio-group-2" id="radio5" value="stopped" />
+            <label for="radio5">Stopped</label>
+
+            <input type="radio" name="radio-group-2" id="radio6" value="live" />
+            <label for="radio6">Live</label>
+
+          </fieldset>
+
+          <br/>
+
+          <fieldset data-role="controlgroup" data-type="horizontal">
+
+            <input type="radio" name="radio-group-3" id="radio7" value="allProducts" checked="checked" />
+            <label for="radio7">All Products</label>
+
+            <input type="radio" name="radio-group-3" id="radio8" value="freeStock" />
+            <label for="radio8">Items With Free Stock</label>
+
+            <input type="radio" name="radio-group-3" id="radio9" value="noFreeStock" />
+            <label for="radio9">Items Without Free Stock</label>
+
+          </fieldset>
+
+          <br/>
+
+          <a href='#stscanInfo'> <input type='button' name='btnContinue' id='btnContinue' value='Continue' data-inline='true'/> </a>
+
+        </form>
+      </div>
+
+      <script>
+
+        $( "#btnContinue" ).bind( "click", function() {
+          submit();
+          saveBlissProd('prodCode');
+        });
+
+
+        $( "#btnLastProd" ).bind( "click", function() {
+          prevBlissProd('prodCode');
+        });
+      </script>
+
+    </div>
+
+    <script src="phonegap.js"></script>
+
+  </body>
+</html>

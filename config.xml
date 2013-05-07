@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "org.driveerp.bdmlogistics"
+        versionCode="10"
+        version   = "1.0.0">
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>BLISS</name>
+
+    <description>
+       Menu of BLISS applications
+    </description>
+
+    <author href="http://www.drivecomputing.co.uk" email="jasonm@drivecomputing.co.uk">
+        Drive Computing Ltd
+    </author>
+
+
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="true" />
+    <preference name="splash-screen-duration" value="3000" />
+
+    <icon src="icon.png" />
+    <icon src="icons/ios/icon-72.png" gap:platform="ios" width="72" height="72" />
+    <icon src="icons/ios/icon_at_2x.png" gap:platform="ios" width="114" height="114" />
+    <icon src="img/bliss-blackberry.png" gap:platform="blackberry" />
+
+    <gap:splash src="splash.png" />
+
+    <plugin name="Storage" value="org.apache.cordova.Storage" />
+    <feature id="blackberry.widgetcache" required="true" version="1.0.0.0" />
+
+</widget>

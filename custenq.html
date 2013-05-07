@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="x-ua-compatible" content="IE=Edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=Windows-1252" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+
+    <div data-role='page' id='custenq'>
+      <div data-role="header" data-theme="b">
+        <a href="index.html" data-icon="home">Home</a>
+        <h1>BLISS - Customer Enquiry</h1>
+        <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
+      </div>
+      <div data-role="content" class='scroll'>  <!-- scroll class needed for iScroll to scroll area -->
+        <form id='frm1' name='frm1'>
+
+          <label for='custCode'> Customer Code: </label>
+
+          <div data-role='fieldcontain'>
+          <input type='text' name='custCode' id='custCode' value='' />
+          <!--<button type='button' name='btnLastCust' id='btnLastCust' data-inline='true'><img src="img/favourite.png" alt="Prev"></button>-->
+          <a href="#prevCustList" data-rel="dialog" name='btnLastCust' id='btnLastCust' ><img src="img/favourite.png" alt="Prev"></a> <!-- 01/05/2013 -->
+          </div>
+          <br/>
+
+          <a href='#custenqInfo'> <input type='button' name='btnContinue' id='btnContinue' value='Continue' data-inline='true'/> </a>
+
+        </form>
+      </div>
+      <script language='javascript' type='text/javascript'>
+
+        $( "#btnContinue" ).bind( "click", function() {
+        submitCust();
+        saveBlissCust('custCode');
+        });
+
+        $( "#btnLastCust" ).bind( "click", function() {
+         prevBlissCust('custCode');
+         });
+
+      </script>
+    </div>
+    <script src="phonegap.js"></script>
+  </body>
+</html>
