@@ -140,6 +140,8 @@ function submitCust()
             var row = "0";
 
 
+        $('#custOrdTable tr:not(:first)').remove();
+
 $.each(data, function(key, val) {
 
         row = table.insertRow(-1);
