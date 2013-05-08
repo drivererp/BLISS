@@ -116,5 +116,80 @@ function submitCust()
   }
   );
 
+     $.ajax(
+  {
+    type: 'POST',
+  //  url: 'http://10.0.4.50/util/ut90aapp.php?CPROG=CUSTENQ',
+        url: localStorage.url + '/sord/so119a_ajax.php?CPROG=OUTOCRPT',
+    cache: false,
+    // contentType: "text/html",
+    // data: {'request':'GETPRODINFO','eanCode':prodCode},
+    data: {
+      'custcode':custCode
+    },
+    dataType: 'json',
+    success: function(data)
+    {
+//      if (data.errmsg == "")
+//      {
+         var table = document.getElementById('custOrdTable');
+
+        //  var obj = JSON.parse(data);
+
+            var rowCount = table.rows.length;
+            var row = "0";
+
+
+$.each(data, function(key, val) {
+
+        row = table.insertRow(-1);
+
+
+       // row.className = 'odd';
+
+        var cell1 = row.insertCell(0);
+        cell1.innerHTML = val.orderNum;
+
+        cell1 = row.insertCell(1);
+        cell1.innerHTML = val.orderDate;
+
+        cell1 = row.insertCell(2);
+        cell1.innerHTML = val.delDate;
+
+        cell1 = row.insertCell(3);
+        cell1.innerHTML = val.despDate;
+
+        cell1 = row.insertCell(4);
+        cell1.innerHTML = val.lineVal;
+
+        cell1 = row.insertCell(5);
+        cell1.innerHTML = val.lineValUkp;
+
+        cell1 = row.insertCell(6);
+        cell1.innerHTML = val.custOrd;
+
+        cell1 = row.insertCell(7);
+        cell1.innerHTML = val.orderWeight;
+
+        cell1 = row.insertCell(8);
+        cell1.innerHTML = val.orderStatus;
+});
+
+//      }
+//      else
+//      {
+//        alert(data.errmsg);
+//        document.forms['frm1'].elements['prodCode'].value = "";
+//        document.forms['frm1'].elements['prodCode'].focus();
+   //   }
+    },
+    error: function(jqo, txt, err)
+    {
+      alert(txt);
+    }
+  }
+  );
+
+
 }
 

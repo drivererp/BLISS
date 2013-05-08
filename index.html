@@ -46,7 +46,31 @@
       }
 
       .ui-block-b{
-        font-weight:bolder; background-color:lightblue; border-radius:6px;color: green; text-align:right;
+        font-weight:bolder;
+        background-color:lightblue;
+        border-radius:6px;
+        color: green;
+        text-align:right;
+      }
+
+      #custOrdTable th {
+        background-color:lightblue;
+        color:black;
+        font-weight: bolder;
+      }
+
+      #custOrdTable tr {
+        background-color:#DAF2F5;
+      }
+      #custOrdTable tr:nth-child(even) {
+        background-color:white;
+      }
+
+      #custOrdTable tr:last-child
+      {
+        background-color: lightblue;
+        color: black;
+        font-weight: bolder;
       }
     </style>
   </head>
@@ -458,8 +482,40 @@
 
 
             <div data-role='collapsible'>
-              <h1>Third Tab ???</h1>
-              <p>Third Tab ???</p>
+              <h1>Outstanding Orders</h1>
+              <table id='custOrdTable'>
+                  <tr class='header'>
+                  <th>
+                    Order Number
+                  </th>
+                  <th>
+                    Order Date
+                  </th>
+                  <th>
+                    Delivery Date
+                  </th>
+                  <th>
+                    Despatch Date
+                  </th>
+                  <th>
+                    Line Value
+                  </th>
+                  <th>
+                    Line Value UKP
+                  </th>
+                  <th>
+                    Customer Order
+                  </th>
+                  <th>
+                    Order Weight
+                  </th>
+                  <th>
+                    Order Status
+                  </th>
+                  </tr>
+
+
+              </table>
             </div>
           </div>
           <a href='graph.html' data-ajax="false"> <input type='button' name='btnGraph' id='btnGraph' value='Display Graph' data-inline='true'/> </a>
