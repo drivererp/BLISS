@@ -23,7 +23,9 @@
     <script src="js/genorenq.js"></script>
     <script src="js/storage/blissStorage.js"></script>
     <script>
-
+      $( '#genorenq' ).live( 'pagebeforecreate',function(event){
+          $('#OrdNo').val(sessionStorage.orderNum);
+      });
     </script>
     <style>
       #flags{
@@ -700,9 +702,9 @@
 
         <select name="custSelect" id="custSelect">
           <option>Customers</option>
-          <option value='cust1'>Customer 1</option>
-          <option value='cust2'>Customer 2</option>
-          <option value='cust3'>Customer 3</option>
+          <option value='cust1'>WIL1</option>
+          <option value='cust2'>ABI2</option>
+          <option value='cust3'>AUD1</option>
         </select>
 
         <a href="#" data-rel="back" name='btnPrevCust' id='btnPrevCust' data-inline='true' data-role="button">Continue</a>

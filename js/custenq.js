@@ -134,8 +134,6 @@ function submitCust()
 //      {
          var table = document.getElementById('custOrdTable');
 
-        //  var obj = JSON.parse(data);
-
             var rowCount = table.rows.length;
             var row = "0";
 
@@ -146,11 +144,19 @@ $.each(data, function(key, val) {
 
         row = table.insertRow(-1);
 
-
-       // row.className = 'odd';
-
         var cell1 = row.insertCell(0);
-        cell1.innerHTML = val.orderNum;
+        //cell1.innerHTML = val.orderNum;
+        var element = document.createElement("input");
+        //Assign different attributes to the element.
+        element.type = 'button';
+        element.value = val.orderNum; // Really? You want the default value to be the type string?
+        element.name = 'orderNum';  // And the name too?
+        element.onclick = function() { // Note this is a function
+          $.mobile.changePage("genorenq.html");
+          sessionStorage.orderNum = val.orderNum;
+
+          };
+        cell1.appendChild(element);
 
         cell1 = row.insertCell(1);
         cell1.innerHTML = val.orderDate;
