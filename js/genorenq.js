@@ -54,7 +54,6 @@ function submitOrder()
 //       document.forms['frm1'].elements['OrdNo'].value = "";
 //      document.forms['frm1'].elements['OrdNo'].focus();
 //     }
-      alert(data.PostCode);
     },
 
     error: function(jqo, txt, err)
