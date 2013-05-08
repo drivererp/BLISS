@@ -45,7 +45,7 @@ function uploadPhoto(data){
 
       var ft = new FileTransfer();
 
-      ft.upload(data, "http://10.0.4.51/uploadAppImage.php?orderNo=45364", win, fail, options);
+      ft.upload(data, localStorage.url + "/uploadAppImage.php?orderNo=45364", win, fail, options);
       alert('a');
 }
 
