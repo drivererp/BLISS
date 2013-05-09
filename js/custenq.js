@@ -8,7 +8,7 @@ function saveSettings()
 
 }
 
-window.appRootDirName = "Download";
+window.appRootDirName = "Bliss/Download/";
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
@@ -40,13 +40,14 @@ downloadFile = function(){
 
 	var url = "http://www.irs.gov/pub/irs-pdf/fw4.pdf";
         alert("download starting!");
-	var filePath = window.appRootDir.fullPath + "/test.pdf";
+	var filePath = window.appRootDir.fullPath + "test.pdf";
 
 	fileTransfer.download(
 	    url,
 	    filePath,
 	    function(entry) {
 	        alert("download complete: " + entry.fullPath);
+                
 	    },
 	    function(error) {
 	        alert("download error" + error.source);
