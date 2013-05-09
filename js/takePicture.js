@@ -38,7 +38,7 @@ function uploadPhoto(data){
       var ft = new FileTransfer();
 
       ft.upload(data, localStorage.url + "/uploadAppImage.php?docNo=45061&orgCode=WIL1&docType=SORDER&docLink=SORDER", win, function fail(error) {
-            alert("An error has occurred: Code = " + error.code);
+            alert("An error has occurred uploading this image: Error Code = " + error.code);
         }, options);
 }
 
