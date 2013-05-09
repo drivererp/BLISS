@@ -8,7 +8,7 @@ function saveSettings()
 
 }
 
-window.appRootDirName = "download_test";
+window.appRootDirName = "Download";
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
