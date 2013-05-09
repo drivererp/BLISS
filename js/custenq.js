@@ -39,6 +39,7 @@ downloadFile = function(){
 	var fileTransfer = new FileTransfer();
 
 	var url = "http://www.irs.gov/pub/irs-pdf/fw4.pdf";
+        alert("download starting!");
 	var filePath = window.appRootDir.fullPath + "/test.pdf";
 
 	fileTransfer.download(
