@@ -26,13 +26,13 @@ function downloadFile()
                     "http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
                     sPath + "theFile.pdf",
                     function(theFile) {
-                        console.log("download complete: " + theFile.toURI());
+                        alert("download complete: " + theFile.toURI());
                         showLink(theFile.toURI());
                     },
                     function(error) {
-                        console.log("download error source " + error.source);
-                        console.log("download error target " + error.target);
-                        console.log("upload error code: " + error.code);
+                        alert("download error source " + error.source);
+                        alert("download error target " + error.target);
+                        alert("upload error code: " + error.code);
                     }
                 );
             }, fail);
