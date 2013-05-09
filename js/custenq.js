@@ -8,36 +8,50 @@ function saveSettings()
 
 }
 
-var fileTransfer = new FileTransfer();
+window.appRootDirName = "download_test";
+document.addEventListener("deviceready", onDeviceReady, false);
 
-function downloadFile()
-{
-    window.requestFileSystem(
-        LocalFileSystem.PERSISTENT, 0,
-        function onFileSystemSuccess(fileSystem) {
-            fileSystem.root.getFile(
-            "dummy.html", {create: true, exclusive: false},
-            function gotFileEntry(fileEntry) {
-                var sPath = fileEntry.fullPath.replace("dummy.html","");
-                var fileTransfer = new FileTransfer();
-                fileEntry.remove();
+function onDeviceReady() {
+	console.log("device is ready");
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+}
 
-                fileTransfer.download(
-                    "http://www.w3.org/2011/web-apps-ws/papers/Nitobi.pdf",
-                    sPath + "theFile.pdf",
-                    function(theFile) {
-                        alert("download complete: " + theFile.toURI());
-                        showLink(theFile.toURI());
-                    },
-                    function(error) {
-                        alert("download error source " + error.source);
-                        alert("download error target " + error.target);
-                        alert("upload error code: " + error.code);
-                    }
-                );
-            }, fail);
-        }, fail);
-};
+function fail() {
+	console.log("failed to get filesystem");
+}
+
+function gotFS(fileSystem) {
+	console.log("filesystem got");
+	window.fileSystem = fileSystem;
+	fileSystem.root.getDirectory(window.appRootDirName, {
+		create : true,
+		exclusive : false
+	}, dirReady, fail);
+}
+
+function dirReady(entry) {
+	window.appRootDir = entry;
+	console.log("application dir is ready");
+}
+
+
+downloadFile = function(){
+	var fileTransfer = new FileTransfer();
+
+	var url = "http://www.irs.gov/pub/irs-pdf/fw4.pdf";
+	var filePath = window.appRootDir.fullPath + "/test.pdf";
+
+	fileTransfer.download(
+	    url,
+	    filePath,
+	    function(entry) {
+	        alert("download complete: " + entry.fullPath);
+	    },
+	    function(error) {
+	        alert("download error" + error.source);
+	    }
+	);
+}
 
 function submitCust()
 {
