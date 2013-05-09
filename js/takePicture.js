@@ -23,14 +23,6 @@ function uploadPhoto(data){
     //cameraPic.src = "data:image/jpeg;base64," + data;
     $('#cameraPic').attr("src",data);
 
-    // Successful upload to the server
-    navigator.notification.alert (
-        'Image has been uploaded',       // message
-        okay,                           // callback
-        'Photo Uploaded',              // title
-        'OK'                          // buttonName
-    );
-
       var options = new FileUploadOptions();
 
       options.fileKey="file";
@@ -45,10 +37,9 @@ function uploadPhoto(data){
 
       var ft = new FileTransfer();
 
-      ft.upload(data, localStorage.url + "/uploadAppImage.php?orderNo=45364", win, fail, options);
+      ft.upload(data, localStorage.url + "/uploadAppImage.php?docNo=45061&orgCode=WIL1&docType=SORDER&docLink=SORDER", win, fail, options);
       alert('a');
 }
-
-function okay(){
-    // do something here
-}
+function(error) {
+	        alert("download error" + error.source);
+	    }
