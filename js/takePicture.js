@@ -40,6 +40,3 @@ function uploadPhoto(data){
       ft.upload(data, localStorage.url + "/uploadAppImage.php?docNo=45061&orgCode=WIL1&docType=SORDER&docLink=SORDER", win, fail, options);
       alert('a');
 }
-function(error) {
-	        alert("download error" + error.source);
-	    }
