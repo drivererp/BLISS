@@ -3,7 +3,20 @@
       var fullDate = new Date()
       console.log(fullDate);
 
-      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
+      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null);
+
+      function onRequestFileSystemSuccess(fileSystem) {
+        var entry=fileSystem.root;
+        entry.getDirectory("Blissexp", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail);
+      }
+
+      function onGetDirectorySuccess(dir) {
+            alert("Created dir "+dir.name);
+      }
+
+      function onGetDirectoryFail(error) {
+           alert("Error creating directory "+error.code);
+      }
       </script>
       <div data-role="header" data-theme="b">
         <a href="index.html" data-icon="home">Home</a>
@@ -35,7 +48,7 @@
           <br />
           <br />
 
-          <a href='#expenseInput'>    <button type='button' name='btnAddItem' id='btnAddItem' data-inline='true' Value='Add Item'><img src="img/add.jpg" alt="Add Item"> <br/> Add Item</button></a>
+          <a href='#expenseInput'><button type='button' name='btnAddItem' id='btnAddItem' data-inline='true' Value='Add Item'><img src="img/add.jpg" alt="Add Item"> <br/> Add Item</button></a>
 
 
         </form>
