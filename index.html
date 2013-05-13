@@ -29,7 +29,9 @@
           $('#OrdNo').val(sessionStorage.orderNum);
       });
 
-
+      $( '#expenseInput' ).live( 'pagebeforecreate',function(event){
+          $( '#expDate').datepicker();
+      });
     </script>
     <style>
       #flags{
@@ -57,6 +59,20 @@
         border-radius:6px;
         color: green;
         text-align:right;
+      }
+
+     #expenseTable th {
+        background-color:lightblue;
+        color:black;
+        font-weight: bolder;
+      }
+
+     #expenseTable tr {
+        background-color:#DAF2F5;
+      }
+
+     #expenseTable tr:nth-child(even) {
+         background-color:white;
       }
 
       #custOrdTable th {
@@ -96,6 +112,7 @@
           <li><a href="custenq.html"> <img src="img/cust.jpg"> <h1><img id='flags' src="img/cust.jpg"> CUSTOMER ENQUIRY </h1><p>VIEW CUSTOMER SALES INFORMATION</p></a></li>
            <li><a href="genorenq.html"> <img src="img/order.jpg"> <h1><img id='flags' src="img/order.jpg"> GENERAL ORDER ENQUIRY </h1><p>VIEW GENERAL ORDER ENQUIRY</p></a></li>
           <li><a href="camera.html"> <img src="img/camera.png"> <h1><img id='flags' src="img/camera.png"> TAKE PHOTO </h1><p> TAKE PHOTOS </p></a></li>
+          <li><a href="expenses.html"> <img src="img/expenses.png"> <h1><img id='flags' src="img/expenses.png"> EXPENSES </h1><p> EXPENSES FORM </p></a></li>
         </ul>
       </div>
     </div>
@@ -160,7 +177,6 @@
     </div>
     <!-- END SETTINGS POP UP DIALOG BOX HTML -->
     <script>
-
       $( "#btnSaveSettings" ).bind( "click", function() {
         saveSettings();
         $('#urlSetting').html(localStorage.url);
@@ -170,8 +186,6 @@
         alert('hello!!');
         sessionStorage.cust = $('#custSelect').val();
       });
-
-
 
 
     </script>
@@ -721,7 +735,97 @@
 
 
 
+    <!-- Form 3 Expenses - Input -->
 
+    <div data-role='page' id='expenseInput' data-theme="d">
+      <script>
+        var counter = 1;
+      function addLine() {
+          event.preventDefault();
+          counter++;
+            var newRow = jQuery('<tr><td><input type="date" id="expDate' +
+            counter + '"/></td><td><input type="text" id="expDesc' +
+            counter + '"/></td><td><input type="text" id="expMileage' +
+            counter + '"/></td><td><input type="text" id="expNetVal' +
+            counter + '"/></td><td><input type="text" id="expVat' +
+            counter + '"/></td><td><input type="text" id="expGrossVal' +
+            counter + '"/></td><td><button type="button" name="btnAttach" id="btnAttach' +
+            counter + '" data-inline="true"><img style="height:30px; width:30px;"src="img/camera.png" alt="Add Item"> <br/> Attach Photo</button></td></tr>');
+          $('#expenseTable').append(newRow);
+      };
+      </script>
+      <div data-role="header" data-theme="b">
+        <a href="index.html" data-rel="back" data-icon="arrow-l" >Back</a>
+        <h1>BLISS - Customer Enquiry </h1>
+        <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
+      </div>
+      <div data-role="content" id='summary' class='scroll'>  <!-- scroll class needed for iScroll to scroll area -->
+
+
+
+              <h1>Expenses - RefNo: 1234</h1>
+              <table id='expenseTable' >
+                  <tr class='header'>
+                  <th>
+                    Date
+                  </th>
+                  <th>
+                    Description
+                  </th>
+                  <th>
+                    Mileage
+                  </th>
+                  <th>
+                    Net Value
+                  </th>
+                  <th>
+                    VAT
+                  </th>
+                  <th>
+                    Gross Value
+                  </th>
+                  <th>
+                    Attach
+                  </th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type='date' id='expDate'>
+                    </td>
+                    <td>
+                      <input type='text' id='expDesc'>
+                    </td>
+                    <td>
+                      <input type='text' id='expMileage'>
+                    </td>
+                    <td>
+                      <input type='text' id='expNetVal'>
+                    </td>
+                    <td>
+                      <input type='text' id='expVat'>
+                    </td>
+                    <td>
+                      <input type='text' id='expGrossVal'>
+                    </td>
+                    <td>
+                      <button type='button' name='btnAttach' id='btnAttach' data-inline='true'><img style='height:30px; width:30px;'src="img/camera.png" alt="Add Item"> <br/> Attach Photo</button>
+                    </td>
+                  </tr>
+
+              </table>
+
+              <br />
+                  <br />
+                  <br />
+
+                  <button type='button' name='btnAddLine' id='btnAddLine' data-inline='true' onclick="addLine()"><img src="img/add.jpg" alt="Add Item"> <br/> Add Line</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    <!-- End Form 3 - Summary -->
 
   </body>
 </html>

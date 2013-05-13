@@ -1,0 +1,42 @@
+    <div data-role='page' id='expenses'>
+      <script>
+      var fullDate = new Date()
+      console.log(fullDate);
+
+      </script>
+      <div data-role="header" data-theme="b">
+        <a href="index.html" data-icon="home">Home</a>
+        <h1>BLISS - Expenses Form</h1>
+        <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
+      </div>
+      <div data-role="content" class='scroll'>  <!-- scroll class needed for iScroll to scroll area -->
+        <form id='frm1' name='frm1'>
+
+          <label class='label' for='refNo'> Reference Number: </label>
+          <div name='refNo' id='refNo' class='info'>1234</div>
+
+          <br />
+          <br />
+          <br />
+
+           <table>
+          <tr>
+            <td>
+              Description:
+            </td>
+            <td>
+              <input type='text' name='expensesDesc' id='expensesDesc' >
+            </td>
+          </tr>
+           </table>
+
+          <br />
+          <br />
+          <br />
+
+          <a href='#expenseInput'>    <button type='button' name='btnAddItem' id='btnAddItem' data-inline='true' Value='Add Item'><img src="img/add.jpg" alt="Add Item"> <br/> Add Item</button></a>
+
+
+        </form>
+      </div>
+    </div>
