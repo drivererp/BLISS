@@ -47,7 +47,7 @@ downloadFile = function(){
 	    filePath,
 	    function(entry) {
 	        alert("download complete: " + entry.fullPath);
-                
+
 	    },
 	    function(error) {
 	        alert("download error" + error.source);
