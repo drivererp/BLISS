@@ -3,6 +3,7 @@
       var fullDate = new Date()
       console.log(fullDate);
 
+      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null); 
       </script>
       <div data-role="header" data-theme="b">
         <a href="index.html" data-icon="home">Home</a>

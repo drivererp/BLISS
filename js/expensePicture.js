@@ -42,3 +42,19 @@ function uploadPhoto(data){
         }, options);
 }
 
+
+
+
+function onRequestFileSystemSuccess(fileSystem) {
+        var entry=fileSystem.root;
+        entry.getDirectory("Blissexp", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail);
+}
+
+function onGetDirectorySuccess(dir) {
+      console.log("Created dir "+dir.name);
+}
+
+function onGetDirectoryFail(error) {
+     console.log("Error creating directory "+error.code);
+}
+
