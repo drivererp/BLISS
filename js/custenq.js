@@ -226,8 +226,6 @@ $.each(data, function(key, val) {
         cell1 = row.insertCell(7);
         cell1.innerHTML = val.orderWeight;
 
-        cell1 = row.insertCell(8);
-        cell1.innerHTML = val.orderStatus;
 });
 
 //      }
