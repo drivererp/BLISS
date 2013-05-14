@@ -59,6 +59,7 @@ function submitCust()
 {
   //do ajax call to get data from server
   var custCode = $('#custCode').val();
+  custCode = custCode.toUpperCase();
 
   if (custCode.length == 0)
   {
@@ -173,6 +174,7 @@ function submitCust()
     // data: {'request':'GETPRODINFO','eanCode':prodCode},
     data: {
       'custcode':custCode
+
     },
     dataType: 'json',
     success: function(data)
