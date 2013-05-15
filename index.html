@@ -752,17 +752,17 @@
             counter + '"/></td><td><input type="text" id="expVat' +
             counter + '"/></td><td><input type="text" id="expGrossVal' +
             counter + '"/></td><td><button type="button" name="btnAttach" id="btnAttach' +
-            counter + '" data-inline="true" onclick="takePhoto()"><img style="height:30px; width:30px;"src="img/camera.png" alt="Add Item"> <br/> Attach Photo</button></td></tr>');
+            counter + '" data-inline="true" onclick="takePhoto()"><img style="height:30px; width:30px;"src="img/camera.png" alt="Add Item"> <br/> Attach Photo</button></td><td><button type="button" id="btnUpdate' +
+            counter + '">Update</button></td></tr>');
           $('#expenseTable').append(newRow);
       };
       </script>
       <div data-role="header" data-theme="b">
-        <a href="index.html" data-rel="back" data-icon="arrow-l" >Back</a>
-        <h1>BLISS - Customer Enquiry </h1>
+          <a href="index.html" data-rel="back" data-icon="arrow-l" >Back</a>
+        <h1>BLISS - Expenses </h1>
         <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
       </div>
       <div data-role="content" id='summary' class='scroll'>  <!-- scroll class needed for iScroll to scroll area -->
-
 
 
               <h1>Expenses - Ref No: 1234</h1>
@@ -790,27 +790,30 @@
                     Attach
                   </th>
                   </tr>
-                  <tr>
+                  <tr >
                     <td>
-                      <input type='date' id='expDate'>
+                      <input type='date' id='expDate' data-role='none'>
                     </td>
                     <td>
-                      <input type='text' id='expDesc'>
+                      <input type='text' id='expDesc' data-role='none'>
                     </td>
                     <td>
-                      <input type='text' id='expMileage'>
+                      <input type='text' id='expMileage' data-role='none'>
                     </td>
                     <td>
-                      <input type='text' id='expNetVal'>
+                      <input type='text' id='expNetVal' data-role='none'>
                     </td>
                     <td>
-                      <input type='text' id='expVat'>
+                      <input type='text' id='expVat' data-role='none'>
                     </td>
                     <td>
-                      <input type='text' id='expGrossVal'>
+                      <input type='text' id='expGrossVal' data-role='none'>
                     </td>
                     <td>
-                      <button type='button' name='btnAttach' id='btnAttach' data-inline='true' onclick='takePhoto()'><img style='height:30px; width:30px;'src="img/camera.png" alt="Add Item"> <br/> Attach Photo</button>
+                      <button type='button' name='btnAttach' id='btnAttach' data-inline='true' onclick='takePhoto()' data-role='none'><img style='height:30px; width:30px;'src="img/camera.png" alt="Add Item"> <br/> Attach Photo</button>
+                    </td>
+                    <td>
+                      <button type='button' name='btnUpdate' id='btnUpdate' data-inline='true' data-role='none'>Update</button>
                     </td>
                   </tr>
 

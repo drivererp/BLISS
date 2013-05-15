@@ -3,7 +3,7 @@
       var fullDate = new Date()
       console.log(fullDate);
 
-      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null);
+  //    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null);
 
       function onRequestFileSystemSuccess(fileSystem) {
         var entry=fileSystem.root;
@@ -36,7 +36,7 @@
            <table>
           <tr>
             <td>
-              Description:
+              Expense Description:
             </td>
             <td>
               <input type='text' name='expensesDesc' id='expensesDesc' >
@@ -48,7 +48,7 @@
           <br />
           <br />
 
-          <a href='#expenseInput'><button type='button' name='btnAddItem' id='btnAddItem' data-inline='true' Value='Add Item'><img src="img/add.jpg" alt="Add Item"> <br/> Add Item</button></a>
+          <a href='#expenseInput'><button type='button' name='btnAddItem' id='btnAddItem' data-inline='true' Value='Add Expenses'><img src="img/add.jpg" alt="Add Item"> <br/> Add Expenses</button></a>
 
 
         </form>
