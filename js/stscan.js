@@ -69,5 +69,74 @@ function submit()
   }
   );
 
+  $.ajax(
+  {
+    type: 'POST',
+    //           url: 'http://10.0.4.50/scon/sc09app.php?CPROG=STSCAN',
+    url: localStorage.url + '/scon/sc192a_ajax.php?CPROG=PRODSUM',
+    cache: false,
+    // contentType: "text/html",
+    // data: {'request':'GETPRODINFO','eanCode':prodCode},
+    data: {
+      'ProdCode':prodCode
+    },
+    dataType: 'json',
+    success: function(data)
+    {
+
+        var table = document.getElementById('batchesTable');
+
+        var rowCount = table.rows.length;
+        var row = "0";
+
+
+        $('#batchesTable tr:not(:first)').remove();
+
+        $.each(data, function(key, val) {
+
+          row = table.insertRow(-1);
+
+          var cell1 = row.insertCell(0);
+          cell1.innerHTML = val.batchNum;
+
+          cell1 = row.insertCell(1);
+          cell1.innerHTML = val.date;
+          cell1.style.textAlign = 'center';
+
+          cell1 = row.insertCell(2);
+          cell1.innerHTML = val.expDate;
+          cell1.style.textAlign = 'center';
+
+          cell1 = row.insertCell(3);
+          cell1.innerHTML = val.desc;
+
+          cell1 = row.insertCell(4);
+          cell1.innerHTML = val.status;
+
+          cell1 = row.insertCell(5);
+          cell1.innerHTML = val.position;
+
+          cell1 = row.insertCell(6);
+          cell1.innerHTML = val.physStock;
+          cell1.style.textAlign = 'right';
+
+          cell1 = row.insertCell(7);
+          cell1.innerHTML = val.allocStock;
+          cell1.style.textAlign = 'right';
+
+          cell1 = row.insertCell(8);
+          cell1.innerHTML = val.freeStock;
+          cell1.style.textAlign = 'right';
+
+});
+
+    },
+    error: function(jqo, txt, err)
+    {
+      alert(txt);
+    }
+  }
+  );
+
 }
 

@@ -96,9 +96,33 @@
         font-weight: bolder;
       }
 
+       #batchesTable th {
+        background-color:lightblue;
+        color:black;
+        font-weight: bolder;
+      }
+
+      #batchesTable tr {
+        background-color:#DAF2F5;
+      }
+      #batchesTable tr:nth-child(even) {
+        background-color:white;
+      }
+
+      #batchesTable tr:last-child
+      {
+        background-color: lightblue;
+        color: black;
+        font-weight: bolder;
+      }
+
       input[type=text] {
         text-transform: uppercase;
       }
+
+
+
+
     </style>
   </head>
 
@@ -268,8 +292,40 @@
               </div>
             </div>
             <div data-role='collapsible'>
-              <h1>Live Batches</h1>
-              <p>Details Tab</p>
+              <h1>Batch Detail</h1>
+              <table id='batchesTable'>
+                  <tr class='header'>
+                  <th>
+                    Batch Number
+                  </th>
+                  <th>
+                    Date
+                  </th>
+                  <th>
+                    Expiry Date
+                  </th>
+                  <th>
+                    Description
+                  </th>
+                  <th>
+                    Status
+                  </th>
+                  <th>
+                    Position
+                  </th>
+                  <th>
+                    Physical Stock
+                  </th>
+                  <th>
+                    Allocated Stock
+                  </th>
+                  <th>
+                    Free Stock
+                  </th>
+                  </tr>
+
+
+              </table>
             </div>
             <div data-role='collapsible'>
               <h1>Costs</h1>
@@ -755,6 +811,7 @@
             counter + '" data-inline="true" onclick="takePhoto()"><img style="height:30px; width:30px;"src="img/camera.png" alt="Add Item"> <br/> Attach Photo</button></td><td><button type="button" id="btnUpdate' +
             counter + '">Update</button></td></tr>');
           $('#expenseTable').append(newRow);
+          $("#expenseTable").table();
       };
       </script>
       <div data-role="header" data-theme="b">
@@ -810,7 +867,7 @@
                       <input type='text' id='expGrossVal' data-role='none'>
                     </td>
                     <td>
-                      <button type='button' name='btnAttach' id='btnAttach' data-inline='true' onclick='takePhoto()' data-role='none'><img style='height:30px; width:30px;'src="img/camera.png" alt="Add Item"> <br/> Attach Photo</button>
+                      <button type='button' name='btnAttach' id='btnAttach' data-inline='true' onclick='takePhoto()' data-role='none'>Attach Photo</button>
                     </td>
                     <td>
                       <button type='button' name='btnUpdate' id='btnUpdate' data-inline='true' data-role='none'>Update</button>

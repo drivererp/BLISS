@@ -212,24 +212,30 @@ $.each(data, function(key, val) {
 
         cell1 = row.insertCell(1);
         cell1.innerHTML = val.orderDate;
+        cell1.style.textAlign = 'center';
 
         cell1 = row.insertCell(2);
         cell1.innerHTML = val.delDate;
+        cell1.style.textAlign = 'center';
 
         cell1 = row.insertCell(3);
         cell1.innerHTML = val.despDate;
+        cell1.style.textAlign = 'center';
 
         cell1 = row.insertCell(4);
         cell1.innerHTML = val.lineVal;
+        cell1.style.textAlign = 'right';
 
         cell1 = row.insertCell(5);
         cell1.innerHTML = val.lineValUkp;
+        cell1.style.textAlign = 'right';
 
         cell1 = row.insertCell(6);
         cell1.innerHTML = val.custOrd;
 
         cell1 = row.insertCell(7);
         cell1.innerHTML = val.orderWeight;
+        cell1.style.textAlign = 'right';
 
 });
 
