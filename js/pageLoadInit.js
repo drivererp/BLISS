@@ -4,7 +4,7 @@
 $(document).bind("mobileinit", function(){
   //apply overrides here
   $.mobile.allowCrossDomainPages = true;
-  $.mobile.defaultPageTransition = 'pop';
+  $.mobile.defaultPageTransition = 'slide';
   $.mobile.touchOverflowEnabled = true;
 });
 //use this to do script as the #page is loaded
@@ -17,14 +17,20 @@ $('#home').live('pageshow',function(event, ui){
   var line1Data = [['Jan', 12500],['Feb',55000],['Mar',70000],['Apr',75000],['May',90000],['Jun',200000],['Jul', 125000],['Aug',55000],['Sep',70000],['Oct',75000],['Nov',90000],['Dec',200000]];
 
   $.jqplot('chartdiv',  [line1Data],
-    {
-     // title:'Sales',
-      seriesDefaults: {
-        showMarker:false,
-        pointLabels: { show:true }
-      },
+  {
+    // Turns on animatino for all series in this plot.
+        animate: true,
+        // Will animate plot on calls to plot1.replot({resetAxes:true})
+        animateReplot: true,
+    // title:'Sales',
+    seriesDefaults: {
+      showMarker:false,
+      pointLabels: {
+        show:true
+      }
+    },
     axesDefaults: {
-        tickRenderer: $.jqplot.CanvasAxisTickRenderer
+      tickRenderer: $.jqplot.CanvasAxisTickRenderer
     },
     axes: {
       xaxis: {
@@ -32,15 +38,15 @@ $('#home').live('pageshow',function(event, ui){
         //ticks: ['Jan','Feb','Mar'],
         //dont know what this does -> numberTicks: 12,
         tickOptions: {
-              angle: -45,      //tilt with -30, -45 etc
-              fontSize: '8pt'
+          angle: -45,      //tilt with -30, -45 etc
+          fontSize: '8pt'
         }
       },
       yaxis: {
         min: 0
       }
     }
-      /*,
+  /*,
         axes:{
           xaxis:{
             label:'Months'
@@ -50,7 +56,7 @@ $('#home').live('pageshow',function(event, ui){
           }
         }
         */
-    }
+  }
   );
 });
 
@@ -64,14 +70,20 @@ $('#graph').live('pageshow',function(event, ui){
   var line1Data = [['Jan', 12500],['Feb',55000],['Mar',70000],['Apr',75000],['May',90000],['Jun',200000],['Jul', 125000],['Aug',55000],['Sep',70000],['Oct',75000],['Nov',90000],['Dec',200000]];
 
   $.jqplot('chartdivBig',  [line1Data],
-    {
-     // title:'Sales',
-      seriesDefaults: {
-        showMarker:false,
-        pointLabels: { show:true }
-      },
+  {
+    // Turns on animatino for all series in this plot.
+        animate: true,
+        // Will animate plot on calls to plot1.replot({resetAxes:true})
+        animateReplot: true,
+    // title:'Sales',
+    seriesDefaults: {
+      showMarker:false,
+      pointLabels: {
+        show:true
+      }
+    },
     axesDefaults: {
-        tickRenderer: $.jqplot.CanvasAxisTickRenderer
+      tickRenderer: $.jqplot.CanvasAxisTickRenderer
     },
     axes: {
       xaxis: {
@@ -79,15 +91,15 @@ $('#graph').live('pageshow',function(event, ui){
         //ticks: ['Jan','Feb','Mar'],
         //dont know what this does -> numberTicks: 12,
         tickOptions: {
-              angle: -45,      //tilt with -30, -45 etc
-              fontSize: '8pt'
+          angle: -45,      //tilt with -30, -45 etc
+          fontSize: '8pt'
         }
       },
       yaxis: {
         min: 0
       }
     }
-      /*,
+  /*,
         axes:{
           xaxis:{
             label:'Months'
@@ -97,6 +109,6 @@ $('#graph').live('pageshow',function(event, ui){
           }
         }
         */
-    }
+  }
   );
 });
