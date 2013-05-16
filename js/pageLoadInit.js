@@ -8,4 +8,10 @@ $(document).bind("mobileinit", function(){
   $.mobile.touchOverflowEnabled = true;
 });
 
+$( document ).on( 'pageinit',function(event){
+          $('#home').on("swiperight",function(){
+		$("#menuPanel").panel( "open");
+	});
+          });
+
 

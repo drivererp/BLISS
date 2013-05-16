@@ -25,126 +25,191 @@
     <script src="js/expensePicture.js"></script>
     <script src="js/genorenq.js"></script>
     <script src="js/storage/blissStorage.js"></script>
-    <script>
-      $( '#genorenq' ).live( 'pagebeforecreate',function(event){
-          $('#OrdNo').val(sessionStorage.orderNum);
-      });
 
-      $( '#expenseInput' ).live( 'pagebeforecreate',function(event){
-          $( '#expDate').datepicker();
-      });
-    </script>
     <style>
-      #flags{
-        width:20px;
-        height:20px;
+
+
+      .counter {
+        width: 25px;
+        height: 21px;
+        -webkit-border-radius: 25px;
+        -moz-border-radius: 25px;
+        border-radius: 25px;
+        border: 3px solid red;
+        position: absolute;
+        left:120px;
+        top:8px;
+      }
+
+      .listDivider {
+        float:right;
       }
 
       .info{
         font-weight:bolder;
         background-color:lightblue;
         border-radius:6px;
-        float:left;
-        margin-left:5px;
-        margin-right:10px;
         color: green;
+        float: left;
       }
 
       .label {
         float:left;
+        margin-right:60px;
       }
 
-      .ui-block-b{
-        font-weight:bolder;
-        background-color:lightblue;
-        border-radius:6px;
-        color: green;
-        text-align:right;
+      .graph {
+        position: absolute;
+        right: 100px;
+        top: 20px;
       }
 
-     #expenseTable th {
-        background-color:lightblue;
-        color:black;
-        font-weight: bolder;
+      .divider {
+        width: 100%;
       }
 
-     #expenseTable tr {
-        background-color:#DAF2F5;
+      .panelDivider {
+        width: 88%;
       }
 
-     #expenseTable tr:nth-child(even) {
-         background-color:white;
+      @media screen and (min-width: 768px) and (max-width: 768px) {
+      .divider {
+        width: 96%;
+      }
       }
 
-      #custOrdTable th {
-        background-color:lightblue;
-        color:black;
-        font-weight: bolder;
+      @media screen and (min-width: 1000px) and (max-width: 1100px) {
+      .divider {
+        width: 97%;
+      }
       }
 
-      #custOrdTable tr {
-        background-color:#DAF2F5;
+      #flags{
+        width:20px;
+        height:20px;
       }
-      #custOrdTable tr:nth-child(even) {
-        background-color:white;
-      }
-
-      #custOrdTable tr:last-child
-      {
-        background-color: lightblue;
-        color: black;
-        font-weight: bolder;
-      }
-
-       #batchesTable th {
-        background-color:lightblue;
-        color:black;
-        font-weight: bolder;
-      }
-
-      #batchesTable tr {
-        background-color:#DAF2F5;
-      }
-      #batchesTable tr:nth-child(even) {
-        background-color:white;
-      }
-
-      #batchesTable tr:last-child
-      {
-        background-color: lightblue;
-        color: black;
-        font-weight: bolder;
-      }
-
-      input[type=text] {
-        text-transform: uppercase;
-      }
-
-
-
-
     </style>
   </head>
 
 
   <body>
-    <div data-role="page" class="type-home">
+    <div data-role="page" id='home' class="type-home">
+      <script>
+        function refreshPage()
+        {
+          location.reload();
+        }
+
+        $(document).on("swiperight",function(){
+		$("#menuPanel").panel( "open");
+	});
+      </script>
       <div data-role="header" data-theme="b">
-        <a href="#" data-icon="home">Home</a>
-        <h1>BLISS APPLICATION MENU</h1>
+        <a href="#" data-role="button" class='btnRefresh' data-icon="refresh" onclick='refreshPage()'>Refresh</a>
+        <h1>Dashboard</h1>
         <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
       </div>
       <div data-role="content">
+      <a href="#menuPanel" data-role='button' data-inline='true'>Menu</a>
         <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
-          <li data-role="list-divider" data-theme="b">Menu</li>
-          <li><a href="stscan.html"> <img src="img/scan.jpg"> <h1><img id='flags' src="img/scan.jpg"> PRODUCT ENQUIRY </h1><p>VIEW PRODUCT AND SALES STOCK INFORMATION</p></a></li>
-          <li><a href="custenq.html"> <img src="img/cust.jpg"> <h1><img id='flags' src="img/cust.jpg"> CUSTOMER ENQUIRY </h1><p>VIEW CUSTOMER SALES INFORMATION</p></a></li>
-           <li><a href="genorenq.html"> <img src="img/order.jpg"> <h1><img id='flags' src="img/order.jpg"> GENERAL ORDER ENQUIRY </h1><p>VIEW GENERAL ORDER ENQUIRY</p></a></li>
-          <li><a href="camera.html"> <img src="img/camera.png"> <h1><img id='flags' src="img/camera.png"> TAKE PHOTO </h1><p> TAKE PHOTOS </p></a></li>
-          <li><a href="expenses.html"> <img src="img/expenses.png"> <h1><img id='flags' src="img/expenses.png"> EXPENSES </h1><p> EXPENSES FORM </p></a></li>
+          <li data-role="list-divider" class='divider' data-theme='b'>Sales Orders <p class="listDivider">99.99% <img style='width:30px; height:30px;'src='img/up.png'></p></li>
+          <li><a href="stscan.html">
+              <div class='label'>This Month </div>       <div class='counter'> &nbsp; 2</div>    <div class='info'>£1,000,000,001</div>
+              <br />
+              <br />
+              <div class='label'> Last Month </div>     <div class='info'>£2,230,000,789</div>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <p class='graph'> <img src='img/graph.png'> </p>
+            </a>
+          </li>
+
+          <li data-role="list-divider" class='divider' data-theme="b">Complaints</li>
+          <li><a href="stscan.html">
+              <div class='label'>This Month </div>       <div class='counter'> &nbsp; 8</div>    <div class='info'>9999991</div>
+              <br />
+              <br />
+              <div class='label'> Last Month </div>     <div class='info'>0000500</div>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <p class='graph'> <img src='img/graph2.jpg'> </p>
+            </a>
+          </li>
+
+          <li data-role="list-divider" class='divider' data-theme="b">Factory Output <p class="listDivider">-99.99% <img style='width:30px; height:30px;'src='img/down.png'></li>
+          <li><a href="stscan.html">
+              <div class='label'>This Month (Tonnes) </div>         <div class='info'>666</div>
+              <br />
+              <br />
+              <br />
+              <div class='label'> Last Month (Tonnes) </div>    <div class='info'>999</div>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <p class='graph'> <img src='img/graph.png'> </p>
+            </a>
+          </li>
+
+          <li data-role="list-divider" class='divider' data-theme="b">Factory Costs <p class="listDivider">99.99% <img style='width:30px; height:30px;'src='img/up.png'></li>
+          <li><a href="stscan.html">
+              <div class='label'> This Month </div>           <div class='info'>£2,210,180</div>
+              <br />
+              <br />
+              <br />
+              <div class='label'> Last Month </div>   <div class='info'>£9,995,550</div>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <p class='graph'> <img src='img/graph2.jpg'> </p>
+            </a>
+          </li>
+
+          <li data-role="list-divider" class='divider' data-theme="b">Top Ten Customers</li>
+          <li><a href="stscan.html">
+              <div class='label'>  WIL1 (WILLERBY HOLIDAY HOMES LTD) </div>           <div class='info'>£2,210,180</div>
+              <br />
+              <br />
+              <div class='label'>VIC2 (VICTORY LEISURE HOMES LTD) </div>   <div class='info'>£9,995,550</div>
+              <br />
+              <br />
+              <div class='label'>ABI2 (ABI (UK) LTD) </div>          <div class='info'>£2,210,180</div>
+              <br />
+              <br />
+              <div class='label'>  AUD1 (AUDIO GROUP INTERNATIONAL) </div>  <div class='info'>£9,995,550</div>
+              <br />
+              <br />
+              <div class='label'>  ANG1 (ANGLO EUROPEAN TRADING LTD) </div>  <div class='info'>£9,995,550</div>
+            </a>
+          </li>
         </ul>
       </div>
+      <div data-role="panel" id="menuPanel" data-position="left" data-display="reveal">
+        <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
+          <li data-role="list-divider" data-theme="b" class='panelDivider'>Menu</li>
+          <li><a href="stscan.html">  <h1><img id='flags' src="img/scan.jpg"> PRODUCT ENQUIRY </h1><p>VIEW PRODUCT AND SALES STOCK INFORMATION</p></a></li>
+          <li><a href="custenq.html"><h1><img id='flags' src="img/cust.jpg"> CUSTOMER ENQUIRY </h1><p>VIEW CUSTOMER SALES INFORMATION</p></a></li>
+           <li><a href="genorenq.html"><h1><img id='flags' src="img/order.jpg"> GENERAL ORDER ENQUIRY </h1><p>VIEW GENERAL ORDER ENQUIRY</p></a></li>
+          <li><a href="camera.html">  <h1><img id='flags' src="img/camera.png"> TAKE PHOTO </h1><p> TAKE PHOTOS </p></a></li>
+          <li><a href="expenses.html"> <h1><img id='flags' src="img/expenses.png"> EXPENSES </h1><p> EXPENSES FORM </p></a></li>
+        </ul>
     </div>
+    </div>
+
+
 
     <!-- START SETTINGS POP UP DIALOG BOX HTML -->
     <div data-role="page" id="settings" data-theme="d">
@@ -160,6 +225,8 @@
           $('#custCode').val(sessionStorage.cust);
 
         });
+
+
       </script>
       <div data-role="header" data-position="fixed" data-theme="b"><h1>Settings</h1></div>
       <div data-role="content">
@@ -217,677 +284,14 @@
       });
 
 
+</script>
+
+
     </script>
-    <!-- Form 3 - STSCAN Summary -->
 
-    <div data-role='page' id='stscanInfo' data-theme="d">
-      <div data-role="header" data-theme="b">
-        <a href="index.html" data-rel="back" data-icon="arrow-l">Back</a>
-        <h1>BLISS - Stock File Scan </h1>
-        <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
-      </div>
-      <div data-role="content" id='summary' class='scroll'>  <!-- scroll class needed for iScroll to scroll area -->
-        <label class='label' for='prodDesc'> Product Code: </label>
-        <div name='code' id='code' class='info'></div>
-        <div name='prodDesc' id='prodDesc' class='info'></div>
-        <div name='packDesc' id='packDesc' class='info'></div>
-        <br/><br/>
-        <form id='frm2' name='frm2'>
 
-          <div data-role='collapsible-set' data-type="horizontal" >
-            <div data-role='collapsible' data-collapsed='false'>
-              <h1>Stock Summary </h1>
-              <div data-role='fieldcontain'>
-                <label class='label' for='physical'> Physical: </label>
-                <div name='physical' id='physical' class='info'></div>
 
-                <label class='label' for='allocated'> Allocated: </label>
-                <div name='allocated' id='allocated' class='info'></div>
 
-                <label class='label' for='free'> Free: </label>
-                <div name='free' id='free' class='info'></div>
-
-                <label class='label' for='free'> Stock UOM: </label>
-                <div name='stkUom' id='stkUom' class='info'></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='fwdProdUsage'> Forward Production Usage: </label>
-                <div name='fwdProdUsage' id='fwdProdUsage' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='onOrder'> On Order: </label>
-                <div name='onOrder' id='onOrder' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='fwdOrders'> Forward Orders: </label>
-                <div name='fwdOrders' id='fwdOrders' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='backOrders'> Back Orders: </label>
-                <div name='backOrders' id='backOrders' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='allLocns'> All Locations: </label>
-                <div name='allLocns' id='allLocns' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-            </div>
-            <div data-role='collapsible'>
-              <h1>Batch Detail</h1>
-              <table id='batchesTable'>
-                  <tr class='header'>
-                  <th>
-                    Batch Number
-                  </th>
-                  <th>
-                    Date
-                  </th>
-                  <th>
-                    Expiry Date
-                  </th>
-                  <th>
-                    Description
-                  </th>
-                  <th>
-                    Status
-                  </th>
-                  <th>
-                    Position
-                  </th>
-                  <th>
-                    Physical Stock
-                  </th>
-                  <th>
-                    Allocated Stock
-                  </th>
-                  <th>
-                    Free Stock
-                  </th>
-                  </tr>
-
-
-              </table>
-            </div>
-            <div data-role='collapsible'>
-              <h1>Costs</h1>
-              <div class='ui-grid-d'>
-                <div class='ui-block-a'></div>
-                <div class="ui-block-b" style='background-color:white; color:black; font-weight:normal; text-align:right'> Current </div>
-                <div class='ui-block-c'></div>
-                <div class="ui-block-d" style=' text-align:right; padding-right:10px;'> Previous</div>
-                <div class="ui-block-e" style=' text-align:right;'>Last Changed Date</div>
-
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-d'>
-                <label class="ui-block-a" for='standard'> Standard: </label>
-                <div name='standardCurr' id='standardCurr' class="ui-block-b" style='background-color:white; color:black; text-align:right;'>1000.000</div>
-                <div name='standardPrev' id='standardPrev' class="ui-block-c" ></div>
-                <div name='standardDate' id='standardDate' class="ui-block-d" style='font-weight:bolder; text-align:right;' > 1000.000</div>
-                <div class='ui-block-e' style='font-weight:bolder; text-align:center;'>05/05/13</div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-d'>
-                <label class="ui-block-a" for='fwdStandard'> Forward Standard: </label>
-                <div name='fwdStandardCurr' id='fwdStandardCurr' class="ui-block-b" style='background-color:white; color:black; text-align:right;'>1000.000</div>
-                <div class='ui-block-c'></div>
-                <div name='fwdStandardPrev' id='fwdStandardPrev' class="ui-block-d" style='font-weight:bolder; text-align:right;'>1000.000</div>
-                <div name='fwdStandardDate' id='fwdStandardDate' class="ui-block-e" style='font-weight:bolder; text-align:center;'>05/05/13</div>
-
-              </div>
-
-              <br/> <br/>
-
-
-
-              <div class='ui-grid-d'>
-                <label class="ui-block-a" for='latestCost'> Latest Cost: </label>
-                <div name='latestCostCurr' id='latestCostCurr' class="ui-block-b" style='font-weight:bolder; background-color:lightblue; border-radius:6px;color: green; text-align:right;'>1000.000</div>
-                <div class='ui-block-c'></div>
-                <div name='latestCostPrev' id='latestCostPrev' class="ui-block-d" style='font-weight:bolder; text-align:right;'>1000.000</div>
-                <div name='latestCostDate' id='latestCostDate' class="ui-block-e" style='font-weight:bolder; text-align:center;'>05/05/13</div>
-
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-d'>
-                <label class="ui-block-a" for='averageCost'> Average Cost: </label>
-                <div name='averageCostCurr' id='averageCostCurr' class="ui-block-b" style='background-color:white; color:black; text-align:right;'>1000.000</div>
-                <div class='ui-block-c'></div>
-                <div name='averageCostPrev' id='averageCostPrev' class="ui-block-d" style='font-weight:bolder; text-align:right;'>1000.000</div>
-                <div name='averageCostDate' id='averageCostDate' class="ui-block-e" style='font-weight:bolder; text-align:center;'>05/05/13</div>
-
-              </div>
-
-            </div>
-
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <!-- End Form 3 - Summary -->
-
-
-
-    <!-- Form 3 CUSTENQ - Summary -->
-
-    <div data-role='page' id='custenqInfo' data-theme="d">
-      <div data-role="header" data-theme="b">
-        <a href="index.html" data-rel="back" data-icon="arrow-l" >Back</a>
-        <h1>BLISS - Customer Enquiry </h1>
-        <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
-      </div>
-      <div data-role="content" id='summary' class='scroll'>  <!-- scroll class needed for iScroll to scroll area -->
-        <label class='label' for='custName'> Customer Code: </label>
-        <div name='custCode' id='custCodeInfo' class='info'></div>
-        <div name='custName' id='custName' class='info'></div>
-        <br/><br/>
-        <form id='frm2' name='frm2'>
-
-          <div data-role='collapsible-set' data-type="horizontal" >
-            <div data-role='collapsible' data-collapsed='false'>
-              <h1>Customer Info </h1>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='Addr1'> Address: </label>
-                <div name='Addr1' id='Addr1' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <div class='ui-grid-b'>
-                <div class="ui-block-a"></div>
-                <div name='Addr2' id='Addr2' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <div class='ui-grid-b'>
-                <div class="ui-block-a"></div>
-                <div name='Addr3' id='Addr3' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='Tel'> Telephone: </label>
-                <div name='Tel' id='Tel' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='repCode'> Rep Code: </label>
-                <div name='repCode' id='repCode' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='CredLim'> Credit Limit: </label>
-                <div name='CredLim' id='CredLim' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='Curr'> Currency: </label>
-                <div name='Curr' id='Curr' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br /> <br />
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='Status'> Status: </label>
-                <div name='Status' id='Status' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='Terms'> Terms: </label>
-                <div name='Terms' id='Terms' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='UnPosted'> Unposted Transactions: </label>
-                <div name='UnPosted' id='UnPosted' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='dateLastInv'> Date Last Invoiced: </label>
-                <div name='dateLastInv' id='dateLastInv' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-            </div>
-
-
-            <div data-role='collapsible'>
-              <h1>Credit Info</h1>
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='credLim'> Credit Limit: </label>
-                <div name='credLim' id='credLim' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-              <br/> <br/>
-              <div class='ui-grid-b'>
-                <div class="ui-block-a" for='credText1'> Credit Text 1: </div>
-                <div name='cerdText1' id='credText1' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-              <br/> <br/>
-              <div class='ui-grid-b'>
-                <div class="ui-block-a" for='credText2'> Credit Text 2: </div>
-                <div name='cerdText2' id='credText2' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='onStop'> On Stop: </label>
-                <div name='onStop' id='onStop' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='paymentTerms'> Payment Terms: </label>
-                <div name='paymentTerms' id='paymentTerms' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='outstandingInvValue'> Outstanding Invoice Value: </label>
-                <div name='outstandingInvValue' id='outstandingInvValue' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='outstandingOrdValue'> Outstanding Order Value: </label>
-                <div name='outstandingOrdValue' id='outstandingOrdValue' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-              <br/> <br/>
-              <div class='ui-grid-b'>
-                <div class="ui-block-a" for='credFailedOrdValue'> Credit Failed Orders Value : </div>
-                <div name='credFailedOrdValue' id='credFailedOrdValue' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-            </div>
-
-
-            <div data-role='collapsible'>
-              <h1>Outstanding Orders</h1>
-              <table id='custOrdTable'>
-                  <tr class='header'>
-                  <th>
-                    Order Number
-                  </th>
-                  <th>
-                    Order Date
-                  </th>
-                  <th>
-                    Delivery Date
-                  </th>
-                  <th>
-                    Despatch Date
-                  </th>
-                  <th>
-                    Line Value
-                  </th>
-                  <th>
-                    Line Value UKP
-                  </th>
-                  <th>
-                    Customer Order
-                  </th>
-                  <th>
-                    Order Weight
-                  </th>
-                  </tr>
-
-
-              </table>
-            </div>
-          </div>
-          <a href='graph.html' data-ajax='false' > <input type='button' name='btnGraph' id='btnGraph' value='Display Graph' data-inline='true'/> </a>
-
-        </form>
-      </div>
-    </div>
-
-    <!-- End Form 3 - Summary -->
-
-    <!--GENORENQ - Summary -->
-
-    <div data-role='page' id='OrderInfo' data-theme="d">
-      <div data-role="header" data-theme="b">
-        <a href="index.html" data-rel="back" data-icon="arrow-l" >Back</a>
-        <h1>BLISS - General Order Enquiry </h1>
-        <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
-      </div>
-
-      <div data-role="content" id='summary' class='scroll'>  <!-- scroll class needed for iScroll to scroll area -->
-        <label class='label' for='OrderNo'> Order Number: </label>
-        <div name='OrderNo' id='OrderNo' class='info'></div>
-        <!-- <div name='OrderStatus' id='OrderStatus' class='info'></div> -->
-        <br/><br/>
-
-        <form id='frm2' name='frm2'>
-
-          <div data-role='collapsible-set' data-type="horizontal" >
-            <div data-role='collapsible' data-collapsed='false'>
-              <h1>Order Information </h1>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='OrderStatus'> Order Status: </label>
-                <div name='OrderStatus' id='OrderStatus' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='CustOrdNum'> Customer Order: </label>
-                <div name='CustOrdNum' id='CustOrdNum' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='CustCode'> Customer Code: </label>
-                <div name='CustCode' id='CustCode' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='OrderDate'> Order Date: </label>
-                <div name='OrderDate' id='OrderDate' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='EnterDate'> Entered: </label>
-                <div name='EnterDate' id='EnterDate' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='Invoiced'> Invoice: </label>
-                <div name='Invoiced' id='Invoiced' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-               <div class='ui-grid-b'>
-                <label class="ui-block-a" for='InvDate'> Invoice Date: </label>
-                <div name='InvDate' id='InvDate' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='GoodsValue'> Goods Value: </label>
-                <div name='GoodsValue' id='GoodsValue' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='DepositValue'> Deposit Value: </label>
-                <div name='DepositValue' id='DepositValue' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='VatValue'> VAT Value: </label>
-                <div name='VatValue' id='VatValue' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='DepositVatValue'> Deposit VAT Value: </label>
-                <div name='DepositVatValue' id='DepositVatValue' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='TotalValue'> TOTAL Value: </label>
-                <div name='TotalValue' id='TotalValue' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-            </div>
-            <!-- second tab-->
-            <div data-role='collapsible-set' data-type="horizontal" >
-              <div data-role='collapsible'>
-                <h1> Address Information </h1>
-
-                <div class='ui-grid-b'>
-                  <label class="ui-block-a" for='Name'> Name: </label>
-                  <div name='Name' id='Name' class="ui-block-b"></div>
-                  <div class="ui-block-c"></div>
-                </div>
-                <br/> <br/>
-
-                <div class='ui-grid-b'>
-                  <label class="ui-block-a" for='DelPoint'> Delivery Point: </label>
-                  <div name='DelPoint' id='DelPoint' class="ui-block-b"></div>
-                  <div class="ui-block-c"></div>
-                </div>
-
-                <br/> <br/>
-
-                <div class='ui-grid-b'>
-                  <label class="ui-block-a" for='Address1'> Address: </label>
-                  <div name='Address1' id='Address1' class="ui-block-b"></div>
-                  <div class="ui-block-c"></div>
-                </div>
-                <br/> <br/>
-
-                <div class='ui-grid-b'>
-                  <label class="ui-block-a" for='PostCode'> Post Code: </label>
-                  <div name='PostCode' id='PostCode' class="ui-block-b"></div>
-                  <div class="ui-block-c"></div>
-                </div>
-
-                <br/> <br/>
-
-                <div class='ui-grid-b'>
-                  <label class="ui-block-a" for='DelAddress'> Delivery Address: </label>
-                  <div name='DelAddress' id='DelAddress' class="ui-block-b"></div>
-                  <div class="ui-block-c"></div>
-                </div>
-
-                <br /> <br />
-              </div>
-            </div>
-          </div>
-
-        </form>
-      </div>
-    </div>
-
-<!-- START PREVIOUS CUSTOMER LIST POP UP DIALOG BOX HTML -->
-    <div data-role="page" id="prevCustList" data-theme="d">
-      <script>
-
-      </script>
-      <div data-role="header" data-position="fixed" data-theme="b"><h1> Previous Customers </h1></div>
-      <div data-role="content">
-
-        <select name="custSelect" id="custSelect">
-          <option>Customers</option>
-          <option value='cust1'>WIL1</option>
-          <option value='cust2'>ABI2</option>
-          <option value='cust3'>AUD1</option>
-        </select>
-
-        <a href="#" data-rel="back" name='btnPrevCust' id='btnPrevCust' data-inline='true' data-role="button">Continue</a>
-
-      </div>
-    </div>
-
-
-    <!-- END PREVIOUS CUSTOMER LIST POP UP DIALOG BOX HTML -->
-
-
-
-    <!-- Form 3 Expenses - Input -->
-
-    <div data-role='page' id='expenseInput' data-theme="d">
-      <script>
-        var counter = 1;
-      function addLine() {
-          event.preventDefault();
-          counter++;
-            var newRow = jQuery('<tr><td><input type="date" id="expDate' +
-            counter + '"/></td><td><input type="text" id="expDesc' +
-            counter + '"/></td><td><input type="text" id="expMileage' +
-            counter + '"/></td><td><input type="text" id="expNetVal' +
-            counter + '"/></td><td><input type="text" id="expVat' +
-            counter + '"/></td><td><input type="text" id="expGrossVal' +
-            counter + '"/></td><td><button type="button" name="btnAttach" id="btnAttach' +
-            counter + '" data-inline="true" onclick="takePhoto()"><img style="height:30px; width:30px;"src="img/camera.png" alt="Add Item"> <br/> Attach Photo</button></td><td><button type="button" id="btnUpdate' +
-            counter + '">Update</button></td></tr>');
-          $('#expenseTable').append(newRow);
-          $("#expenseTable").table();
-      };
-      </script>
-      <div data-role="header" data-theme="b">
-          <a href="index.html" data-rel="back" data-icon="arrow-l" >Back</a>
-        <h1>BLISS - Expenses </h1>
-        <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
-      </div>
-      <div data-role="content" id='summary' class='scroll'>  <!-- scroll class needed for iScroll to scroll area -->
-
-
-              <h1>Expenses - Ref No: 1234</h1>
-              <table id='expenseTable' >
-                  <tr class='header'>
-                  <th>
-                    Date
-                  </th>
-                  <th>
-                    Description
-                  </th>
-                  <th>
-                    Mileage
-                  </th>
-                  <th>
-                    Net Value
-                  </th>
-                  <th>
-                    VAT
-                  </th>
-                  <th>
-                    Gross Value
-                  </th>
-                  <th>
-                    Attach
-                  </th>
-                  </tr>
-                  <tr >
-                    <td>
-                      <input type='date' id='expDate' data-role='none'>
-                    </td>
-                    <td>
-                      <input type='text' id='expDesc' data-role='none'>
-                    </td>
-                    <td>
-                      <input type='text' id='expMileage' data-role='none'>
-                    </td>
-                    <td>
-                      <input type='text' id='expNetVal' data-role='none'>
-                    </td>
-                    <td>
-                      <input type='text' id='expVat' data-role='none'>
-                    </td>
-                    <td>
-                      <input type='text' id='expGrossVal' data-role='none'>
-                    </td>
-                    <td>
-                      <button type='button' name='btnAttach' id='btnAttach' data-inline='true' onclick='takePhoto()' data-role='none'>Attach Photo</button>
-                    </td>
-                    <td>
-                      <button type='button' name='btnUpdate' id='btnUpdate' data-inline='true' data-role='none'>Update</button>
-                    </td>
-                  </tr>
-
-              </table>
-
-              <br />
-                  <br />
-                  <br />
-
-                  <button type='button' name='btnAddLine' id='btnAddLine' data-inline='true' onclick="addLine()"><img src="img/add.jpg" alt="Add Item"> <br/> Add Line</button>
-          </div>
-
-        </form>
-      </div>
-    </div>
-
-    <!-- End Form 3 - Summary -->
 
   </body>
 </html>
