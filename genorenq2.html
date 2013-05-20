@@ -1,0 +1,184 @@
+<div data-role='page' id='OrderInfo' data-theme="d">
+  <style>
+          .info{
+        font-weight:bolder;
+        background-color:lightblue;
+        border-radius:6px;
+        float:left;
+        margin-left:5px;
+        margin-right:10px;
+        color: green;
+      }
+
+      .label {
+        float:left;
+      }
+
+      .ui-block-b{
+        font-weight:bolder;
+        background-color:lightblue;
+        border-radius:6px;
+        color: green;
+        text-align:right;
+      }
+  </style>
+      <div data-role="header" data-theme="b">
+        <a href="index.html" data-rel="back" data-icon="arrow-l" >Back</a>
+        <h1>BLISS - General Order Enquiry </h1>
+        <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
+      </div>
+
+      <div data-role="content" id='summary' class='scroll'>  <!-- scroll class needed for iScroll to scroll area -->
+        <label class='label' for='OrderNo'> Order Number: </label>
+        <div name='OrderNo' id='OrderNo' class='info'></div>
+        <!-- <div name='OrderStatus' id='OrderStatus' class='info'></div> -->
+        <br/><br/>
+
+        <form id='frm2' name='frm2'>
+
+          <div data-role='collapsible-set' data-type="horizontal" >
+            <div data-role='collapsible' data-collapsed='false'>
+              <h1>Order Information </h1>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='OrderStatus'> Order Status: </label>
+                <div name='OrderStatus' id='OrderStatus' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='CustOrdNum'> Customer Order: </label>
+                <div name='CustOrdNum' id='CustOrdNum' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='CustCode'> Customer Code: </label>
+                <div name='CustCode' id='CustCode' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='OrderDate'> Order Date: </label>
+                <div name='OrderDate' id='OrderDate' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='EnterDate'> Entered: </label>
+                <div name='EnterDate' id='EnterDate' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='Invoiced'> Invoice: </label>
+                <div name='Invoiced' id='Invoiced' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+               <div class='ui-grid-b'>
+                <label class="ui-block-a" for='InvDate'> Invoice Date: </label>
+                <div name='InvDate' id='InvDate' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='GoodsValue'> Goods Value: </label>
+                <div name='GoodsValue' id='GoodsValue' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='DepositValue'> Deposit Value: </label>
+                <div name='DepositValue' id='DepositValue' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='VatValue'> VAT Value: </label>
+                <div name='VatValue' id='VatValue' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='DepositVatValue'> Deposit VAT Value: </label>
+                <div name='DepositVatValue' id='DepositVatValue' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='TotalValue'> TOTAL Value: </label>
+                <div name='TotalValue' id='TotalValue' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+            </div>
+            <!-- second tab-->
+            <div data-role='collapsible-set' data-type="horizontal" >
+              <div data-role='collapsible'>
+                <h1> Address Information </h1>
+
+                <div class='ui-grid-b'>
+                  <label class="ui-block-a" for='Name'> Name: </label>
+                  <div name='Name' id='Name' class="ui-block-b"></div>
+                  <div class="ui-block-c"></div>
+                </div>
+                <br/> <br/>
+
+                <div class='ui-grid-b'>
+                  <label class="ui-block-a" for='DelPoint'> Delivery Point: </label>
+                  <div name='DelPoint' id='DelPoint' class="ui-block-b"></div>
+                  <div class="ui-block-c"></div>
+                </div>
+
+                <br/> <br/>
+
+                <div class='ui-grid-b'>
+                  <label class="ui-block-a" for='Address1'> Address: </label>
+                  <div name='Address1' id='Address1' class="ui-block-b"></div>
+                  <div class="ui-block-c"></div>
+                </div>
+                <br/> <br/>
+
+                <div class='ui-grid-b'>
+                  <label class="ui-block-a" for='PostCode'> Post Code: </label>
+                  <div name='PostCode' id='PostCode' class="ui-block-b"></div>
+                  <div class="ui-block-c"></div>
+                </div>
+
+                <br/> <br/>
+
+                <div class='ui-grid-b'>
+                  <label class="ui-block-a" for='DelAddress'> Delivery Address: </label>
+                  <div name='DelAddress' id='DelAddress' class="ui-block-b"></div>
+                  <div class="ui-block-c"></div>
+                </div>
+
+                <br /> <br />
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>

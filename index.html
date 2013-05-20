@@ -96,6 +96,10 @@
         top: 5px;
         right:80px;
       }
+
+      input[type=text] {
+        text-transform: uppercase;
+      }
     </style>
   </head>
 
@@ -132,16 +136,16 @@
               <br />
               <br />
               <br />
-              <p class='graph'> <img src='img/graph.png'> </p>
+              <div id='graph'>   <div id="chartdiv" style="height:170px;width:360px; "> </div> </div>
             </a>
           </li>
 
           <li data-role="list-divider" class='divider' data-theme="b">Complaints</li>
           <li><a href="#">
-              <div class='label'>This Month </div>       <div class='counter'> &nbsp; 8</div>    <div class='info'>9999991</div>
+              <div class='label'>This Month </div>       <div class='counter'> &nbsp; 8</div>    <div class='info'>19</div>
               <br />
               <br />
-              <div class='label'> Last Month </div>     <div class='info'>0000500</div>
+              <div class='label'> Last Month </div>     <div class='info'>23</div>
               <br />
               <br />
               <br />
@@ -182,7 +186,7 @@
               <br />
               <br />
               <br />
-              <div id='graph'>   <div id="chartdiv" style="height:170px;width:360px; "> </div> </div>
+              <p class='graph'> <img src='img/graph.png'> </p>
             </a>
           </li>
 
@@ -213,6 +217,7 @@
           <li><a href="genorenq.html"><h1><img id='flags' src="img/order.jpg"> GENERAL ORDER ENQUIRY </h1><p>VIEW GENERAL ORDER ENQUIRY</p></a></li>
           <li><a href="camera.html">  <h1><img id='flags' src="img/camera.png"> TAKE PHOTO </h1><p> TAKE PHOTOS </p></a></li>
           <li><a href="expenses.html"> <h1><img id='flags' src="img/expenses.png"> EXPENSES </h1><p> EXPENSES FORM </p></a></li>
+          <li><a href="scanner.html">  <h1><img id='flags' src="img/scan.jpg"> BARCODE SCANNER </h1><p>SCAN PRODUCTS</p></a></li>
         </ul>
       </div>
     </div>
@@ -292,7 +297,7 @@
       });
     </script>
     <script src="phonegap.js"></script>
-
+    <script src="barcodescanner.js"></script>
 
 
 

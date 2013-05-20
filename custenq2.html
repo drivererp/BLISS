@@ -1,0 +1,249 @@
+<div data-role='page' id='custenqInfo' data-theme="d">
+  <style>
+      .info{
+        font-weight:bolder;
+        background-color:lightblue;
+        border-radius:6px;
+        float:left;
+        margin-left:5px;
+        margin-right:10px;
+        color: green;
+      }
+
+      .label {
+        float:left;
+      }
+
+      .ui-block-b{
+        font-weight:bolder;
+        background-color:lightblue;
+        border-radius:6px;
+        color: green;
+        text-align:right;
+      }
+
+      #custOrdTable th {
+        background-color:lightblue;
+        color:black;
+        font-weight: bolder;
+      }
+
+      #custOrdTable tr {
+        background-color:#DAF2F5;
+      }
+      #custOrdTable tr:nth-child(even) {
+        background-color:white;
+      }
+
+      #custOrdTable tr:last-child
+      {
+        background-color: lightblue;
+        color: black;
+        font-weight: bolder;
+      }
+
+  </style>
+      <div data-role="header" data-theme="b">
+        <a href="index.html" data-rel="back" data-icon="arrow-l" >Back</a>
+        <h1>BLISS - Customer Enquiry </h1>
+        <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
+      </div>
+      <div data-role="content" id='summary' class='scroll'>  <!-- scroll class needed for iScroll to scroll area -->
+        <label class='label' for='custName'> Customer Code: </label>
+        <div name='custCode' id='custCodeInfo' class='info'></div>
+        <div name='custName' id='custName' class='info'></div>
+        <br/><br/>
+        <form id='frm2' name='frm2'>
+
+          <div data-role='collapsible-set' data-type="horizontal" >
+            <div data-role='collapsible' data-collapsed='false'>
+              <h1>Customer Info </h1>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='Addr1'> Address: </label>
+                <div name='Addr1' id='Addr1' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <div class='ui-grid-b'>
+                <div class="ui-block-a"></div>
+                <div name='Addr2' id='Addr2' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <div class='ui-grid-b'>
+                <div class="ui-block-a"></div>
+                <div name='Addr3' id='Addr3' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='Tel'> Telephone: </label>
+                <div name='Tel' id='Tel' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='repCode'> Rep Code: </label>
+                <div name='repCode' id='repCode' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='CredLim'> Credit Limit: </label>
+                <div name='CredLim' id='CredLim' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='Curr'> Currency: </label>
+                <div name='Curr' id='Curr' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br /> <br />
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='Status'> Status: </label>
+                <div name='Status' id='Status' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='Terms'> Terms: </label>
+                <div name='Terms' id='Terms' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='UnPosted'> Unposted Transactions: </label>
+                <div name='UnPosted' id='UnPosted' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='dateLastInv'> Date Last Invoiced: </label>
+                <div name='dateLastInv' id='dateLastInv' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+            </div>
+
+
+            <div data-role='collapsible'>
+              <h1>Credit Info</h1>
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='credLim'> Credit Limit: </label>
+                <div name='credLim' id='credLim' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+              <br/> <br/>
+              <div class='ui-grid-b'>
+                <div class="ui-block-a" for='credText1'> Credit Text 1: </div>
+                <div name='cerdText1' id='credText1' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+              <br/> <br/>
+              <div class='ui-grid-b'>
+                <div class="ui-block-a" for='credText2'> Credit Text 2: </div>
+                <div name='cerdText2' id='credText2' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='onStop'> On Stop: </label>
+                <div name='onStop' id='onStop' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='paymentTerms'> Payment Terms: </label>
+                <div name='paymentTerms' id='paymentTerms' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='outstandingInvValue'> Outstanding Invoice Value: </label>
+                <div name='outstandingInvValue' id='outstandingInvValue' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+
+              <div class='ui-grid-b'>
+                <label class="ui-block-a" for='outstandingOrdValue'> Outstanding Order Value: </label>
+                <div name='outstandingOrdValue' id='outstandingOrdValue' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+              <br/> <br/>
+              <div class='ui-grid-b'>
+                <div class="ui-block-a" for='credFailedOrdValue'> Credit Failed Orders Value : </div>
+                <div name='credFailedOrdValue' id='credFailedOrdValue' class="ui-block-b"></div>
+                <div class="ui-block-c"></div>
+              </div>
+
+              <br/> <br/>
+            </div>
+
+
+            <div data-role='collapsible'>
+              <h1>Outstanding Orders</h1>
+              <table id='custOrdTable'>
+                  <tr class='header'>
+                  <th>
+                    Order Number
+                  </th>
+                  <th>
+                    Order Date
+                  </th>
+                  <th>
+                    Delivery Date
+                  </th>
+                  <th>
+                    Despatch Date
+                  </th>
+                  <th>
+                    Line Value
+                  </th>
+                  <th>
+                    Line Value UKP
+                  </th>
+                  <th>
+                    Customer Order
+                  </th>
+                  <th>
+                    Order Weight
+                  </th>
+                  </tr>
+
+
+              </table>
+            </div>
+          </div>
+          <a href='graph.html' data-ajax='false' > <input type='button' name='btnGraph' id='btnGraph' value='Display Graph' data-inline='true'/> </a>
+
+        </form>
+      </div>
+    </div>
