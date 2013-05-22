@@ -10,7 +10,7 @@
   </div><!-- /camera -->
   <script>
     function scanProduct() {
-
+      alert('Scanning');
       var scanner = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
 
       scanner.scan( function (result) { alert("We got a barcode\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled); },
