@@ -12,47 +12,47 @@ window.appRootDirName = "Bliss/Download/";
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-	console.log("device is ready");
-	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+  console.log("device is ready");
+  window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 }
 
 function fail() {
-	console.log("failed to get filesystem");
+  console.log("failed to get filesystem");
 }
 
 function gotFS(fileSystem) {
-	console.log("filesystem got");
-	window.fileSystem = fileSystem;
-	fileSystem.root.getDirectory(window.appRootDirName, {
-		create : true,
-		exclusive : false
-	}, dirReady, fail);
+  console.log("filesystem got");
+  window.fileSystem = fileSystem;
+  fileSystem.root.getDirectory(window.appRootDirName, {
+    create : true,
+    exclusive : false
+  }, dirReady, fail);
 }
 
 function dirReady(entry) {
-	window.appRootDir = entry;
-	console.log("application dir is ready");
+  window.appRootDir = entry;
+  console.log("application dir is ready");
 }
 
 
 downloadFile = function(){
-	var fileTransfer = new FileTransfer();
+  var fileTransfer = new FileTransfer();
 
-	var url = "http://www.irs.gov/pub/irs-pdf/fw4.pdf";
-        alert("download starting!");
-	var filePath = window.appRootDir.fullPath + "test.pdf";
+  var url = "http://www.irs.gov/pub/irs-pdf/fw4.pdf";
+  alert("download starting!");
+  var filePath = window.appRootDir.fullPath + "test.pdf";
 
-	fileTransfer.download(
-	    url,
-	    filePath,
-	    function(entry) {
-	        alert("download complete: " + entry.fullPath);
+  fileTransfer.download(
+    url,
+    filePath,
+    function(entry) {
+      alert("download complete: " + entry.fullPath);
 
-	    },
-	    function(error) {
-	        alert("download error" + error.source);
-	    }
-	);
+    },
+    function(error) {
+      alert("download error" + error.source);
+    }
+    );
 }
 
 function submitCust()
@@ -70,8 +70,8 @@ function submitCust()
   $.ajax(
   {
     type: 'POST',
-  //  url: 'http://10.0.4.50/w15c0300app.php?CPROG=w15c0300.php',
-        url: localStorage.url + '/w15c0300app.php?CPROG=w15c0300.php',
+    //  url: 'http://10.0.4.50/w15c0300app.php?CPROG=w15c0300.php',
+    url: localStorage.url + '/w15c0300app.php?CPROG=w15c0300.php',
     cache: false,
     // contentType: "text/html",
     // data: {'request':'GETPRODINFO','eanCode':prodCode},
@@ -106,24 +106,24 @@ function submitCust()
       }
       else
       {
-        alert(data.errmsg);
+        alert(data.errmsg + '000');
         document.forms['frm1'].elements['prodCode'].value = "";
         document.forms['frm1'].elements['prodCode'].focus();
       }
     },
     error: function(jqo, txt, err)
     {
-      alert(txt);
+      alert(txt + 'Customer Info Tab');
     }
   }
   );
 
 
-    $.ajax(
+  $.ajax(
   {
     type: 'POST',
-  //  url: 'http://10.0.4.50/util/ut90aapp.php?CPROG=CUSTENQ',
-        url: localStorage.url + '/util/ut90aapp.php?CPROG=CUSTENQ',
+    //  url: 'http://10.0.4.50/util/ut90aapp.php?CPROG=CUSTENQ',
+    url: localStorage.url + '/util/ut90aapp.php?CPROG=CUSTENQ',
     cache: false,
     // contentType: "text/html",
     // data: {'request':'GETPRODINFO','eanCode':prodCode},
@@ -159,16 +159,16 @@ function submitCust()
     },
     error: function(jqo, txt, err)
     {
-      alert(txt);
+      alert(txt + 'Credit Info Tab');
     }
   }
   );
 
-     $.ajax(
+  $.ajax(
   {
     type: 'POST',
-  //  url: 'http://10.0.4.50/util/ut90aapp.php?CPROG=CUSTENQ',
-        url: localStorage.url + '/sord/so119a_ajax.php?CPROG=OUTOCRPT',
+    //  url: 'http://10.0.4.50/util/ut90aapp.php?CPROG=CUSTENQ',
+    url: localStorage.url + '/sord/so119a_ajax.php?CPROG=OUTOCRPT',
     cache: false,
     // contentType: "text/html",
     // data: {'request':'GETPRODINFO','eanCode':prodCode},
@@ -179,17 +179,17 @@ function submitCust()
     dataType: 'json',
     success: function(data)
     {
-//      if (data.errmsg == "")
-//      {
-         var table = document.getElementById('custOrdTable');
+      //      if (data.errmsg == "")
+      //      {
+      var table = document.getElementById('custOrdTable');
 
-            var rowCount = table.rows.length;
-            var row = "0";
+      var rowCount = table.rows.length;
+      var row = "0";
 
 
-        $('#custOrdTable tr:not(:first)').remove();
+      $('#custOrdTable tr:not(:first)').remove();
 
-$.each(data, function(key, val) {
+      $.each(data, function(key, val) {
 
         row = table.insertRow(-1);
 
@@ -198,17 +198,17 @@ $.each(data, function(key, val) {
         var element = document.createElement("input");
         //Assign different attributes to the element.
         if(val.orderNum != "")
-          {
-        element.type = 'button';
-        element.value = val.orderNum;
-        element.name = 'orderNum';
-        element.onclick = function() {
-          $.mobile.changePage("genorenq.html");
-         // document.location.href = "genorenq.html";
-          sessionStorage.orderNum = val.orderNum;
+        {
+          element.type = 'button';
+          element.value = val.orderNum;
+          element.name = 'orderNum';
+          element.onclick = function() {
+            $.mobile.changePage("genorenq.html");
+            // document.location.href = "genorenq.html";
+            sessionStorage.orderNum = val.orderNum;
           };
-        cell1.appendChild(element);
-          }
+          cell1.appendChild(element);
+        }
 
         cell1 = row.insertCell(1);
         cell1.innerHTML = val.orderDate;
@@ -237,19 +237,19 @@ $.each(data, function(key, val) {
         cell1.innerHTML = val.orderWeight;
         cell1.style.textAlign = 'right';
 
-});
+      });
 
-//      }
-//      else
-//      {
-//        alert(data.errmsg);
-//        document.forms['frm1'].elements['prodCode'].value = "";
-//        document.forms['frm1'].elements['prodCode'].focus();
-   //   }
+    //      }
+    //      else
+    //      {
+    //        alert(data.errmsg);
+    //        document.forms['frm1'].elements['prodCode'].value = "";
+    //        document.forms['frm1'].elements['prodCode'].focus();
+    //   }
     },
     error: function(jqo, txt, err)
     {
-      alert(txt);
+      alert(txt + 'Outstanding Orders Tab');
     }
   }
   );

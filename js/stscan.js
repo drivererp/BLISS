@@ -64,7 +64,7 @@ function submit()
     },
     error: function(jqo, txt, err)
     {
-      alert(txt);
+      alert(txt + 'Stock Summary Tab');
     }
   }
   );
@@ -133,10 +133,9 @@ function submit()
     },
     error: function(jqo, txt, err)
     {
-      alert(txt);
+      alert(txt + 'Batch Detail Tab');
     }
   }
   );
 
 }
-

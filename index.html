@@ -16,6 +16,7 @@
     <script type="text/javascript" src="lib/plugins/jqplot.canvasTextRenderer.min.js"></script>
     <script type="text/javascript" src="lib/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
     <script type="text/javascript" src="lib/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+    <script type="text/javascript" src="lib/plugins/jqplot.pieRenderer.min.js"></script>
     <script src="js/storage/memory-store.js"></script>
     <script src="js/pageLoadInit.js"></script>
     <script src="lib/jquery.mobile.min.js"></script>
@@ -27,10 +28,17 @@
     <script src="js/expensePicture.js"></script>
     <script src="js/genorenq.js"></script>
     <script src="js/storage/blissStorage.js"></script>
+    <script>
+      $( '#genorenq' ).live( 'pagebeforecreate',function(event){
+        $('#OrdNo').val(sessionStorage.orderNum);
+      });
+
+      $( '#custenq' ).live( 'pagebeforecreate',function(event){
+        $('#custCode').val(sessionStorage.customer);
+      });
+    </script>
 
     <style>
-
-
       .counter {
         width: 25px;
         height: 21px;
@@ -97,6 +105,12 @@
         right:80px;
       }
 
+      #pie {
+        position: absolute;
+        top: 5px;
+        right:25px;
+      }
+
       input[type=text] {
         text-transform: uppercase;
       }
@@ -115,28 +129,41 @@
         $(document).on("swiperight",function(){
           $("#menuPanel").panel( "open");
         });
+
+        function custClick()
+        {
+          //$.mobile.changePage("custenq.html");
+          //sessionStorage.customer = $('.cust').html();
+          //alert(sessionStorage.customer);
+        }
+
+        $(".cust").live("click",function(){
+          $.mobile.changePage("custenq.html");
+          sessionStorage.customer = $(this).html();
+          //alert(sessionStorage.customer);
+        });
       </script>
       <div data-role="header" data-theme="b">
         <a href="#" data-role="button" class='btnRefresh' data-icon="refresh" onclick='refreshPage()'>Refresh</a>
         <h1>Dashboard</h1>
         <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
       </div>
-      <div data-role="content">
+      <div data-role="content" class='scroll'>
         <a href="#menuPanel" data-role='button' data-inline='true'>Menu</a>
         <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
           <li data-role="list-divider" class='divider' data-theme='b'>Sales Orders <p class="listDivider">99.99% <img style='width:30px; height:30px;'src='img/up.png'></p></li>
-          <li><a href="#">
-              <div class='label'>This Month </div>       <div class='counter'> &nbsp; 2</div>    <div class='info'>£1,000,000,001</div>
+          <li><a href="graph.html">
+              <div class='label'>This Month </div>       <div class='counter'> &nbsp; 2</div>    <div class='info'>£97,696</div>
               <br />
               <br />
-              <div class='label'> Last Month </div>     <div class='info'>£2,230,000,789</div>
-              <br />
-              <br />
-              <br />
+              <div class='label'> Last Month </div>     <div class='info'>£76,548</div>
               <br />
               <br />
               <br />
-              <div id='graph'>   <div id="chartdiv" style="height:170px;width:360px; "> </div> </div>
+              <br />
+              <br />
+              <br />
+              <div id='graph'>   <div id="chartdivSO" style="height:170px;width:360px; "> </div> </div>
             </a>
           </li>
 
@@ -152,7 +179,7 @@
               <br />
               <br />
               <br />
-              <p class='graph'> <img src='img/graph2.jpg'> </p>
+              <div id='graph'>   <div id="chartdivComplaints" style="height:170px;width:360px; "> </div> </div>
             </a>
           </li>
 
@@ -169,45 +196,53 @@
               <br />
               <br />
               <br />
-              <p class='graph'> <img src='img/graph.png'> </p>
+              <div id='graph'>   <div id="chartdivFOutput" style="height:170px;width:360px; "> </div> </div>
             </a>
           </li>
 
           <li data-role="list-divider" class='divider' data-theme="b">Factory Costs <p class="listDivider">99.99% <img style='width:30px; height:30px;'src='img/up.png'></li>
-          <li><a href="graph.html">
-              <div class='label'> This Month </div>           <div class='info'>£2,210,180</div>
+          <li><a href="#">
+              <div class='label'> This Month </div>           <div class='info'>£40,000</div>
               <br />
               <br />
               <br />
-              <div class='label'> Last Month </div>   <div class='info'>£9,995,550</div>
+              <div class='label'> Last Month </div>   <div class='info'>£45,000</div>
               <br />
               <br />
               <br />
               <br />
               <br />
               <br />
-              <p class='graph'> <img src='img/graph.png'> </p>
+              <div id='graph'>   <div id="chartdivFCosts" style="height:170px;width:360px; "> </div> </div>
             </a>
           </li>
 
-          <li data-role="list-divider" class='divider' data-theme="b">Top Ten Customers</li>
+          <li data-role="list-divider" class='divider' data-theme="b">Top Five Customers</li>
           <li><a href="#">
-              <div class='label'>WIL1 (WILLERBY HOLIDAY HOMES LTD) </div>           <div class='info'>£2,210,180</div>
+              <div class='label'><a href='#' class='cust' onclick='custClick()'>WIL1</a> (WILLERBY HOLIDAY HOMES LTD) </div>           <div class='info'>£2,210,180</div>
               <br />
               <br />
-              <div class='label'>VIC2 (VICTORY LEISURE HOMES LTD) </div>   <div class='info'>£9,995,550</div>
+              <div class='label'><a href='#' class='cust' onclick='custClick()'>VIC2</a> (VICTORY LEISURE HOMES LTD) </div>   <div class='info'>£9,995,550</div>
               <br />
               <br />
-              <div class='label'>ABI2 (ABI (UK) LTD) </div>          <div class='info'>£2,210,180</div>
+              <div class='label'><a href='#' class='cust' onclick='custClick()'>ABI2</a> (ABI (UK) LTD) </div>          <div class='info'>£2,210,180</div>
               <br />
               <br />
-              <div class='label'>AUD1 (AUDIO GROUP INTERNATIONAL) </div>  <div class='info'>£9,995,550</div>
+              <div class='label'><a href='#' class='cust' onclick='custClick()'>AUD1</a> (AUDIO GROUP INTERNATIONAL) </div>  <div class='info'>£9,995,550</div>
               <br />
               <br />
-              <div class='label'>ANG1 (ANGLO EUROPEAN TRADING LTD) </div>  <div class='info'>£9,995,550</div>
+              <div class='label'><a href='#' class='cust' onclick='custClick()'>ANG1</a> (ANGLO EUROPEAN TRADING LTD) </div>  <div class='info'>£7,541,449</div>
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <div id='pie'>   <div id="custPie" style="height:280px;width:240px; "> </div> </div>
             </a>
           </li>
         </ul>
+        <input type='hidden' id='divId' value='1200000'>
       </div>
       <div data-role="panel" id="menuPanel" data-position="left" data-display="reveal">
         <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
@@ -218,6 +253,7 @@
           <li><a href="camera.html">  <h1><img id='flags' src="img/camera.png"> TAKE PHOTO </h1><p> TAKE PHOTOS </p></a></li>
           <li><a href="expenses.html"> <h1><img id='flags' src="img/expenses.png"> EXPENSES </h1><p> EXPENSES FORM </p></a></li>
           <li><a href="scanner.html">  <h1><img id='flags' src="img/scan.jpg"> BARCODE SCANNER </h1><p>SCAN PRODUCTS</p></a></li>
+          <li><a href="drawTest.html" data-ajax='false'>  <h1><img id='flags' src="img/paint.jpg"> PAINT NOTEPAD </h1><p>DRAWING APP</p></a></li>
         </ul>
       </div>
     </div>
@@ -241,6 +277,11 @@
 
 
       </script>
+      <style>
+        input[type=text] {
+        text-transform: none;
+      }
+      </style>
       <div data-role="header" data-position="fixed" data-theme="b"><h1>Settings</h1></div>
       <div data-role="content">
 

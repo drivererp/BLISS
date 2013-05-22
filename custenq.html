@@ -10,7 +10,7 @@
     <div data-role='page' id='custenq'>
       <div data-role="header" data-theme="b">
         <a href="index.html" data-icon="home">Home</a>
-        <h1>BLISS - Customer Enquiry</h1>
+        <h1>Customer Enquiry</h1>
         <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
       </div>
       <div data-role="content" class='scroll'>  <!-- scroll class needed for iScroll to scroll area -->
@@ -19,9 +19,9 @@
           <label for='custCode'> Customer Code: </label>
 
           <div data-role='fieldcontain'>
-          <input type='text' name='custCode' id='custCode' value='' />
-          <!--<button type='button' name='btnLastCust' id='btnLastCust' data-inline='true'><img src="img/favourite.png" alt="Prev"></button>-->
-          <a href="#prevCustList" data-rel="dialog" name='btnLastCust' id='btnLastCust' ><img src="img/favourite.png" alt="Prev"></a> <!-- 01/05/2013 -->
+            <input type='text' name='custCode' id='custCode' value='' />
+            <!--<button type='button' name='btnLastCust' id='btnLastCust' data-inline='true'><img src="img/favourite.png" alt="Prev"></button>-->
+            <a href="#prevCustList" data-rel="dialog" name='btnLastCust' id='btnLastCust' ><img src="img/favourite.png" alt="Prev"></a> <!-- 01/05/2013 -->
           </div>
           <br/>
 
@@ -35,14 +35,14 @@
       <script language='javascript' type='text/javascript'>
 
         $( "#btnContinue" ).bind( "click", function() {
-        submitCust();
-        saveBlissCust('custCode');
+          submitCust();
+          saveBlissCust('custCode');
 
         });
 
         $( "#btnLastCust" ).bind( "click", function() {
-         prevBlissCust('custCode');
-         });
+          prevBlissCust('custCode');
+        });
 
 
 
