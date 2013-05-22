@@ -8,6 +8,66 @@ function saveSettings()
 
 }
 
+function hideShowSO()
+{
+  if (localStorage.hideSOVal == 'hide')
+  {
+    $(".salesOrders").hide();
+  }
+  else
+  {
+    $(".salesOrders").show();
+  }
+}
+
+function hideShowComplaints()
+{
+  if (localStorage.hideComplaintsVal == 'hide')
+  {
+    $(".complaints").hide();
+  }
+  else
+  {
+    $(".complaints").show();
+  }
+}
+
+function hideShowFOutput()
+{
+  if (localStorage.hideFOutputVal == 'hide')
+  {
+    $(".fOutput").hide();
+  }
+  else
+  {
+    $(".fOutput").show();
+  }
+}
+
+function hideShowFCosts()
+{
+  if (localStorage.hideFCostsVal == 'hide')
+  {
+    $(".fCosts").hide();
+  }
+  else
+  {
+    $(".fCosts").show();
+  }
+}
+
+function hideShowTopCustomers()
+{
+  if (localStorage.hideTopCustomersVal == 'hide')
+  {
+    $(".topCustomers").hide();
+  }
+  else
+  {
+    $(".topCustomers").show();
+  }
+}
+
 window.appRootDirName = "Bliss/Download/";
 document.addEventListener("deviceready", onDeviceReady, false);
 

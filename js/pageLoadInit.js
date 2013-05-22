@@ -25,10 +25,14 @@ $('#home').live('pageshow',function(event, ui){
     // title:'Sales',
     seriesDefaults: {
       showMarker:false,
+      shadow:false,
       pointLabels: {
         show:true
       }
     },
+    grid: {
+            shadow:false
+          },
     axesDefaults: {
       tickRenderer: $.jqplot.CanvasAxisTickRenderer
     },
@@ -70,10 +74,14 @@ $('#home').live('pageshow',function(event, ui){
     // title:'Sales',
     seriesDefaults: {
       showMarker:false,
+      shadow:false,
       pointLabels: {
         show:true
       }
     },
+    grid: {
+            shadow:false
+          },
     axesDefaults: {
       tickRenderer: $.jqplot.CanvasAxisTickRenderer
     },
@@ -115,10 +123,14 @@ $('#home').live('pageshow',function(event, ui){
     // title:'Sales',
     seriesDefaults: {
       showMarker:false,
+      shadow:false,
       pointLabels: {
         show:true
       }
     },
+    grid: {
+            shadow:false
+          },
     axesDefaults: {
       tickRenderer: $.jqplot.CanvasAxisTickRenderer
     },
@@ -160,10 +172,14 @@ $('#home').live('pageshow',function(event, ui){
     // title:'Sales',
     seriesDefaults: {
       showMarker:false,
+      shadow:false,
       pointLabels: {
         show:true
       }
     },
+    grid: {
+            shadow:false
+          },
     axesDefaults: {
       tickRenderer: $.jqplot.CanvasAxisTickRenderer
     },
@@ -213,10 +229,14 @@ $('#graph').live('pageshow',function(event, ui){
     // title:'Sales',
     seriesDefaults: {
       showMarker:false,
+      shadow:false,
       pointLabels: {
         show:true
       }
     },
+    grid: {
+            shadow:false
+          },
     axesDefaults: {
       tickRenderer: $.jqplot.CanvasAxisTickRenderer
     },

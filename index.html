@@ -33,6 +33,14 @@
         $('#OrdNo').val(sessionStorage.orderNum);
       });
 
+      $( '#home' ).live( 'pagebeforecreate',function(event){
+        hideShowSO();
+        hideShowComplaints();
+        hideShowFOutput();
+        hideShowFCosts();
+        hideShowTopCustomers();
+      });
+
       $( '#custenq' ).live( 'pagebeforecreate',function(event){
         $('#custCode').val(sessionStorage.customer);
       });
@@ -151,8 +159,8 @@
       <div data-role="content" class='scroll'>
         <a href="#menuPanel" data-role='button' data-inline='true'>Menu</a>
         <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
-          <li data-role="list-divider" class='divider' data-theme='b'>Sales Orders <p class="listDivider">99.99% <img style='width:30px; height:30px;'src='img/up.png'></p></li>
-          <li><a href="graph.html">
+          <li data-role="list-divider" class='divider salesOrders' data-theme='b'>Sales Orders <p class="listDivider">99.99% <img style='width:30px; height:30px;'src='img/up.png'></p></li>
+          <li class='salesOrders'><a href="graph.html">
               <div class='label'>This Month </div>       <div class='counter'> &nbsp; 2</div>    <div class='info'>£97,696</div>
               <br />
               <br />
@@ -167,8 +175,8 @@
             </a>
           </li>
 
-          <li data-role="list-divider" class='divider' data-theme="b">Complaints</li>
-          <li><a href="#">
+          <li data-role="list-divider" class='divider complaints' data-theme="b">Complaints</li>
+          <li class='complaints'><a href="#">
               <div class='label'>This Month </div>       <div class='counter'> &nbsp; 8</div>    <div class='info'>19</div>
               <br />
               <br />
@@ -183,8 +191,8 @@
             </a>
           </li>
 
-          <li data-role="list-divider" class='divider' data-theme="b">Factory Output <p class="listDivider">-99.99% <img style='width:30px; height:30px;'src='img/down.png'></li>
-          <li><a href="#">
+          <li data-role="list-divider" class='divider fOutput' data-theme="b">Factory Output <p class="listDivider">-99.99% <img style='width:30px; height:30px;'src='img/down.png'></li>
+          <li class='fOutput'><a href="#">
               <div class='label'>This Month (Tonnes) </div>         <div class='info'>666</div>
               <br />
               <br />
@@ -200,8 +208,8 @@
             </a>
           </li>
 
-          <li data-role="list-divider" class='divider' data-theme="b">Factory Costs <p class="listDivider">99.99% <img style='width:30px; height:30px;'src='img/up.png'></li>
-          <li><a href="#">
+          <li data-role="list-divider" class='divider fCosts' data-theme="b">Factory Costs <p class="listDivider">99.99% <img style='width:30px; height:30px;'src='img/up.png'></li>
+          <li class='fCosts'><a href="#">
               <div class='label'> This Month </div>           <div class='info'>£40,000</div>
               <br />
               <br />
@@ -217,8 +225,8 @@
             </a>
           </li>
 
-          <li data-role="list-divider" class='divider' data-theme="b">Top Five Customers</li>
-          <li><a href="#">
+          <li data-role="list-divider" class='divider topCustomers' data-theme="b">Top Five Customers</li>
+          <li class='topCustomers'><a href="#">
               <div class='label'><a href='#' class='cust' onclick='custClick()'>WIL1</a> (WILLERBY HOLIDAY HOMES LTD) </div>           <div class='info'>£2,210,180</div>
               <br />
               <br />
@@ -266,7 +274,11 @@
         $( '#settings' ).on( 'pageinit',function(event){
           $('#urlSetting').val(localStorage.url);
           $('#userName').val(localStorage.userName);
-
+          $('#hideSO').val(localStorage.hideSOVal).slider("refresh");
+          $('#hideComplaints').val(localStorage.hideComplaintsVal).slider("refresh");
+          $('#hideFOutput').val(localStorage.hideFOutputVal).slider("refresh");
+          $('#hideFCosts').val(localStorage.hideFCostsVal).slider("refresh");
+          $('#hideTopCustomers').val(localStorage.hideTopCustomersVal).slider("refresh");
         });
 
         $( '#custenq' ).on( 'pageinit',function(event){
@@ -279,8 +291,8 @@
       </script>
       <style>
         input[type=text] {
-        text-transform: none;
-      }
+          text-transform: none;
+        }
       </style>
       <div data-role="header" data-position="fixed" data-theme="b"><h1>Settings</h1></div>
       <div data-role="content">
@@ -322,6 +334,46 @@
           <option value=''>Company 3</option>
         </select>
 
+        <div data-role="fieldcontain">
+          <label for="hideSO">Sales Orders:</label>
+          <select name="hideSO" id="hideSO" data-role="slider" data-theme="a">
+            <option value="show">Shown</option>
+            <option value="hide">Hidden</option>
+          </select>
+        </div>
+
+        <div data-role="fieldcontain">
+          <label for="hideComplaints">Complaints:</label>
+          <select name="hideComplaints" id="hideComplaints" data-role="slider" data-theme="a">
+            <option value="show">Shown</option>
+            <option value="hide">Hidden</option>
+          </select>
+        </div>
+
+        <div data-role="fieldcontain">
+          <label for="hideFOutput">Factory Output:</label>
+          <select name="hideFOutput" id="hideFOutput" data-role="slider" data-theme="a">
+            <option value="show">Shown</option>
+            <option value="hide">Hidden</option>
+          </select>
+        </div>
+
+        <div data-role="fieldcontain">
+          <label for="hideFCosts">Factory Costs:</label>
+          <select name="hideFCosts" id="hideFCosts" data-role="slider" data-theme="a">
+            <option value="show">Shown</option>
+            <option value="hide">Hidden</option>
+          </select>
+        </div>
+
+        <div data-role="fieldcontain">
+          <label for="hideTopCustomers">Top Five Customers:</label>
+          <select name="hideTopCustomers" id="hideTopCustomers" data-role="slider" data-theme="a">
+            <option value="show">Shown</option>
+            <option value="hide">Hidden</option>
+          </select>
+        </div>
+
         <a href="#" data-rel="back" name='btnSaveSettings' id='btnSaveSettings' data-role="button">Save Settings</a>
       </div>
     </div>
@@ -330,6 +382,16 @@
       $( "#btnSaveSettings" ).bind( "click", function() {
         saveSettings();
         $('#urlSetting').html(localStorage.url);
+        localStorage.hideSOVal = $('#hideSO').val();
+        localStorage.hideComplaintsVal = $('#hideComplaints').val();
+        localStorage.hideFOutputVal = $('#hideFOutput').val();
+        localStorage.hideFCostsVal = $('#hideFCosts').val();
+        localStorage.hideTopCustomersVal = $('#hideTopCustomers').val();
+        hideShowSO();
+        hideShowComplaints();
+        hideShowFOutput();
+        hideShowFCosts();
+        hideShowTopCustomers();
       });
 
       $( "#btnPrevCust" ).bind( "click", function() {
