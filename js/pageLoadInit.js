@@ -14,54 +14,83 @@ $('#home').live('pageshow',function(event, ui){
 
   //first vla in array, Jan is xaxis title - If use same one twice data is plotted against it no
   //  as a new point in sequence
-  var line1Data = [['Jan', 12500],['Feb',55000],['Mar',70000],['Apr',75000],['May',90000],['Jun',200000],['Jul', 125000],['Aug',55000],['Sep',70000],['Oct',75000],['Nov',90000],['Dec',200000]];
 
-  $.jqplot('chartdivSO',  [line1Data],
+ $.ajax(
   {
-    // Turns on animatino for all series in this plot.
-    animate: true,
-    // Will animate plot on calls to plot1.replot({resetAxes:true})
-    animateReplot: true,
-    // title:'Sales',
-    seriesDefaults: {
-      showMarker:false,
-      shadow:false,
-      pointLabels: {
-        show:true
-      }
+    type: 'POST',
+    //           url: 'http://10.0.4.50/scon/sc09app.php?CPROG=STSCAN',
+    url: localStorage.url + '/sord/so430_ajax.php',
+    cache: false,
+    // contentType: "text/html",
+    // data: {'request':'GETPRODINFO','eanCode':prodCode},
+    data: {
+      'CPROG':'SALESDSH'
     },
-    grid: {
-            shadow:false
-          },
-    axesDefaults: {
-      tickRenderer: $.jqplot.CanvasAxisTickRenderer
-    },
-    axes: {
-      xaxis: {
-        renderer: $.jqplot.CategoryAxisRenderer,
-        //ticks: ['Jan','Feb','Mar'],
-        //dont know what this does -> numberTicks: 12,
-        tickOptions: {
-          angle: -45,      //tilt with -30, -45 etc
-          fontSize: '8pt'
-        }
-      },
-      yaxis: {
-        min: 0
-      }
-    }
-  /*,
-        axes:{
-          xaxis:{
-            label:'Months'
-          },
-          yaxis:{
-            label:'Value'
+    dataType: 'json',
+    success: function(data)
+    {
+      if (data.errmsg == "")
+      {
+        //graph here ...
+
+        var line1Data = [['Jan', Number(data.period1)],['Feb',Number(data.period2)],['Mar',Number(data.period3)],['Apr',Number(data.period4)],['May',Number(data.period5)],['Jun',Number(data.period6)],['Jul', Number(data.period7)],['Aug',Number(data.period8)],
+                       ['Sep',Number(data.period9)],['Oct',Number(data.period10)],['Nov',Number(data.period11)],['Dec',Number(data.period12)]];
+
+      //  var line1Data = [['Jan', Number(data.period1)],['Feb',25],['Mar',5],['Apr',19],['May',23],['Jun',20],['Jul', 10],['Aug',15],['Sep',21],['Oct',16],['Nov',32],['Dec',24]];
+
+          $.jqplot('chartdivSO',  [line1Data],
+          {
+            // Turns on animatino for all series in this plot.
+            animate: true,
+            // Will animate plot on calls to plot1.replot({resetAxes:true})
+            animateReplot: true,
+            // title:'Sales',
+            seriesDefaults: {
+              showMarker:false,
+              shadow:false,
+              pointLabels: {
+                show:true
+              }
+            },
+            grid: {
+              shadow:false
+            },
+            axesDefaults: {
+              tickRenderer: $.jqplot.CanvasAxisTickRenderer
+            },
+            axes: {
+              xaxis: {
+                renderer: $.jqplot.CategoryAxisRenderer,
+                //ticks: ['Jan','Feb','Mar'],
+                //dont know what this does -> numberTicks: 12,
+                tickOptions: {
+                  angle: -45,      //tilt with -30, -45 etc
+                  fontSize: '8pt'
+                }
+              },
+              yaxis: {
+                min: 0
+              }
+            }
           }
-        }
-        */
+          );
+
+      }
+      else
+      {
+        alert(data.errmsg);
+        document.forms['frm1'].elements['prodCode'].value = "";
+        document.forms['frm1'].elements['prodCode'].focus();
+      }
+    },
+    error: function(jqo, txt, err)
+    {
+      alert(err + ' Sales Order Graph');
+    }
   }
   );
+
+
 
     var line2Data = [['Jan', 20],['Feb',25],['Mar',5],['Apr',19],['May',23],['Jun',20],['Jul', 10],['Aug',15],['Sep',21],['Oct',16],['Nov',32],['Dec',24]];
 
@@ -216,56 +245,90 @@ $('#graph').live('pageshow',function(event, ui){
   //page show only works here - does not work in index.html footer
   //alert('page show');
 
-  //first vla in array, Jan is xaxis title - If use same one twice data is plotted against it no
-  //  as a new point in sequence
-  var line1Data = [['Jan', 12500],['Feb',55000],['Mar',70000],['Apr',75000],['May',90000],['Jun',200000],['Jul', 125000],['Aug',55000],['Sep',70000],['Oct',75000],['Nov',90000],['Dec',200000]];
 
-  $.jqplot('chartdivBig',  [line1Data],
+  $.ajax(
   {
-    // Turns on animatino for all series in this plot.
-    animate: true,
-    // Will animate plot on calls to plot1.replot({resetAxes:true})
-    animateReplot: true,
-    // title:'Sales',
-    seriesDefaults: {
-      showMarker:false,
-      shadow:false,
-      pointLabels: {
-        show:true
-      }
+    type: 'POST',
+    //           url: 'http://10.0.4.50/scon/sc09app.php?CPROG=STSCAN',
+    url: localStorage.url + '/sord/so430_ajax.php',
+    cache: false,
+    // contentType: "text/html",
+    // data: {'request':'GETPRODINFO','eanCode':prodCode},
+    data: {
+      'CPROG':'SALESDSH'
     },
-    grid: {
-            shadow:false
-          },
-    axesDefaults: {
-      tickRenderer: $.jqplot.CanvasAxisTickRenderer
-    },
-    axes: {
-      xaxis: {
-        renderer: $.jqplot.CategoryAxisRenderer,
-        //ticks: ['Jan','Feb','Mar'],
-        //dont know what this does -> numberTicks: 12,
-        tickOptions: {
-          angle: -45,      //tilt with -30, -45 etc
-          fontSize: '8pt'
-        }
-      },
-      yaxis: {
-        min: 0
-      }
-    }
-  /*,
-        axes:{
-          xaxis:{
-            label:'Months'
-          },
-          yaxis:{
-            label:'Value'
+    dataType: 'json',
+    success: function(data)
+    {
+      if (data.errmsg == "")
+      {
+        //graph here ...
+
+          var line1BigData = [['Jan', Number(data.period1Prev)],['Feb',Number(data.period2Prev)],['Mar',Number(data.period3Prev)],['Apr',Number(data.period4Prev)],['May',Number(data.period5Prev)],
+          ['Jun',Number(data.period6Prev)],['Jul', Number(data.period7Prev)],['Aug',Number(data.period8Prev)],
+          ['Sep',Number(data.period9Prev)],['Oct',Number(data.period10Prev)],['Nov',Number(data.period11Prev)],['Dec',Number(data.period12Prev)]];
+          var line2BigData = [['Jan', Number(data.period1)],['Feb',Number(data.period2)],['Mar',Number(data.period3)],['Apr',Number(data.period4)],['May',Number(data.period5)],
+          ['Jun',Number(data.period6)],['Jul', Number(data.period7)],['Aug',Number(data.period8)],
+          ['Sep',Number(data.period9)],['Oct',Number(data.period10)],['Nov',Number(data.period11)],['Dec',Number(data.period12)]];
+
+
+          $.jqplot('chartdivBig',  [line1BigData, line2BigData],
+          {
+            series:[{renderer:$.jqplot.BarRenderer}, {xaxis:'xaxis', yaxis:'yaxis'}],
+            // Turns on animatino for all series in this plot.
+            animate: true,
+            // Will animate plot on calls to plot1.replot({resetAxes:true})
+            animateReplot: true,
+            // title:'Sales',
+            seriesDefaults: {
+              showMarker:false,
+              shadow:false,
+              pointLabels: {
+                show:true
+              }
+            },
+            grid: {
+              shadow:false
+            },
+            axesDefaults: {
+              tickRenderer: $.jqplot.CanvasAxisTickRenderer
+            },
+            axes: {
+              xaxis: {
+                renderer: $.jqplot.CategoryAxisRenderer,
+                //ticks: ['Jan','Feb','Mar'],
+                //dont know what this does -> numberTicks: 12,
+                tickOptions: {
+                  angle: -45,      //tilt with -30, -45 etc
+                  fontSize: '8pt'
+                }
+              },
+              yaxis: {
+                min: 0
+              }
+            }
           }
-        }
-        */
+          );
+
+      }
+      else
+      {
+        alert(data.errmsg);
+        document.forms['frm1'].elements['prodCode'].value = "";
+        document.forms['frm1'].elements['prodCode'].focus();
+      }
+    },
+    error: function(jqo, txt, err)
+    {
+      alert(err + ' Sales Order Graph');
+    }
   }
   );
+
+
+  //first vla in array, Jan is xaxis title - If use same one twice data is plotted against it no
+  //  as a new point in sequence
+
 });
 
 

@@ -1,7 +1,5 @@
-
 function saveSettings()
 {
-
   localStorage.url = $('#urlSetting').val();
   localStorage.userName = $('#userName').val();
   password = $('#password').val();
@@ -123,7 +121,7 @@ function submitCust()
 
   if (custCode.length == 0)
   {
-    alert('Please enter a Product Code');
+    alert('Please enter a Customer Code');
     return;
   }
 
@@ -154,7 +152,6 @@ function submitCust()
 
         $('#repCode').html(data.repCode);
         $('#CredLim').html(data.CredLim);
-
 
         $('#Curr').html(data.Curr);
 
@@ -239,8 +236,6 @@ function submitCust()
     dataType: 'json',
     success: function(data)
     {
-      //      if (data.errmsg == "")
-      //      {
       var table = document.getElementById('custOrdTable');
 
       var rowCount = table.rows.length;
@@ -298,14 +293,6 @@ function submitCust()
         cell1.style.textAlign = 'right';
 
       });
-
-    //      }
-    //      else
-    //      {
-    //        alert(data.errmsg);
-    //        document.forms['frm1'].elements['prodCode'].value = "";
-    //        document.forms['frm1'].elements['prodCode'].focus();
-    //   }
     },
     error: function(jqo, txt, err)
     {
