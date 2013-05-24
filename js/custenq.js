@@ -252,7 +252,7 @@ function submitCust()
         //cell1.innerHTML = val.orderNum;
         var element = document.createElement("input");
         //Assign different attributes to the element.
-        if(val.orderNum != "")
+        if(val.orderNum.trim() != "")
         {
           element.type = 'button';
           element.value = val.orderNum;

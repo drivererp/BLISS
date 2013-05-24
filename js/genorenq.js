@@ -58,8 +58,23 @@ function submitOrder()
 
           row = table.insertRow(-1);
 
+
           var cell1 = row.insertCell(0);
-          cell1.innerHTML = val.prodCode;
+        //cell1.innerHTML = val.orderNum;
+        var element = document.createElement("input");
+        //Assign different attributes to the element.
+          if(val.prodCode.trim() != "")
+        {
+          element.type = 'button';
+          element.value = val.prodCode;
+          element.name = 'prodCode';
+          element.onclick = function() {
+            $.mobile.changePage("stscan.html");
+            // document.location.href = "genorenq.html";
+            sessionStorage.prodCode = val.prodCode;
+          };
+          cell1.appendChild(element);
+        }
 
           cell1 = row.insertCell(1);
           cell1.innerHTML = val.prodDesc;
