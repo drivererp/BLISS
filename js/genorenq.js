@@ -39,14 +39,50 @@ function submitOrder()
       $('#DelAddress').html(data.DelAddress);
 
       $('#OrderDate').html(data.OrderDate);
-      $('#EnterDate').html(data.EnterDate);
       $('#Invoiced').html(data.Invoiced);
       $('#InvDate').html(data.InvDate);
       $('#GoodsValue').html(data.GoodsValue);
-      $('#DepositValue').html(data.DepositValue);
       $('#VatValue').html(data.VatValue);
-      $('#DepositVatValue').html(data.DepositVatValue);
       $('#TotalValue').html(data.TotalValue);
+
+
+      var table = document.getElementById('prodTable');
+
+        var rowCount = table.rows.length;
+        var row = "0";
+
+
+        $('#prodTable tr:not(:first)').remove();
+
+        $.each(data.productArray, function(key, val) {
+
+          row = table.insertRow(-1);
+
+          var cell1 = row.insertCell(0);
+          cell1.innerHTML = val.prodCode;
+
+          cell1 = row.insertCell(1);
+          cell1.innerHTML = val.prodDesc;
+
+          cell1 = row.insertCell(2);
+          cell1.innerHTML = val.pkgDesc;
+
+          cell1 = row.insertCell(3);
+          cell1.innerHTML = val.orderedQty;
+          cell1.style.textAlign = 'right';
+
+          cell1 = row.insertCell(4);
+          cell1.innerHTML = val.despQty;
+          cell1.style.textAlign = 'right';
+
+          cell1 = row.insertCell(5);
+          cell1.innerHTML = val.uom;
+          cell1.style.textAlign = 'center';
+
+          cell1 = row.insertCell(6);
+          cell1.innerHTML = val.price;
+
+});
     //      }
     //     else
     //      {

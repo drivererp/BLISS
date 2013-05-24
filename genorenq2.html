@@ -21,6 +21,26 @@
         color: green;
         text-align:right;
       }
+
+      #prodTable th {
+        background-color:lightblue;
+        color:black;
+        font-weight: bolder;
+      }
+
+      #prodTable tr {
+        background-color:#DAF2F5;
+      }
+      #prodTable tr:nth-child(even) {
+        background-color:white;
+      }
+
+      #prodTable tr:last-child
+      {
+        background-color: lightblue;
+        color: black;
+        font-weight: bolder;
+      }
   </style>
       <div data-role="header" data-theme="b">
         <a href="index.html" data-rel="back" data-icon="arrow-l" >Back</a>
@@ -70,14 +90,6 @@
               <br/> <br/>
 
               <div class='ui-grid-b'>
-                <label class="ui-block-a" for='EnterDate'> Entered: </label>
-                <div name='EnterDate' id='EnterDate' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
                 <label class="ui-block-a" for='Invoiced'> Invoice: </label>
                 <div name='Invoiced' id='Invoiced' class="ui-block-b"></div>
                 <div class="ui-block-c"></div>
@@ -102,14 +114,6 @@
               <br/> <br/>
 
               <div class='ui-grid-b'>
-                <label class="ui-block-a" for='DepositValue'> Deposit Value: </label>
-                <div name='DepositValue' id='DepositValue' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
                 <label class="ui-block-a" for='VatValue'> VAT Value: </label>
                 <div name='VatValue' id='VatValue' class="ui-block-b"></div>
                 <div class="ui-block-c"></div>
@@ -118,15 +122,7 @@
               <br/> <br/>
 
               <div class='ui-grid-b'>
-                <label class="ui-block-a" for='DepositVatValue'> Deposit VAT Value: </label>
-                <div name='DepositVatValue' id='DepositVatValue' class="ui-block-b"></div>
-                <div class="ui-block-c"></div>
-              </div>
-
-              <br/> <br/>
-
-              <div class='ui-grid-b'>
-                <label class="ui-block-a" for='TotalValue'> TOTAL Value: </label>
+                <label class="ui-block-a" for='TotalValue'> Total Value: </label>
                 <div name='TotalValue' id='TotalValue' class="ui-block-b"></div>
                 <div class="ui-block-c"></div>
               </div>
@@ -134,7 +130,6 @@
               <br/> <br/>
             </div>
             <!-- second tab-->
-            <div data-role='collapsible-set' data-type="horizontal" >
               <div data-role='collapsible'>
                 <h1> Address Information </h1>
 
@@ -176,6 +171,34 @@
 
                 <br /> <br />
               </div>
+            <!-- Products Table -->
+            <div data-role='collapsible'>
+              <h1>Products Table</h1>
+              <table id='prodTable'>
+                  <tr class='header'>
+                  <th>
+                    Product Code
+                  </th>
+                  <th>
+                    Description
+                  </th>
+                  <th>
+                    Package Description
+                  </th>
+                  <th>
+                    Ordered Quantity
+                  </th>
+                  <th>
+                    Despatched Quantity
+                  </th>
+                  <th>
+                    Unit Of Measure
+                  </th>
+                  <th>
+                    Price
+                  </th>
+                  </tr>
+              </table>
             </div>
           </div>
 
