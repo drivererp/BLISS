@@ -23,7 +23,7 @@ function submit()
   {
     type: 'POST',
     //           url: 'http://10.0.4.50/scon/sc09app.php?CPROG=STSCAN',
-    url: localStorage.url + '/scon/sc09app.php?CPROG=STSCAN',
+    url: 'http://' + localStorage.url + '/scon/sc09app.php?CPROG=STSCAN',
     cache: false,
     // contentType: "text/html",
     // data: {'request':'GETPRODINFO','eanCode':prodCode},
@@ -73,7 +73,7 @@ function submit()
   {
     type: 'POST',
     //           url: 'http://10.0.4.50/scon/sc09app.php?CPROG=STSCAN',
-    url: localStorage.url + '/scon/sc192a_ajax.php?CPROG=PRODSUM',
+    url: 'http://' + localStorage.url + '/scon/sc192a_ajax.php?CPROG=PRODSUM',
     cache: false,
     // contentType: "text/html",
     // data: {'request':'GETPRODINFO','eanCode':prodCode},

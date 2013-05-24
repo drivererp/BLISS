@@ -19,7 +19,7 @@ $('#home').live('pageshow',function(event, ui){
   {
     type: 'POST',
     //           url: 'http://10.0.4.50/scon/sc09app.php?CPROG=STSCAN',
-    url: localStorage.url + '/sord/so430_ajax.php',
+    url: 'http://' + localStorage.url + '/sord/so430_ajax.php',
     cache: false,
     // contentType: "text/html",
     // data: {'request':'GETPRODINFO','eanCode':prodCode},
@@ -250,7 +250,7 @@ $('#graph').live('pageshow',function(event, ui){
   {
     type: 'POST',
     //           url: 'http://10.0.4.50/scon/sc09app.php?CPROG=STSCAN',
-    url: localStorage.url + '/sord/so430_ajax.php',
+    url: 'http://' + localStorage.url + '/sord/so430_ajax.php',
     cache: false,
     // contentType: "text/html",
     // data: {'request':'GETPRODINFO','eanCode':prodCode},

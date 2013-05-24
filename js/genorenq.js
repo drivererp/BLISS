@@ -13,7 +13,7 @@ function submitOrder()
   $.ajax(
   {
     type: 'POST',
-    url: localStorage.url + '/sord/so87e_ajax.php?CPROG=GENORENQ',
+    url: 'http://' + localStorage.url + '/sord/so87e_ajax.php?CPROG=GENORENQ',
     cache: false,
     data: {
       'OrdNo':OrdNo

@@ -129,7 +129,7 @@ function submitCust()
   {
     type: 'POST',
     //  url: 'http://10.0.4.50/w15c0300app.php?CPROG=w15c0300.php',
-    url: localStorage.url + '/w15c0300app.php?CPROG=w15c0300.php',
+    url: 'http://' + localStorage.url + '/w15c0300app.php?CPROG=w15c0300.php',
     cache: false,
     // contentType: "text/html",
     // data: {'request':'GETPRODINFO','eanCode':prodCode},
@@ -180,7 +180,7 @@ function submitCust()
   {
     type: 'POST',
     //  url: 'http://10.0.4.50/util/ut90aapp.php?CPROG=CUSTENQ',
-    url: localStorage.url + '/util/ut90aapp.php?CPROG=CUSTENQ',
+    url: 'http://' + localStorage.url + '/util/ut90aapp.php?CPROG=CUSTENQ',
     cache: false,
     // contentType: "text/html",
     // data: {'request':'GETPRODINFO','eanCode':prodCode},
@@ -225,7 +225,7 @@ function submitCust()
   {
     type: 'POST',
     //  url: 'http://10.0.4.50/util/ut90aapp.php?CPROG=CUSTENQ',
-    url: localStorage.url + '/sord/so119a_ajax.php?CPROG=OUTOCRPT',
+    url: 'http://' + localStorage.url + '/sord/so119a_ajax.php?CPROG=OUTOCRPT',
     cache: false,
     // contentType: "text/html",
     // data: {'request':'GETPRODINFO','eanCode':prodCode},
