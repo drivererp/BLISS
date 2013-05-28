@@ -36,7 +36,7 @@
       });
       $( '#takePicturePage' ).live( 'pagebeforecreate',function(event){
         $('#ordNo').html(localStorage.ordNo);
-      $('#prodCode').html(localStorage.prodCode);
+        $('#prodCode').html(localStorage.prodCode);
       });
 
       $( '#stscan' ).live( 'pagebeforecreate',function(event){
@@ -146,17 +146,9 @@
           $("#menuPanel").panel( "open");
         });
 
-        function custClick()
-        {
-          //$.mobile.changePage("custenq.html");
-          //sessionStorage.customer = $('.cust').html();
-          //alert(sessionStorage.customer);
-        }
-
         $(".cust").live("click",function(){
           $.mobile.changePage("custenq.html");
           sessionStorage.customer = $(this).html();
-          //alert(sessionStorage.customer);
         });
       </script>
       <div data-role="header" data-theme="b">
@@ -286,12 +278,6 @@
           $('#hideFCosts').val(localStorage.hideFCostsVal).slider("refresh");
           $('#hideTopCustomers').val(localStorage.hideTopCustomersVal).slider("refresh");
         });
-
-        $( '#custenq' ).on( 'pageinit',function(event){
-          alert('hello');
-          $('#custCode').val(sessionStorage.cust);
-
-        });
       </script>
       <style>
         input[type=text] {
@@ -395,11 +381,6 @@
         hideShowFOutput();
         hideShowFCosts();
         hideShowTopCustomers();
-      });
-
-      $( "#btnPrevCust" ).bind( "click", function() {
-        alert('hello!!');
-        sessionStorage.cust = $('#custSelect').val();
       });
     </script>
     <script src="phonegap.js"></script>

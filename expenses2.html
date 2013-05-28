@@ -1,125 +1,125 @@
 <div data-role='page' id='expenseInput' data-theme="d">
   <style>
-          .info{
-        font-weight:bolder;
-        background-color:lightblue;
-        border-radius:6px;
-        float:left;
-        margin-left:5px;
-        margin-right:10px;
-        color: green;
-      }
+    .info{
+      font-weight:bolder;
+      background-color:lightblue;
+      border-radius:6px;
+      float:left;
+      margin-left:5px;
+      margin-right:10px;
+      color: green;
+    }
 
-      .label {
-        float:left;
-      }
+    .label {
+      float:left;
+    }
 
-      .ui-block-b{
-        font-weight:bolder;
-        background-color:lightblue;
-        border-radius:6px;
-        color: green;
-        text-align:right;
-      }
+    .ui-block-b{
+      font-weight:bolder;
+      background-color:lightblue;
+      border-radius:6px;
+      color: green;
+      text-align:right;
+    }
 
-     #expenseTable th {
-        background-color:lightblue;
-        color:black;
-        font-weight: bolder;
-      }
+    #expenseTable th {
+      background-color:lightblue;
+      color:black;
+      font-weight: bolder;
+    }
 
-     #expenseTable tr {
-        background-color:#DAF2F5;
-      }
+    #expenseTable tr {
+      background-color:#DAF2F5;
+    }
 
-     #expenseTable tr:nth-child(even) {
-         background-color:white;
-      }
+    #expenseTable tr:nth-child(even) {
+      background-color:white;
+    }
   </style>
-      <script>
-        var counter = 1;
-      function addLine() {
-          event.preventDefault();
-          counter++;
-            var newRow = jQuery('<tr><td><input type="date" id="expDate' +
-            counter + '"/></td><td><input type="text" id="expDesc' +
-            counter + '"/></td><td><input type="text" id="expMileage' +
-            counter + '"/></td><td><input type="text" id="expNetVal' +
-            counter + '"/></td><td><input type="text" id="expVat' +
-            counter + '"/></td><td><input type="text" id="expGrossVal' +
-            counter + '"/></td><td><button type="button" name="btnAttach" id="btnAttach' +
-            counter + '" data-inline="true" onclick="takePhoto()">Attach Photo</button></td><td><button type="button" id="btnUpdate' +
-            counter + '">Update</button></td></tr>');
-          $('#expenseTable').append(newRow);
-          $("#expenseTable").table();
-      };
-      </script>
-      <div data-role="header" data-theme="b">
-          <a href="index.html" data-rel="back" data-icon="arrow-l" >Back</a>
-        <h1>Expenses </h1>
-        <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
-      </div>
-      <div data-role="content" id='summary' class='scroll'>  <!-- scroll class needed for iScroll to scroll area -->
+  <script>
+    var counter = 1;
+    function addLine() {
+      event.preventDefault();
+      counter++;
+      var newRow = jQuery('<tr><td><input type="date" id="expDate' +
+        counter + '"/></td><td><input type="text" id="expDesc' +
+        counter + '"/></td><td><input type="text" id="expMileage' +
+        counter + '"/></td><td><input type="text" id="expNetVal' +
+        counter + '"/></td><td><input type="text" id="expVat' +
+        counter + '"/></td><td><input type="text" id="expGrossVal' +
+        counter + '"/></td><td><button type="button" name="btnAttach" id="btnAttach' +
+        counter + '" data-inline="true" onclick="takePhoto()">Attach Photo</button></td><td><button type="button" id="btnUpdate' +
+        counter + '">Update</button></td></tr>');
+      $('#expenseTable').append(newRow);
+      $("#expenseTable").table();
+    };
+  </script>
+  <div data-role="header" data-theme="b">
+    <a href="index.html" data-rel="back" data-icon="arrow-l" >Back</a>
+    <h1>Expenses </h1>
+    <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
+  </div>
+  <div data-role="content" id='summary' class='scroll'>  <!-- scroll class needed for iScroll to scroll area -->
 
 
-              <h1>Expenses - Ref No: 1234</h1>
-              <table id='expenseTable' >
-                  <tr class='header'>
-                  <th>
-                    Date
-                  </th>
-                  <th>
-                    Description
-                  </th>
-                  <th>
-                    Mileage
-                  </th>
-                  <th>
-                    Net Value
-                  </th>
-                  <th>
-                    VAT
-                  </th>
-                  <th>
-                    Gross Value
-                  </th>
-                  <th>
-                    Attach
-                  </th>
-                  </tr>
-                  <tr >
-                    <td>
-                      <input type='date' id='expDate' data-role='none'>
-                    </td>
-                    <td>
-                      <input type='text' id='expDesc' data-role='none'>
-                    </td>
-                    <td>
-                      <input type='text' id='expMileage' data-role='none'>
-                    </td>
-                    <td>
-                      <input type='text' id='expNetVal' data-role='none'>
-                    </td>
-                    <td>
-                      <input type='text' id='expVat' data-role='none'>
-                    </td>
-                    <td>
-                      <input type='text' id='expGrossVal' data-role='none'>
-                    </td>
-                    <td>
-                      <button type='button' name='btnAttach' id='btnAttach' data-inline='true' onclick='takePhoto()' data-role='none'>Attach Photo</button>
-                    </td>
-                    <td>
-                      <button type='button' name='btnUpdate' id='btnUpdate' data-inline='true' data-role='none'>Update</button>
-                    </td>
-                  </tr>
+    <h1>Expenses - Ref No: 1234</h1>
+    <table id='expenseTable' >
+      <tr class='header'>
+        <th>
+          Date
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Mileage
+        </th>
+        <th>
+          Net Value
+        </th>
+        <th>
+          VAT
+        </th>
+        <th>
+          Gross Value
+        </th>
+        <th>
+          Attach
+        </th>
+      </tr>
+      <tr >
+        <td>
+          <input type='date' id='expDate' data-role='none'>
+        </td>
+        <td>
+          <input type='text' id='expDesc' data-role='none'>
+        </td>
+        <td>
+          <input type='text' id='expMileage' data-role='none'>
+        </td>
+        <td>
+          <input type='text' id='expNetVal' data-role='none'>
+        </td>
+        <td>
+          <input type='text' id='expVat' data-role='none'>
+        </td>
+        <td>
+          <input type='text' id='expGrossVal' data-role='none'>
+        </td>
+        <td>
+          <button type='button' name='btnAttach' id='btnAttach' data-inline='true' onclick='takePhoto()' data-role='none'>Attach Photo</button>
+        </td>
+        <td>
+          <button type='button' name='btnUpdate' id='btnUpdate' data-inline='true' data-role='none'>Update</button>
+        </td>
+      </tr>
 
-              </table>
+    </table>
 
-              <br />
-                  <br />
-                  <br />
+    <br />
+    <br />
+    <br />
 
-                  <button type='button' name='btnAddLine' id='btnAddLine' data-inline='true' onclick="addLine()"><img src="img/add.jpg" alt="Add Item"> <br/> Add Line</button>
-          </div>
-      </div>
+    <button type='button' name='btnAddLine' id='btnAddLine' data-inline='true' onclick="addLine()"><img src="img/add.jpg" alt="Add Item"> <br/> Add Line</button>
+  </div>
+</div>

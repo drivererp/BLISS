@@ -1,4 +1,3 @@
-
 function saveSettings()
 {
 
@@ -84,51 +83,51 @@ function submit()
     success: function(data)
     {
 
-        var table = document.getElementById('batchesTable');
+      var table = document.getElementById('batchesTable');
 
-        var rowCount = table.rows.length;
-        var row = "0";
+      var rowCount = table.rows.length;
+      var row = "0";
 
 
-        $('#batchesTable tr:not(:first)').remove();
+      $('#batchesTable tr:not(:first)').remove();
 
-        $.each(data, function(key, val) {
+      $.each(data, function(key, val) {
 
-          row = table.insertRow(-1);
+        row = table.insertRow(-1);
 
-          var cell1 = row.insertCell(0);
-          cell1.innerHTML = val.batchNum;
+        var cell1 = row.insertCell(0);
+        cell1.innerHTML = val.batchNum;
 
-          cell1 = row.insertCell(1);
-          cell1.innerHTML = val.date;
-          cell1.style.textAlign = 'center';
+        cell1 = row.insertCell(1);
+        cell1.innerHTML = val.date;
+        cell1.style.textAlign = 'center';
 
-          cell1 = row.insertCell(2);
-          cell1.innerHTML = val.expDate;
-          cell1.style.textAlign = 'center';
+        cell1 = row.insertCell(2);
+        cell1.innerHTML = val.expDate;
+        cell1.style.textAlign = 'center';
 
-          cell1 = row.insertCell(3);
-          cell1.innerHTML = val.desc;
+        cell1 = row.insertCell(3);
+        cell1.innerHTML = val.desc;
 
-          cell1 = row.insertCell(4);
-          cell1.innerHTML = val.status;
+        cell1 = row.insertCell(4);
+        cell1.innerHTML = val.status;
 
-          cell1 = row.insertCell(5);
-          cell1.innerHTML = val.position;
+        cell1 = row.insertCell(5);
+        cell1.innerHTML = val.position;
 
-          cell1 = row.insertCell(6);
-          cell1.innerHTML = val.physStock;
-          cell1.style.textAlign = 'right';
+        cell1 = row.insertCell(6);
+        cell1.innerHTML = val.physStock;
+        cell1.style.textAlign = 'right';
 
-          cell1 = row.insertCell(7);
-          cell1.innerHTML = val.allocStock;
-          cell1.style.textAlign = 'right';
+        cell1 = row.insertCell(7);
+        cell1.innerHTML = val.allocStock;
+        cell1.style.textAlign = 'right';
 
-          cell1 = row.insertCell(8);
-          cell1.innerHTML = val.freeStock;
-          cell1.style.textAlign = 'right';
+        cell1 = row.insertCell(8);
+        cell1.innerHTML = val.freeStock;
+        cell1.style.textAlign = 'right';
 
-});
+      });
 
     },
     error: function(jqo, txt, err)

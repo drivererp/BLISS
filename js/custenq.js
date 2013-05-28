@@ -300,7 +300,4 @@ function submitCust()
     }
   }
   );
-
-
 }
-
