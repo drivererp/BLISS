@@ -1,0 +1,88 @@
+<div data-role='page' id='complaintsTable' data-theme="d">
+  <style>
+          .info{
+        font-weight:bolder;
+        background-color:lightblue;
+        border-radius:6px;
+        float:left;
+        margin-left:5px;
+        margin-right:10px;
+        color: green;
+      }
+
+      .label {
+        float:left;
+      }
+
+      .ui-block-b{
+        font-weight:bolder;
+        background-color:lightblue;
+        border-radius:6px;
+        color: green;
+        text-align:right;
+      }
+
+      #prodTable th {
+        background-color:lightblue;
+        color:black;
+        font-weight: bolder;
+      }
+
+      #prodTable tr {
+        background-color:#DAF2F5;
+      }
+      #prodTable tr:nth-child(even) {
+        background-color:white;
+      }
+
+      #prodTable tr:last-child
+      {
+        background-color: lightblue;
+        color: black;
+        font-weight: bolder;
+      }
+  </style>
+      <div data-role="header" data-theme="b">
+        <a href="index.html" data-rel="back" data-icon="arrow-l" >Back</a>
+        <h1>Complaints </h1>
+        <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
+      </div>
+
+      <div data-role="content" id='summary' class='scroll'>  <!-- scroll class needed for iScroll to scroll area -->
+        <label class='label' for='OrderNo'> Order Number: </label>
+        <div name='OrderNo' id='OrderNo' class='info'></div>
+        <!-- <div name='OrderStatus' id='OrderStatus' class='info'></div> -->
+        <br/><br/>
+
+            <!-- Products Table -->
+              <h1>Products Table</h1>
+              <table id='prodTable'>
+                  <tr class='header'>
+                  <th>
+                    Product Code
+                  </th>
+                  <th>
+                    Description
+                  </th>
+                  <th>
+                    Package Description
+                  </th>
+                  <th>
+                    Ordered Quantity
+                  </th>
+                  <th>
+                    Despatched Quantity
+                  </th>
+                  <th>
+                    Unit Of Measure
+                  </th>
+                  <th>
+                    Price
+                  </th>
+                  </tr>
+              </table>
+          </div>
+
+        </form>
+      </div>
+    </div>
