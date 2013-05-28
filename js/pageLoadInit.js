@@ -356,8 +356,3 @@ $('#home').live('pageshow',function(event, ui){
     }
   );
 });
-
-
-
-
-
