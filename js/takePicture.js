@@ -1,7 +1,7 @@
 document.addEventListener("deviceready",onDeviceReady,false);
 
 function capturePhoto(){
-  navigator.camera.getPicture(uploadPhoto,null,{
+  navigator.camera.getPicture(null,{
     quality:60,
     destinationType: Camera.DestinationType.FILE_URI,
     //destinationType: Camera.DestinationType.DATA_URL,
