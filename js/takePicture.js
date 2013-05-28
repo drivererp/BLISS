@@ -41,3 +41,4 @@ function uploadPhoto(data){
     alert("An error has occurred uploading this image: Error Code = " + error.code + "\n Please check you have a network connection");
   }, options);
 }
+
