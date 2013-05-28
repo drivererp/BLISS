@@ -36,7 +36,7 @@ function uploadPhoto(data){
   options.chunkedMode = false;
 
   var ft = new FileTransfer();
-
+  alert(localStorage.url);
   ft.upload(data, "http://" + localStorage.url + "/uploadAppImage.php", win, function fail(error) {
     alert("An error has occurred uploading this image: Error Code = " + error.code + "\n Please check you have a network connection");
   }, options);
