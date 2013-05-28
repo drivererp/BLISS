@@ -1,7 +1,7 @@
 document.addEventListener("deviceready",onDeviceReady,false);
 
 function capturePhoto(){
-  navigator.camera.getPicture(null,{
+  navigator.camera.getPicture(uploadPhoto,null,{
     quality:60,
     destinationType: Camera.DestinationType.FILE_URI,
     //destinationType: Camera.DestinationType.DATA_URL,
@@ -41,4 +41,3 @@ function uploadPhoto(data){
     alert("An error has occurred uploading this image: Error Code = " + error.code + "\n Please check you have a network connection");
   }, options);
 }
-
