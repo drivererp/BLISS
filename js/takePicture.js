@@ -36,8 +36,9 @@ function uploadPhoto(data){
   options.chunkedMode = false;
 
   ft = new FileTransfer();
+  var appUrl = "http://" + localStorage.url + "/uploadAppImage.php?docNo=45061&orgCode=WIL1&docType=SORDER&docLink=SORDER";
 
-  ft.upload(data, "http://" + localStorage.url + "/uploadAppImage.php?docNo=45061&orgCode=WIL1&docType=SORDER&docLink=SORDER", win, function fail(error) {
+  ft.upload(data, appUrl, win, function fail(error) {
     alert("An error has occurred uploading this image: Error Code = " + error.message + "\n Please check you have a network connection");
   }, options);
 }
