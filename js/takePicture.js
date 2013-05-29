@@ -38,7 +38,8 @@ function uploadPhoto(data){
   var ordNo = localStorage.ordNo.trim().split('/')[0];
 
   ft = new FileTransfer();
-  var appUrl = ordNo + "&prodCode=" +localStorage.prodCode.trim() + "&docType=SORDER&docLink=SORDER";
+  //var appUrl = ordNo + "&prodCode=" +localStorage.prodCode.trim() + "&docType=SORDER&docLink=SORDER";
+  var appUrl = ordNo + "&docType=SORDER&docLink=SORDER";
   appUrl = "http://10.0.4.50/uploadAppImage.php?docNo=" + encodeURIComponent(appUrl);
   alert('url is ' + appUrl);
 
