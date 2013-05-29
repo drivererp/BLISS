@@ -48,7 +48,7 @@
         counter + '"/></td><td><input type="text" id="expVat' +
         counter + '"/></td><td><input type="text" id="expGrossVal' +
         counter + '"/></td><td><button type="button" name="btnAttach" id="btnAttach' +
-        counter + '" data-inline="true" onclick="takePhoto()">Attach Photo</button></td><td><button type="button" id="btnUpdate' +
+        counter + '" data-inline="true" onclick="expTakePhoto()">Attach Photo</button></td><td><button type="button" id="btnUpdate' +
         counter + '">Update</button></td></tr>');
       $('#expenseTable').append(newRow);
       $("#expenseTable").table();
@@ -107,7 +107,7 @@
           <input type='text' id='expGrossVal' data-role='none'>
         </td>
         <td>
-          <button type='button' name='btnAttach' id='btnAttach' data-inline='true' onclick='takePhoto()' data-role='none'>Attach Photo</button>
+          <button type='button' name='btnAttach' id='btnAttach' data-inline='true' onclick='expTakePhoto()' data-role='none'>Attach Photo</button>
         </td>
         <td>
           <button type='button' name='btnUpdate' id='btnUpdate' data-inline='true' data-role='none'>Update</button>

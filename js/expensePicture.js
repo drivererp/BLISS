@@ -1,7 +1,7 @@
 document.addEventListener("deviceready",onDeviceReady,false);
 
-function takePhoto(){
-        navigator.camera.getPicture(uploadPhoto,null,{
+function expTakePhoto(){
+        navigator.camera.getPicture(expUploadPhoto,null,{
           quality:60,
           destinationType: Camera.DestinationType.FILE_URI,
         //destinationType: Camera.DestinationType.DATA_URL,
@@ -13,7 +13,7 @@ function takePhoto(){
         });
 }
 
-function uploadPhoto(data){
+function expUploadPhoto(data){
 // this is where you would send the image file to server
     var fail, ft, options, params, win;
 
@@ -37,7 +37,7 @@ function uploadPhoto(data){
 
       var ft = new FileTransfer();
 
-      ft.upload(data, localStorage.url + "/uploadAppImage.php?docNo=45061&orgCode=WIL1&docType=SORDER&docLink=SORDER", win, function fail(error) {
+      ft.upload(data, "http://" + localStorage.url + "/uploadAppImage.php?docNo=45061&orgCode=WIL1&docType=SORDER&docLink=SORDER", win, function fail(error) {
             alert("An error has occurred uploading this image: Error Code = " + error.code + "\n Please check you have a network connection");
         }, options);
 }
