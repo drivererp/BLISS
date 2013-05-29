@@ -36,8 +36,8 @@ function uploadPhoto(data){
   options.chunkedMode = false;
 
   ft = new FileTransfer();
-  var appUrl = "http://10.0.4.50/uploadAppImage.php?docNo=" +localStorage.ordNo.trim() + "&prodCode=" +localStorage.prodCode.trim() + "&docType=SORDER&docLink=SORDER";
-  appUrl = encodeURIComponent(appUrl);
+  var appUrl = localStorage.ordNo.trim() + "&prodCode=" +localStorage.prodCode.trim() + "&docType=SORDER&docLink=SORDER";
+  appUrl = "http://10.0.4.50/uploadAppImage.php?docNo=" + encodeURIComponent(appUrl);
   alert('url is ' + appUrl);
 
   ft.upload(data, appUrl, win, function fail(error) {
