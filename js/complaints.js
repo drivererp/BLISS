@@ -1,4 +1,4 @@
-function submitOrder()
+function submitComplaint()
 {
   localStorage.ordNo = $('#OrdNo').val();
   var OrdNo = $('#OrdNo').val();
