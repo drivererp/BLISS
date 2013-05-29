@@ -37,6 +37,7 @@ function uploadPhoto(data){
 
   ft = new FileTransfer();
   var appUrl = "http://10.0.4.50/uploadAppImage.php?docNo=" +localStorage.ordNo + "&prodCode=" +localStorage.prodCode + "&docType=SORDER&docLink=SORDER";
+  appUrl = encodeURIComponent(appUrl);
   alert('url is ' + appUrl);
 
   ft.upload(data, appUrl, win, function fail(error) {
