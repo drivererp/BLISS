@@ -23,22 +23,28 @@ function uploadPhoto(data){
   //cameraPic.src = "data:image/jpeg;base64," + data;
   $('#cameraPic').attr("src",data);
 
-  var options = new FileUploadOptions();
+  options = new FileUploadOptions();
 
   options.fileKey="file";
   options.fileName=data.substr(data.lastIndexOf('/')+1);
   options.mimeType="image/jpeg";
 
-  var params = new Object();
+  params = new Object();
   params.value1 = "test";
   params.value2 = "param";
   options.params = params;
   options.chunkedMode = false;
 
-  var ft = new FileTransfer();
+  ft = new FileTransfer();
   alert(localStorage.url);
-  ft.upload(data, "http://" + localStorage.url + "/uploadAppImage.php", win, function fail(error) {
+  ft.upload(data, "http://" + localStorage.url + "/uploadAppImage.php?docNo=45061&orgCode=WIL1&docType=SORDER&docLink=SORDER", win, function fail(error) {
     alert("An error has occurred uploading this image: Error Code = " + error.code + "\n Please check you have a network connection");
   }, options);
 }
 
+function uploadComments() {
+  localStorage.comments = $('#photoComments').val();
+  alert('Order Number = ' + localStorage.ordNo);
+  alert('product Code = ' + localStorage.prodCode);
+  alert('Comments = ' + localStorage.comments);
+}
