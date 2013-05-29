@@ -17,6 +17,7 @@
     Drive Computer Services Ltd
   </author>
 
+  <preference name="phonegap-version" value="2.5.0" />
   <preference name="detect-data-types" value="true" />
   <preference name="exit-on-suspend" value="true" />
   <preference name="splash-screen-duration" value="3000" />
