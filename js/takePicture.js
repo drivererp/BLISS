@@ -44,7 +44,6 @@ function uploadPhoto(data){
 
 function uploadComments() {
   localStorage.comments = $('#photoComments').val();
-  alert(localStorage.url);
   alert('Order Number = ' + localStorage.ordNo);
   alert('product Code = ' + localStorage.prodCode);
   alert('Comments = ' + localStorage.comments);
