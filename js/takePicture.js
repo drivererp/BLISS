@@ -36,7 +36,7 @@ function uploadPhoto(data){
   options.chunkedMode = false;
 
   ft = new FileTransfer();
-  alert(localStorage.url);
+
   ft.upload(data, "http://" + localStorage.url + "/uploadAppImage.php?docNo=45061&orgCode=WIL1&docType=SORDER&docLink=SORDER", win, function fail(error) {
     alert("An error has occurred uploading this image: Error Code = " + error.code + "\n Please check you have a network connection");
   }, options);
@@ -44,6 +44,7 @@ function uploadPhoto(data){
 
 function uploadComments() {
   localStorage.comments = $('#photoComments').val();
+  alert(localStorage.url);
   alert('Order Number = ' + localStorage.ordNo);
   alert('product Code = ' + localStorage.prodCode);
   alert('Comments = ' + localStorage.comments);
