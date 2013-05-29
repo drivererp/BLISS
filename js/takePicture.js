@@ -38,7 +38,7 @@ function uploadPhoto(data){
   ft = new FileTransfer();
 
   ft.upload(data, "http://" + localStorage.url + "/uploadAppImage.php?docNo=45061&orgCode=WIL1&docType=SORDER&docLink=SORDER", win, function fail(error) {
-    alert("An error has occurred uploading this image: Error Code = " + error.code + "\n Please check you have a network connection");
+    alert("An error has occurred uploading this image: Error Code = " + error.message + "\n Please check you have a network connection");
   }, options);
 }
 
