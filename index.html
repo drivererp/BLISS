@@ -150,51 +150,96 @@
         {
           //ajax call to get app menu
           //code = 1, 2, 3
-          var code = new Array();
-          code[0] = "1";
-          code[1] = "2";
-          code[2] = "3";
-          code[3] = "4";
-          code[4] = "5";
-          code[5] = "6";
-          code[6] = "7";
 
-          var menuDesc = new Array();
-          menuDesc[0] = "Description 1";
-          menuDesc[1] = "Description 2";
-          menuDesc[2] = "Description 3";
-          menuDesc[3] = "Description 4";
-          menuDesc[4] = "Description 5";
-          menuDesc[5] = "Description 6";
-          menuDesc[6] = "Description 7";
+
+          $.ajax(
+            {
+              type: 'POST',
+              url: 'http://' + localStorage.url + '/appmaint_ajax.php',
+              cache: false,
+              data: {},
+              dataType: 'json',
+              success: function(data)
+            {
+              var code = new Array();
+              code[0] = "1";
+              code[1] = "2";
+              code[2] = "3";
+              code[3] = "4";
+              code[4] = "5";
+              code[5] = "6";
+              code[6] = "7";
+              var menuDesc = new Array();
+              $.each(data.menuProgArray, function(key, val) {
+                alert(val.codeDesc);
+
+                for ($i=0; $i<7; $i++)
+                  {
+                    menuDesc[$i] = val.desc;
+                    $('#desc' + code[$i]).html(menuDesc[$i]);
+
+                    $('#1').hide();
+                    $('#2').hide();
+                    $('#3').hide();
+                    $('#4').hide();
+                    $('#5').hide();
+                    $('#6').hide();
+                    $('#7').hide();
+
+                    $('#' + code[$i]).show();
+                  }
+              });
+              //var menuDesc = new Array();
+              //menuDesc[0] = data.desc;
+              //menuDesc[1] = "Description 2";
+              //menuDesc[2] = "Description 3";
+              //menuDesc[3] = "Description 4";
+              //menuDesc[4] = "Description 5";
+              //menuDesc[5] = "Description 6";
+              //menuDesc[6] = "Description 7";
+
+          //$('#desc' + code[0]).html(menuDesc[0]);
+          //$('#desc' + code[1]).html(menuDesc[1]);
+          //$('#desc' + code[2]).html(menuDesc[2]);
+          //$('#desc' + code[3]).html(menuDesc[3]);
+          //$('#desc' + code[4]).html(menuDesc[4]);
+          //$('#desc' + code[5]).html(menuDesc[5]);
+          //$('#desc' + code[6]).html(menuDesc[6]);
+
+
+            },
+
+            error: function(jqo, txt, err)
+            {
+              alert(txt);
+
+            }
+            }
+          );
+
+
 
           //hide menu apps not on list
           //match ti li id=1,2,3
-          $('#1').hide();
-          $('#2').hide();
-          $('#3').hide();
-          $('#4').hide();
-          $('#5').hide();
-          $('#6').hide();
-          $('#7').hide();
+          //$('#1').hide();
+          //$('#2').hide();
+          //$('#3').hide();
+          //$('#4').hide();
+          //$('#5').hide();
+          //$('#6').hide();
+          //$('#7').hide();
 
-          $('#' + code[0]).show();
+          //$('#' + code[0]).show();
           //$('#' + code[1]).show();
-          $('#' + code[2]).show();
+          //$('#' + code[2]).show();
           //$('#' + code[3]).show();
-          $('#' + code[4]).show();
-          $('#' + code[5]).show();
-          $('#' + code[6]).show();
+          //$('#' + code[4]).show();
+          //$('#' + code[5]).show();
+          //$('#' + code[6]).show();
 
           //change menu app desc using passed data
           //match to h1
-          $('#desc' + code[0]).html(menuDesc[0]);
-          $('#desc' + code[1]).html(menuDesc[1]);
-          $('#desc' + code[2]).html(menuDesc[2]);
-          $('#desc' + code[3]).html(menuDesc[3]);
-          $('#desc' + code[4]).html(menuDesc[4]);
-          $('#desc' + code[5]).html(menuDesc[5]);
-          $('#desc' + code[6]).html(menuDesc[6]);
+
 
           alert('Your menu has been updated!! :D');
         }
