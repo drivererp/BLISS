@@ -252,7 +252,7 @@
         </ul>
         <input type='hidden' id='divId' value='1200000'>
       </div>
-      <div data-role="panel" id="menuPanel" data-position="left" data-display="reveal">
+      <div data-role="panel" id="menuPanel" data-position="left" data-display="push">
         <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
           <li data-role="list-divider" data-theme="b" class='panelDivider'>My Bliss</li>
           <li><a href="stscan.html">  <h1><img id='flags' src="img/scan.jpg"> PRODUCT ENQUIRY </h1><p>VIEW PRODUCT AND SALES STOCK INFORMATION</p></a></li>
@@ -372,7 +372,7 @@
         saveSettings();
         var userName = document.getElementById('userName').value;
         var password = document.getElementById('password').value;
-        
+
         if (userName == "")
         {
           alert('Please enter your username');
