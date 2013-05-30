@@ -132,6 +132,10 @@
       input[type=text] {
         text-transform: uppercase;
       }
+
+      .hide {
+        display:none;
+      }
     </style>
   </head>
   <body>
@@ -140,6 +144,38 @@
         function refreshPage()
         {
           location.reload();
+        }
+
+        function refreshMenu()
+        {
+          //ajax call to get app menu
+          //code = 1, 2, 3
+          var code = new Array();
+          code[0] = "1";
+          code[1] = "2";
+          code[2] = "3";
+
+          var menuDesc = new Array();
+          menuDesc[0] = "Description 1";
+          menuDesc[1] = "Description 2";
+          menuDesc[2] = "Description 3";
+
+          //hide menu apps not on list
+          //match ti li id=1,2,3
+          $('#' + code[0]).hide();
+          $('#' + code[1]).hide();
+          $('#' + code[2]).hide();
+
+          $('#' + code[0]).show();
+          $('#' + code[1]).show();
+
+          //change menu app desc using passed data
+          //match to h1
+          $('#desc' + code[0]).html(menuDesc[0]);
+          $('#desc' + code[1]).html(menuDesc[1]);
+          $('#desc' + code[2]).html(menuDesc[2]);
+
+          alert('Your menu has been updated!! :D');
         }
 
         $(document).on("swiperight",function(){
@@ -158,6 +194,7 @@
       </div>
       <div data-role="content" class='scroll'>
         <a href="#menuPanel" data-role='button' data-inline='true'>My Bliss</a>
+        <button id='hideMenu' data-inline='true' onclick='refreshMenu()'>Refresh Menu</button>
         <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
           <li data-role="list-divider" class='divider salesOrders' data-theme='b'>Sales Orders <p class="listDivider">12% <img style='width:30px; height:30px;'src='img/up.png'></p></li>
           <li class='salesOrders'><a href="graph.html">
@@ -255,13 +292,13 @@
       <div data-role="panel" id="menuPanel" data-position="left" data-display="push">
         <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
           <li data-role="list-divider" data-theme="b" class='panelDivider'>My Bliss</li>
-          <li><a href="stscan.html">  <h1><img id='flags' src="img/product.png"> PRODUCT ENQUIRY </h1><p>VIEW PRODUCT AND SALES STOCK INFORMATION</p></a></li>
-          <li><a href="custenq.html"><h1><img id='flags' src="img/cust.jpg"> CUSTOMER ENQUIRY </h1><p>VIEW CUSTOMER SALES INFORMATION</p></a></li>
-          <li><a href="genorenq.html"><h1><img id='flags' src="img/order.jpg"> GENERAL ORDER ENQUIRY </h1><p>VIEW GENERAL ORDER ENQUIRY</p></a></li>
-          <li><a href="complaints.html">  <h1><img id='flags' src="img/complaints.jpg"> COMPLAINTS </h1><p> COMPLAINTS </p></a></li>
-          <li><a href="expenses.html"> <h1><img id='flags' src="img/expenses.png"> EXPENSES </h1><p> EXPENSES FORM </p></a></li>
-          <li><a href="scanner.html">  <h1><img id='flags' src="img/scan.jpg"> BARCODE SCANNER </h1><p>SCAN PRODUCTS</p></a></li>
-          <li><a href="drawTest.html" data-ajax='false'>  <h1><img id='flags' src="img/paint.jpg"> PAINT NOTEPAD </h1><p>DRAWING APP</p></a></li>
+          <li id='1' ><a href="stscan.html">  <h1 id='desc1' ><img id='flags' src="img/product.png"> PRODUCT ENQUIRY </h1><p>VIEW PRODUCT AND SALES STOCK INFORMATION</p></a></li>
+          <li id='2' ><a href="custenq.html"><h1 id='desc2' ><img id='flags' src="img/cust.jpg"> CUSTOMER ENQUIRY </h1><p>VIEW CUSTOMER SALES INFORMATION</p></a></li>
+          <li id='3' ><a href="genorenq.html"><h1 id='desc3' ><img id='flags' src="img/order.jpg"> GENERAL ORDER ENQUIRY </h1><p>VIEW GENERAL ORDER ENQUIRY</p></a></li>
+          <li id='4' ><a href="complaints.html">  <h1 id='desc4' ><img id='flags' src="img/complaints.jpg"> COMPLAINTS </h1><p> COMPLAINTS </p></a></li>
+          <li id='5' ><a href="expenses.html"> <h1 id='desc5' ><img id='flags' src="img/expenses.png"> EXPENSES </h1><p> EXPENSES FORM </p></a></li>
+          <li id='6' ><a href="scanner.html">  <h1 id='desc6' ><img id='flags' src="img/scan.jpg"> BARCODE SCANNER </h1><p>SCAN PRODUCTS</p></a></li>
+          <li id='7' ><a href="drawTest.html" data-ajax='false'>  <h1 id='desc7' ><img id='flags' src="img/paint.jpg"> PAINT NOTEPAD </h1><p>DRAWING APP</p></a></li>
         </ul>
       </div>
     </div>
