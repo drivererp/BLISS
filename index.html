@@ -370,6 +370,20 @@
     <script>
       $( "#btnSaveSettings" ).bind( "click", function() {
         saveSettings();
+        var userName = document.getElementById('userName').value;
+        var password = document.getElementById('password').value;
+        
+        if (userName == "")
+        {
+          alert('Please enter your username');
+          return false;
+        }
+        if (password == "")
+        {
+          alert('Please enter your password');
+          return false;
+        }
+
         $('#urlSetting').html(localStorage.url);
         localStorage.hideSOVal = $('#hideSO').val();
         localStorage.hideComplaintsVal = $('#hideComplaints').val();

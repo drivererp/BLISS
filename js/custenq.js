@@ -2,7 +2,8 @@ function saveSettings()
 {
   localStorage.url = $('#urlSetting').val();
   localStorage.userName = $('#userName').val();
-  password = $('#password').val();
+  localStorage.password = $('#password').val();
+
 
 }
 
