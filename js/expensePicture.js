@@ -17,10 +17,6 @@ function expUploadPhoto(data){
   // this is where you would send the image file to server
   var fail, ft, options, params, win;
 
-  //    var cameraPic = document.getElementById('cameraPic');
-  //    cameraPic.style.display = 'block';
-
-  //cameraPic.src = "data:image/jpeg;base64," + data;
   $('#cameraPicExp').attr("src",data);
   alert(data);
   options = new FileUploadOptions();
@@ -36,7 +32,7 @@ function expUploadPhoto(data){
   options.chunkedMode = false;
 
   ft = new FileTransfer();
-  appUrl = "http://" + localStorage.url + "/uploadAppImage.php";
+  appUrl = "http://" + localStorage.url + "/uploadAppImage.php?docType=EXPREC&docLink=1234";
 
   ft.upload(data, appUrl, win, function fail(error) {
     alert("An error has occurred uploading this image: Error Code = [" + error.message + "]\n Please check you have a network connection");
