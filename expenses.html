@@ -3,20 +3,6 @@
     var fullDate = new Date()
     console.log(fullDate);
 
-    //    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null);
-
-    function onRequestFileSystemSuccess(fileSystem) {
-      var entry=fileSystem.root;
-      entry.getDirectory("Blissexp", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail);
-    }
-
-    function onGetDirectorySuccess(dir) {
-      alert("Created dir "+dir.name);
-    }
-
-    function onGetDirectoryFail(error) {
-      alert("Error creating directory "+error.code);
-    }
   </script>
   <div data-role="header" data-theme="b">
     <a href="index.html" data-icon="home">Home</a>
@@ -33,23 +19,10 @@
       <br />
       <br />
 
-      <table>
-        <tr>
-          <td>
-            Expense Description:
-          </td>
-          <td>
-            <input type='text' name='expensesDesc' id='expensesDesc' >
-          </td>
-        </tr>
-      </table>
-
-      <br />
-      <br />
-      <br />
-
-      <a href='expenses2.html'><button type='button' name='btnAddItem' id='btnAddItem' data-inline='true' Value='Add Expenses'><img src="img/add.jpg" alt="Add Item"> <br/> Add Expenses</button></a>
-
+      <button class="camera-control" onclick="expCapturePhoto()"> Capture Receipt </button><br>
+    <div style="text-align:center;margin:20px;">
+      <img id="cameraPicExp" src="" style="width:350px;height:550px;"></img>
+    </div>
 
     </form>
   </div>

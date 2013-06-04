@@ -1,43 +1,44 @@
 document.addEventListener("deviceready",onDeviceReady,false);
 
-function expTakePhoto(){
-        navigator.camera.getPicture(expUploadPhoto,null,{
-          quality:60,
-          destinationType: Camera.DestinationType.FILE_URI,
-        //destinationType: Camera.DestinationType.DATA_URL,
-          sourceType:1,
-          correctOrientation: true,
-          encodingType: Camera.EncodingType.JPEG,
-          saveToPhotoAlbum: true,
-          popoverOptions: CameraPopoverOptions
-        });
+function expCapturePhoto(){
+  navigator.camera.getPicture(expUploadPhoto,null,{
+    quality:60,
+    destinationType: Camera.DestinationType.FILE_URI,
+    //destinationType: Camera.DestinationType.DATA_URL,
+    sourceType:1,
+    correctOrientation: true,
+    encodingType: Camera.EncodingType.JPEG,
+    saveToPhotoAlbum: true,
+    popoverOptions: CameraPopoverOptions
+  });
 }
 
 function expUploadPhoto(data){
-// this is where you would send the image file to server
-    var fail, ft, options, params, win;
+  // this is where you would send the image file to server
+  var fail, ft, options, params, win;
 
-//    var cameraPic = document.getElementById('cameraPic');
-//    cameraPic.style.display = 'block';
+  //    var cameraPic = document.getElementById('cameraPic');
+  //    cameraPic.style.display = 'block';
 
-    //cameraPic.src = "data:image/jpeg;base64," + data;
-    $('#cameraPic').attr("src",data);
+  //cameraPic.src = "data:image/jpeg;base64," + data;
+  $('#cameraPicExp').attr("src",data);
+  alert(data);
+  options = new FileUploadOptions();
 
-      var options = new FileUploadOptions();
+  options.fileKey="file";
+  options.fileName=data.substr(data.lastIndexOf('/')+1);
+  options.mimeType="image/jpeg";
 
-      options.fileKey="file";
-      options.fileName=data.substr(data.lastIndexOf('/')+1);
-      options.mimeType="image/jpeg";
+  params = new Object();
+  params.value1 = "test";
+  params.value2 = "param";
+  options.params = params;
+  options.chunkedMode = false;
 
-      var params = new Object();
-      params.value1 = "test";
-      params.value2 = "param";
-      options.params = params;
-      options.chunkedMode = false;
+  ft = new FileTransfer();
+  appUrl = "http://" + localStorage.url + "/uploadAppImage.php";
 
-      var ft = new FileTransfer();
-
-      ft.upload(data, "http://" + localStorage.url + "/uploadAppImage.php?docNo=45061&orgCode=WIL1&docType=SORDER&docLink=SORDER", win, function fail(error) {
-            alert("An error has occurred uploading this image: Error Code = " + error.code + "\n Please check you have a network connection");
-        }, options);
+  ft.upload(data, appUrl, win, function fail(error) {
+    alert("An error has occurred uploading this image: Error Code = [" + error.message + "]\n Please check you have a network connection");
+  }, options);
 }
