@@ -39,21 +39,21 @@
         $('#prodCode').html(localStorage.prodCode);
       });
 
-      $( '#stscan' ).live( 'pagebeforecreate',function(event){
-        $('#prodCode').val(sessionStorage.prodCode);
-      });
+    $( '#stscan' ).live( 'pagebeforecreate',function(event){
+      $('#prodCode').val(sessionStorage.prodCode);
+    });
 
-      $( '#home' ).live( 'pagebeforecreate',function(event){
-        hideShowSO();
-        hideShowComplaints();
-        hideShowFOutput();
-        hideShowFCosts();
-        hideShowTopCustomers();
-      });
+    $( '#home' ).live( 'pagebeforecreate',function(event){
+      hideShowSO();
+      hideShowComplaints();
+      hideShowFOutput();
+      hideShowFCosts();
+      hideShowTopCustomers();
+    });
 
-      $( '#custenq' ).live( 'pagebeforecreate',function(event){
-        $('#custCode').val(sessionStorage.customer);
-      });
+    $( '#custenq' ).live( 'pagebeforecreate',function(event){
+      $('#custCode').val(sessionStorage.customer);
+    });
     </script>
 
     <style>
@@ -141,126 +141,72 @@
   <body>
     <div data-role="page" id='home' class="type-home">
       <script>
-        function refreshPage()
+      function refreshPage()
+      {
+        location.reload();
+      }
+
+      function refreshMenu()
+      {
+        $.ajax(
         {
-          location.reload();
-        }
+          type: 'POST',
+          url: 'http://' + localStorage.url + '/appmaint_ajax.php',
+          cache: false,
+          data: {},
+          dataType: 'json',
+          success: function(data)
+          {
+            var code = new Array();
+            code[0] = "1";
+            code[1] = "2";
+            code[2] = "3";
+            code[3] = "4";
+            code[4] = "5";
+            code[5] = "6";
+            code[6] = "7";
+            var i = 0;
+            $('#1').hide();
+            $('#2').hide();
+            $('#3').hide();
+            $('#4').hide();
+            $('#5').hide();
+            $('#6').hide();
+            $('#7').hide();
+            $.each(data.menuProgArray, function(key, val) {
 
-        function refreshMenu()
-        {
-          //ajax call to get app menu
-          //code = 1, 2, 3
+              var descX = '#desc' + code[i].trim();
+              $(descX).html(val.codeDesc);
 
-
-          $.ajax(
-            {
-              type: 'POST',
-              url: 'http://' + localStorage.url + '/appmaint_ajax.php',
-              cache: false,
-              data: {},
-              dataType: 'json',
-              success: function(data)
-            {
-              var code = new Array();
-              code[0] = "1";
-              code[1] = "2";
-              code[2] = "3";
-              code[3] = "4";
-              code[4] = "5";
-              code[5] = "6";
-              code[6] = "7";
-              var i = 0;
-              $('#1').hide();
-              $('#2').hide();
-              $('#3').hide();
-              $('#4').hide();
-              $('#5').hide();
-              $('#6').hide();
-              $('#7').hide();
-              $.each(data.menuProgArray, function(key, val) {
-
-                //alert(val.Code);
-
-
-                //alert(val.Code[0]);
-
-                var descX = '#desc' + code[i].trim();
-                //alert(val.codeDesc);
-                $(descX).html(val.codeDesc);
-
-                var codeX = '#' + code[i].trim();
-                if (val.showApp == 'show')
-                  {
+              var codeX = '#' + code[i].trim();
+              if (val.showApp == 'show')
+              {
                 $(codeX).show();
-                //alert(codeX);
-                  }
-                i++;
-              });
+              }
+              i++;
+            });
 
-              //var menuDesc = new Array();
-              //menuDesc[0] = data.desc;
-              //menuDesc[1] = "Description 2";
-              //menuDesc[2] = "Description 3";
-              //menuDesc[3] = "Description 4";
-              //menuDesc[4] = "Description 5";
-              //menuDesc[5] = "Description 6";
-              //menuDesc[6] = "Description 7";
+          },
 
-          //$('#desc' + code[0]).html(menuDesc[0]);
-          //$('#desc' + code[1]).html(menuDesc[1]);
-          //$('#desc' + code[2]).html(menuDesc[2]);
-          //$('#desc' + code[3]).html(menuDesc[3]);
-          //$('#desc' + code[4]).html(menuDesc[4]);
-          //$('#desc' + code[5]).html(menuDesc[5]);
-          //$('#desc' + code[6]).html(menuDesc[6]);
+          error: function(jqo, txt, err)
+          {
+            alert(txt);
 
-
-            },
-
-            error: function(jqo, txt, err)
-            {
-              alert(txt);
-
-            }
-            }
-          );
-
-
-
-          //hide menu apps not on list
-          //match ti li id=1,2,3
-          //$('#1').hide();
-          //$('#2').hide();
-          //$('#3').hide();
-          //$('#4').hide();
-          //$('#5').hide();
-          //$('#6').hide();
-          //$('#7').hide();
-
-          //$('#' + code[0]).show();
-          //$('#' + code[1]).show();
-          //$('#' + code[2]).show();
-          //$('#' + code[3]).show();
-          //$('#' + code[4]).show();
-          //$('#' + code[5]).show();
-          //$('#' + code[6]).show();
-
-          //change menu app desc using passed data
-          //match to h1
-
-
-          alert('Your menu has been updated!! :D');
+          }
         }
+      );
+        alert('Your menu has been updated!! :D');
+      }
 
-        $(document).on("swiperight",function(){
-          $("#menuPanel").panel( "open");
+      $(document).on("swiperight",function(){
+        $("#menuPanel").panel( "open");
 
-        });
+      });
 
-        $(".cust").live("click",function(){
-          $.mobile.changePage("custenq.html");
-          sessionStorage.customer = $(this).html();
-        });
+      $(".cust").live("click",function(){
+        $.mobile.changePage("custenq.html");
+        sessionStorage.customer = $(this).html();
+      });
       </script>
       <div data-role="header" data-theme="b">
         <a href="#" data-role="button" class='btnRefresh' data-icon="refresh" onclick='refreshPage()'>Refresh</a>
@@ -381,16 +327,16 @@
     <!-- START SETTINGS POP UP DIALOG BOX HTML -->
     <div data-role="page" id="settings" data-theme="d">
       <script>
-        $( '#settings' ).on( 'pageinit',function(event){
-          $('#urlSetting').val(localStorage.url);
-          $('#userName').val(localStorage.userName);
-          $('#password').val(localStorage.password);
-          $('#hideSO').val(localStorage.hideSOVal).slider("refresh");
-          $('#hideComplaints').val(localStorage.hideComplaintsVal).slider("refresh");
-          $('#hideFOutput').val(localStorage.hideFOutputVal).slider("refresh");
-          $('#hideFCosts').val(localStorage.hideFCostsVal).slider("refresh");
-          $('#hideTopCustomers').val(localStorage.hideTopCustomersVal).slider("refresh");
-        });
+      $( '#settings' ).on( 'pageinit',function(event){
+        $('#urlSetting').val(localStorage.url);
+        $('#userName').val(localStorage.userName);
+        $('#password').val(localStorage.password);
+        $('#hideSO').val(localStorage.hideSOVal).slider("refresh");
+        $('#hideComplaints').val(localStorage.hideComplaintsVal).slider("refresh");
+        $('#hideFOutput').val(localStorage.hideFOutputVal).slider("refresh");
+        $('#hideFCosts').val(localStorage.hideFCostsVal).slider("refresh");
+        $('#hideTopCustomers').val(localStorage.hideTopCustomersVal).slider("refresh");
+      });
       </script>
       <style>
         input[type=text] {
@@ -481,34 +427,34 @@
     </div>
     <!-- END SETTINGS POP UP DIALOG BOX HTML -->
     <script>
-      $( "#btnSaveSettings" ).bind( "click", function() {
-        saveSettings();
-        var userName = document.getElementById('userName').value;
-        var password = document.getElementById('password').value;
+    $( "#btnSaveSettings" ).bind( "click", function() {
+      saveSettings();
+      var userName = document.getElementById('userName').value;
+      var password = document.getElementById('password').value;
 
-        if (userName == "")
-        {
-          alert('Please enter your username');
-          return false;
-        }
-        if (password == "")
-        {
-          alert('Please enter your password');
-          return false;
-        }
+      if (userName == "")
+      {
+        alert('Please enter your username');
+        return false;
+      }
+      if (password == "")
+      {
+        alert('Please enter your password');
+        return false;
+      }
 
-        $('#urlSetting').html(localStorage.url);
-        localStorage.hideSOVal = $('#hideSO').val();
-        localStorage.hideComplaintsVal = $('#hideComplaints').val();
-        localStorage.hideFOutputVal = $('#hideFOutput').val();
-        localStorage.hideFCostsVal = $('#hideFCosts').val();
-        localStorage.hideTopCustomersVal = $('#hideTopCustomers').val();
-        hideShowSO();
-        hideShowComplaints();
-        hideShowFOutput();
-        hideShowFCosts();
-        hideShowTopCustomers();
-      });
+      $('#urlSetting').html(localStorage.url);
+      localStorage.hideSOVal = $('#hideSO').val();
+      localStorage.hideComplaintsVal = $('#hideComplaints').val();
+      localStorage.hideFOutputVal = $('#hideFOutput').val();
+      localStorage.hideFCostsVal = $('#hideFCosts').val();
+      localStorage.hideTopCustomersVal = $('#hideTopCustomers').val();
+      hideShowSO();
+      hideShowComplaints();
+      hideShowFOutput();
+      hideShowFCosts();
+      hideShowTopCustomers();
+    });
     </script>
     <script src="phonegap.js"></script>
   </body>
