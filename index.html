@@ -169,26 +169,34 @@
               code[4] = "5";
               code[5] = "6";
               code[6] = "7";
-              var menuDesc = new Array();
+              var i = 0;
+              $('#1').hide();
+              $('#2').hide();
+              $('#3').hide();
+              $('#4').hide();
+              $('#5').hide();
+              $('#6').hide();
+              $('#7').hide();
               $.each(data.menuProgArray, function(key, val) {
-                alert(val.codeDesc);
 
-                for ($i=0; $i<7; $i++)
+                //alert(val.Code);
+
+
+                //alert(val.Code[0]);
+
+                var descX = '#desc' + code[i].trim();
+                //alert(val.codeDesc);
+                $(descX).html(val.codeDesc);
+
+                var codeX = '#' + code[i].trim();
+                if (val.showApp == 'show')
                   {
-                    menuDesc[$i] = val.desc;
-                    $('#desc' + code[$i]).html(menuDesc[$i]);
-
-                    $('#1').hide();
-                    $('#2').hide();
-                    $('#3').hide();
-                    $('#4').hide();
-                    $('#5').hide();
-                    $('#6').hide();
-                    $('#7').hide();
-
-                    $('#' + code[$i]).show();
+                $(codeX).show();
+                //alert(codeX);
                   }
+                i++;
               });
+
               //var menuDesc = new Array();
               //menuDesc[0] = data.desc;
               //menuDesc[1] = "Description 2";
@@ -359,13 +367,13 @@
       <div data-role="panel" id="menuPanel" data-position="left" data-display="push">
         <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
           <li data-role="list-divider" data-theme="b" class='panelDivider'>My Bliss</li>
-          <li id='1' ><a href="stscan.html">  <h1 id='desc1' ><img id='flags' src="img/product.png"> PRODUCT ENQUIRY </h1><p>VIEW PRODUCT AND SALES STOCK INFORMATION</p></a></li>
-          <li id='2' ><a href="custenq.html"><h1 id='desc2' ><img id='flags' src="img/cust.jpg"> CUSTOMER ENQUIRY </h1><p>VIEW CUSTOMER SALES INFORMATION</p></a></li>
-          <li id='3' ><a href="genorenq.html"><h1 id='desc3' ><img id='flags' src="img/order.jpg"> GENERAL ORDER ENQUIRY </h1><p>VIEW GENERAL ORDER ENQUIRY</p></a></li>
-          <li id='4' ><a href="complaints.html">  <h1 id='desc4' ><img id='flags' src="img/complaints.jpg"> COMPLAINTS </h1><p> COMPLAINTS </p></a></li>
-          <li id='5' ><a href="expenses.html"> <h1 id='desc5' ><img id='flags' src="img/expenses.png"> EXPENSES </h1><p> EXPENSES FORM </p></a></li>
-          <li id='6' ><a href="scanner.html">  <h1 id='desc6' ><img id='flags' src="img/scan.jpg"> BARCODE SCANNER </h1><p>SCAN PRODUCTS</p></a></li>
-          <li id='7' ><a href="drawTest.html" data-ajax='false'>  <h1 id='desc7' ><img id='flags' src="img/paint.jpg"> PAINT NOTEPAD </h1><p>DRAWING APP</p></a></li>
+          <li id='1' ><a href="stscan.html">  <h1 id='desc1' > PRODUCT ENQUIRY </h1><p> <img id='flags' src="img/product.png"> VIEW PRODUCT AND SALES STOCK INFORMATION</p></a></li>
+          <li id='2' ><a href="custenq.html"><h1 id='desc2' > CUSTOMER ENQUIRY </h1><p> <img id='flags' src="img/cust.jpg"> VIEW CUSTOMER SALES INFORMATION</p></a></li>
+          <li id='3' ><a href="genorenq.html"><h1 id='desc3' > GENERAL ORDER ENQUIRY </h1><p> <img id='flags' src="img/order.jpg"> VIEW GENERAL ORDER ENQUIRY</p></a></li>
+          <li id='4' ><a href="complaints.html">  <h1 id='desc4' > COMPLAINTS </h1><p> <img id='flags' src="img/complaints.jpg"> COMPLAINTS </p></a></li>
+          <li id='5' ><a href="expenses.html"> <h1 id='desc5' > EXPENSES </h1><p> <img id='flags' src="img/expenses.png"> EXPENSES FORM </p></a></li>
+          <li id='6' ><a href="scanner.html">  <h1 id='desc6' > BARCODE SCANNER </h1><p> <img id='flags' src="img/scan.jpg"> SCAN PRODUCTS</p></a></li>
+          <li id='7' ><a href="drawTest.html" data-ajax='false'>  <h1 id='desc7' > PAINT NOTEPAD </h1><p> <img id='flags' src="img/paint.jpg"> DRAWING APP</p></a></li>
         </ul>
       </div>
     </div>
