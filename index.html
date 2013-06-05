@@ -370,7 +370,7 @@
               Password
             </td>
             <td>
-              <input type='text' name='password' id='password' >
+              <input type='password' name='password' id='password' >
             </td>
           </tr>
         </table>
@@ -444,6 +444,8 @@
       }
 
       $('#urlSetting').html(localStorage.url);
+      $('#userName').html(localStorage.userName);
+      $('#password').html(localStorage.password);
       localStorage.hideSOVal = $('#hideSO').val();
       localStorage.hideComplaintsVal = $('#hideComplaints').val();
       localStorage.hideFOutputVal = $('#hideFOutput').val();
