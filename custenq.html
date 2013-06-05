@@ -16,21 +16,12 @@
       <div data-role="content" class='scroll'>  <!-- scroll class needed for iScroll to scroll area -->
         <form id='frm1' name='frm1'>
 
-          <label for='custCode'> Customer Code: </label>
-
           <div data-role='fieldcontain'>
             <input type='hidden' name='custCode' id='custCode' value='' />
-
             <!--<a href="#prevCustList" data-rel="dialog" name='btnLastCust' id='btnLastCust' ><img src="img/favourite.png" alt="Prev"></a> <!-- 01/05/2013 -->
           </div>
-          <br/>
-
-
         <!--  <input type='button' name='btnDownload' id='btnDownload' value='Download File' onclick='downloadFile()'>-->
 
-
-        <br />
-        <br />
          <div data-demo-html="true">
 				<ul data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Customer Code:">
 					<li class="custList" >WIL1</li>
@@ -70,7 +61,6 @@
           $(".custList").hide();
         });
 
-
         $( "#btnContinue" ).bind( "click", function() {
           submitCust();
           saveBlissCust('custCode');
@@ -80,8 +70,6 @@
         $( "#btnLastCust" ).bind( "click", function() {
           prevBlissCust('custCode');
         });
-
-
 
       </script>
     </div>
