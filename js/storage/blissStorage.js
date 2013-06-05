@@ -21,3 +21,15 @@ function prevBlissProd(id)
       $('#' + id).val(localStorage.prod1);
 
 }
+
+function saveBlissOrd(id)
+{
+      localStorage.ord1 = $('#' + id).val();
+}
+
+function prevBlissOrd(id)
+{
+      $('#' + id).val('');
+      $('#' + id).val(localStorage.ord1);
+
+}

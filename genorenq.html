@@ -28,6 +28,7 @@
 
     $( "#btnContinue" ).bind( "click", function() {
       submitOrder();
+      saveBlissOrd('OrdNo');
     });
 
     $( "#btnLastOrd" ).bind( "click", function() {

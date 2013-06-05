@@ -41,7 +41,6 @@ function uploadPhoto(data){
   var appUrl = ordNo + "&prodCode=" +localStorage.prodCode.trim() + "&docType=SORDER&docLink=SORDER";
   //var appUrl = ordNo + "&docType=SORDER&docLink=SORDER";
   appUrl = "http://10.0.4.50/uploadAppImage.php?docNo=" + appUrl;
-  alert('url is ' + appUrl);
 
   ft.upload(data, appUrl, win, function fail(error) {
     alert("An error has occurred uploading this image: Error Code = [" + error.message + "]\n Please check you have a network connection");
@@ -50,7 +49,7 @@ function uploadPhoto(data){
 
 function uploadComments() {
   localStorage.comments = $('#photoComments').val();
-  alert('Order Number = ' + localStorage.ordNo);
-  alert('product Code = ' + localStorage.prodCode);
-  alert('Comments = ' + localStorage.comments);
+  //alert('Order Number = ' + localStorage.ordNo);
+  //alert('product Code = ' + localStorage.prodCode);
+  //alert('Comments = ' + localStorage.comments);
 }

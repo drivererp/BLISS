@@ -18,7 +18,6 @@ function expUploadPhoto(data){
   var fail, ft, options, params, win;
 
   $('#cameraPicExp').attr("src",data);
-  alert(data);
   options = new FileUploadOptions();
 
   options.fileKey="file";
