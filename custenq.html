@@ -19,32 +19,56 @@
           <label for='custCode'> Customer Code: </label>
 
           <div data-role='fieldcontain'>
-            <input type='text' name='custCode' id='custCode' value='' />
-            <button type='button' name='btnLastCust' id='btnLastCust' data-inline='true'><img src="img/favourite.png" alt="Prev"></button>
+            <input type='hidden' name='custCode' id='custCode' value='' />
+
             <!--<a href="#prevCustList" data-rel="dialog" name='btnLastCust' id='btnLastCust' ><img src="img/favourite.png" alt="Prev"></a> <!-- 01/05/2013 -->
           </div>
           <br/>
 
-          <a href='custenq2.html'> <input type='button' name='btnContinue' id='btnContinue' value='Continue' data-inline='true'/> </a>
+
         <!--  <input type='button' name='btnDownload' id='btnDownload' value='Download File' onclick='downloadFile()'>-->
 
 
-
-          <datalist id="frameworks">
-            <option value="Willerby Holiday Homes">
-            <option value="Victory Leisure Homes">
-            <option value="ABI UK">
-            <option value="Audio Group International">
-            <option value="Anglo European Trading">
-          </datalist>
-          <label for="custCodeTest">Customer Code:</label>
-          <input type="search" name="custCodeTest" id="custCodeTest" list="frameworks" />
-
+        <br />
+        <br />
+         <div data-demo-html="true">
+				<ul data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Customer Code:">
+					<li>WIL1</li>
+					<li>VIC2</li>
+					<li>AUD1</li>
+					<li>ABI2</li>
+					<li>ANG1</li>
+					<li>CAR1</li>
+					<li>CAR2</li>
+					<li>CAR3</li>
+					<li>ALU1</li>
+					<li>COS1</li>
+					<li>COS2</li>
+					<li>HAM1</li>
+					<li>HAN1</li>
+					<li>LAM1</li>
+					<li>LAM2</li>
+					<li>LAM3</li>
+					<li>AIL1</li>
+					<li>ACA1</li>
+					<li>ANG2</li>
+					<li>ANG3</li>
+					<li>ATL1</li>
+					<li>ATL2</li>
+				</ul>
+			</div>
+       <!-- <button type='button' name='btnLastCust' id='btnLastCust' data-inline='true'><img src="img/favourite.png" alt="Prev"></button>-->
+        <a href='custenq2.html'> <input type='button' name='btnContinue' id='btnContinue' value='Continue' data-inline='true'/> </a>
 
         </form>
 
       </div>
       <script language='javascript' type='text/javascript'>
+
+        $("li").click(function() {
+          $("input").val($(this).text());
+        });
+
 
         $( "#btnContinue" ).bind( "click", function() {
           submitCust();
