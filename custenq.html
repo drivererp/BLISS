@@ -23,30 +23,12 @@
         <!--  <input type='button' name='btnDownload' id='btnDownload' value='Download File' onclick='downloadFile()'>-->
 
          <div data-demo-html="true">
-				<ul data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Customer Code:">
-					<li class="custList" >WIL1</li>
-					<li class="custList" >VIC2</li>
-					<li class="custList" >AUD1</li>
-					<li class="custList" >ABI2</li>
-					<li class="custList" >ANG1</li>
-					<li class="custList" >CAR1</li>
-					<li class="custList" >CAR2</li>
-					<li class="custList" >CAR3</li>
-					<li class="custList" >ALU1</li>
-					<li class="custList" >COS1</li>
-					<li class="custList" >COS2</li>
-					<li class="custList" >HAM1</li>
-					<li class="custList" >HAN1</li>
-					<li class="custList" >LAM1</li>
-					<li class="custList" >LAM2</li>
-					<li class="custList" >LAM3</li>
-					<li class="custList" >AIL1</li>
-					<li class="custList" >ACA1</li>
-					<li class="custList" >ANG2</li>
-					<li class="custList" >ANG3</li>
-					<li class="custList" >ATL1</li>
-					<li class="custList" >ATL2</li>
-				</ul>
+				<ol data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Customer Code:">
+					<li value="0" class="custList" >WILLERBY</li>
+					<li value="1" class="custList" >WILLIAM</li>
+					<li value="2" class="custList" >WILHELM</li>
+					<li value="3" class="custList" >WILKINSON</li>
+				</ol>
 			</div>
        <!-- <button type='button' name='btnLastCust' id='btnLastCust' data-inline='true'><img src="img/favourite.png" alt="Prev"></button>-->
         <a href='custenq2.html'> <input type='button' name='btnContinue' id='btnContinue' value='Continue' data-inline='true'/> </a>
@@ -56,9 +38,33 @@
       </div>
       <script language='javascript' type='text/javascript'>
 
+        var custArray = new Array();
+        custArray[0] = 'WIL1';
+        custArray[1] = 'VIC2';
+        custArray[2] = 'AUD1';
+        custArray[3] = 'ABI2';
+
         $("li").click(function() {
+          var cust = $(this).text();
           $("input").val($(this).text());
-          $(".custList").hide();
+              if (cust == 'WILLERBY')
+                {
+                  $("input").val(custArray[0]);
+                }
+              else if (cust == 'WILLIAM')
+                {
+                  $("input").val(custArray[1]);
+                }
+              else if (cust == 'WILHELM')
+                {
+                  $("input").val(custArray[2]);
+                }
+              else if (cust == 'WILKINSON')
+                {
+                  $("input").val(custArray[3]);
+                }
+
+          //$(".custList").hide();
         });
 
         $( "#btnContinue" ).bind( "click", function() {
@@ -70,6 +76,12 @@
         $( "#btnLastCust" ).bind( "click", function() {
           prevBlissCust('custCode');
         });
+
+        function chooseCust()
+        {
+
+
+        }
 
       </script>
     </div>
