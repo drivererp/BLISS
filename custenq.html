@@ -20,24 +20,23 @@
             <input type='hidden' name='custCode' id='custCode' value='' />
             <!--<a href="#prevCustList" data-rel="dialog" name='btnLastCust' id='btnLastCust' ><img src="img/favourite.png" alt="Prev"></a> <!-- 01/05/2013 -->
           </div>
-        <!--  <input type='button' name='btnDownload' id='btnDownload' value='Download File' onclick='downloadFile()'>-->
+          <!--  <input type='button' name='btnDownload' id='btnDownload' value='Download File' onclick='downloadFile()'>-->
 
-         <div data-demo-html="true">
-				<ol data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Customer Code:">
-					<li value="0" class="custList" >WILLERBY</li>
-					<li value="1" class="custList" >WILLIAM</li>
-					<li value="2" class="custList" >WILHELM</li>
-					<li value="3" class="custList" >WILKINSON</li>
-				</ol>
-			</div>
-       <!-- <button type='button' name='btnLastCust' id='btnLastCust' data-inline='true'><img src="img/favourite.png" alt="Prev"></button>-->
-        <a href='custenq2.html'> <input type='button' name='btnContinue' id='btnContinue' value='Continue' data-inline='true'/> </a>
+          <div data-demo-html="true">
+            <ol data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Customer Code:">
+              <li value="0" class="custList" >WILLERBY</li>
+              <li value="1" class="custList" >WILLIAM</li>
+              <li value="2" class="custList" >WILHELM</li>
+              <li value="3" class="custList" >WILKINSON</li>
+            </ol>
+          </div>
+          <!-- <button type='button' name='btnLastCust' id='btnLastCust' data-inline='true'><img src="img/favourite.png" alt="Prev"></button>-->
+          <a href='custenq2.html'> <input type='button' name='btnContinue' id='btnContinue' value='Continue' data-inline='true'/> </a>
 
         </form>
 
       </div>
       <script language='javascript' type='text/javascript'>
-
         var custArray = new Array();
         custArray[0] = 'WIL1';
         custArray[1] = 'VIC2';
@@ -47,42 +46,33 @@
         $("li").click(function() {
           var cust = $(this).text();
           $("input").val($(this).text());
-              if (cust == 'WILLERBY')
-                {
-                  $("input").val(custArray[0]);
-                }
-              else if (cust == 'WILLIAM')
-                {
-                  $("input").val(custArray[1]);
-                }
-              else if (cust == 'WILHELM')
-                {
-                  $("input").val(custArray[2]);
-                }
-              else if (cust == 'WILKINSON')
-                {
-                  $("input").val(custArray[3]);
-                }
-
-          //$(".custList").hide();
-        });
-
-        $( "#btnContinue" ).bind( "click", function() {
-          submitCust();
-          saveBlissCust('custCode');
-
-        });
-
-        $( "#btnLastCust" ).bind( "click", function() {
-          prevBlissCust('custCode');
-        });
-
-        function chooseCust()
+          if (cust == 'WILLERBY')
+          {
+            $("input").val(custArray[0]);
+          }
+          else if (cust == 'WILLIAM')
+          {
+            $("input").val(custArray[1]);
+          }
+        else if (cust == 'WILHELM')
         {
-
-
+          $("input").val(custArray[2]);
         }
+        else if (cust == 'WILKINSON')
+        {
+          $("input").val(custArray[3]);
+        }
+        //$(".custList").hide();
+      });
 
+      $( "#btnContinue" ).bind( "click", function() {
+        submitCust();
+        saveBlissCust('custCode');
+      });
+
+      $( "#btnLastCust" ).bind( "click", function() {
+        prevBlissCust('custCode');
+      });
       </script>
     </div>
     <script src="phonegap.js"></script>
