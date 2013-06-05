@@ -50,6 +50,14 @@
       });
 
     $( '#home' ).live( 'pagebeforecreate',function(event){
+      if (localStorage.userNameApp == 'undefined' || localStorage.userNameApp == '')
+        {
+          alert('Please go to the settings page and enter your user details');
+        }
+        else if (localStorage.passwordApp == 'undefined' || localStorage.passwordApp == '')
+          {
+            alert('Please go to the settings page and enter your user details');
+          }
       hideShowSO();
       hideShowComplaints();
       hideShowFOutput();

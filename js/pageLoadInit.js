@@ -85,7 +85,7 @@ $('#home').live('pageshow',function(event, ui){
     },
     error: function(jqo, txt, err)
     {
-      alert(err + ' Sales Order Graph');
+      alert('Please go to the settings page and enter your IP address');
     }
   }
   );
