@@ -33,28 +33,28 @@
         <br />
          <div data-demo-html="true">
 				<ul data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-filter-placeholder="Customer Code:">
-					<li>WIL1</li>
-					<li>VIC2</li>
-					<li>AUD1</li>
-					<li>ABI2</li>
-					<li>ANG1</li>
-					<li>CAR1</li>
-					<li>CAR2</li>
-					<li>CAR3</li>
-					<li>ALU1</li>
-					<li>COS1</li>
-					<li>COS2</li>
-					<li>HAM1</li>
-					<li>HAN1</li>
-					<li>LAM1</li>
-					<li>LAM2</li>
-					<li>LAM3</li>
-					<li>AIL1</li>
-					<li>ACA1</li>
-					<li>ANG2</li>
-					<li>ANG3</li>
-					<li>ATL1</li>
-					<li>ATL2</li>
+					<li class="custList" >WIL1</li>
+					<li class="custList" >VIC2</li>
+					<li class="custList" >AUD1</li>
+					<li class="custList" >ABI2</li>
+					<li class="custList" >ANG1</li>
+					<li class="custList" >CAR1</li>
+					<li class="custList" >CAR2</li>
+					<li class="custList" >CAR3</li>
+					<li class="custList" >ALU1</li>
+					<li class="custList" >COS1</li>
+					<li class="custList" >COS2</li>
+					<li class="custList" >HAM1</li>
+					<li class="custList" >HAN1</li>
+					<li class="custList" >LAM1</li>
+					<li class="custList" >LAM2</li>
+					<li class="custList" >LAM3</li>
+					<li class="custList" >AIL1</li>
+					<li class="custList" >ACA1</li>
+					<li class="custList" >ANG2</li>
+					<li class="custList" >ANG3</li>
+					<li class="custList" >ATL1</li>
+					<li class="custList" >ATL2</li>
 				</ul>
 			</div>
        <!-- <button type='button' name='btnLastCust' id='btnLastCust' data-inline='true'><img src="img/favourite.png" alt="Prev"></button>-->
@@ -67,7 +67,7 @@
 
         $("li").click(function() {
           $("input").val($(this).text());
-          $("li").hide();
+          $(".custList").toggle();
         });
 
 
