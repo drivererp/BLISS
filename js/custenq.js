@@ -1,10 +1,8 @@
 function saveSettings()
 {
   localStorage.url = $('#urlSetting').val();
-  localStorage.userName = $('#userName').val();
-  localStorage.password = $('#password').val();
-
-
+  localStorage.userNameApp = $('#userName').val();
+  localStorage.passwordApp = $('#password').val();
 }
 
 function hideShowSO()

@@ -43,6 +43,12 @@
       $('#prodCode').val(sessionStorage.prodCode);
     });
 
+    $( '#settings' ).live( 'pagebeforecreate',function(event){
+        $('#urlSetting').val(localStorage.url);
+        $('#userName').val(localStorage.userNameApp);
+        $('#password').val(localStorage.passwordApp);
+      });
+
     $( '#home' ).live( 'pagebeforecreate',function(event){
       hideShowSO();
       hideShowComplaints();
@@ -329,8 +335,8 @@
       <script>
       $( '#settings' ).on( 'pageinit',function(event){
         $('#urlSetting').val(localStorage.url);
-        $('#userName').val(localStorage.userName);
-        $('#password').val(localStorage.password);
+        $('#userName').val(localStorage.userNameApp);
+        $('#password').val(localStorage.passwordApp);
         $('#hideSO').val(localStorage.hideSOVal).slider("refresh");
         $('#hideComplaints').val(localStorage.hideComplaintsVal).slider("refresh");
         $('#hideFOutput').val(localStorage.hideFOutputVal).slider("refresh");
@@ -429,6 +435,8 @@
     <script>
     $( "#btnSaveSettings" ).bind( "click", function() {
       saveSettings();
+       localStorage.userNameApp = $('#userName').val();
+      localStorage.passwordApp = $('#password').val();
       var userName = document.getElementById('userName').value;
       var password = document.getElementById('password').value;
 
@@ -444,8 +452,8 @@
       }
 
       $('#urlSetting').html(localStorage.url);
-      $('#userName').html(localStorage.userName);
-      $('#password').html(localStorage.password);
+      $('#userName').html(localStorage.userNameApp);
+      $('#password').html(localStorage.passwordApp);
       localStorage.hideSOVal = $('#hideSO').val();
       localStorage.hideComplaintsVal = $('#hideComplaints').val();
       localStorage.hideFOutputVal = $('#hideFOutput').val();
