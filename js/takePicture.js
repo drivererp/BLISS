@@ -40,7 +40,7 @@ function uploadPhoto(data){
   ft = new FileTransfer();
   var appUrl = ordNo + "&prodCode=" +localStorage.prodCode.trim() + "&docType=SORDER&docLink=SORDER";
   //var appUrl = ordNo + "&docType=SORDER&docLink=SORDER";
-  appUrl = "http://10.0.4.50/uploadAppImage.php?docNo=" + appUrl;
+  appUrl = "http://" + localStorage.url + "/uploadAppImage.php?docNo=" + appUrl;
 
   ft.upload(data, appUrl, win, function fail(error) {
     alert("An error has occurred uploading this image: Error Code = [" + error.message + "]\n Please check you have a network connection");
