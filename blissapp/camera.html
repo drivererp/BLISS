@@ -1,0 +1,25 @@
+<div id="takePicturePage" data-role="page">
+  <div data-role="header" data-theme="b">
+    <a href="index.html" data-rel="back" data-icon="arrow-l">Back</a>
+    <h1>Camera </h1>
+    <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
+  </div>
+
+  <div data-role="content" id="camera">
+    <label class='label' for='ordNo'> Order Number: </label>
+    <div name='ordNo' id='ordNo' class='info'></div>
+    <br />
+    <br />
+    <label class='label' for='prodCode'> Product Code: </label>
+    <div name='prodCode' id='prodCode' class='info'></div>
+    <br />
+    <button class="camera-control" onclick="capturePhoto()"> Take a photo </button><br>
+    <div style="text-align:center;margin:20px;">
+      <img id="cameraPic" src="" style="width:500px;height:500px;"></img>
+    </div>
+    <textarea name='photoComemnts' id='photoComments' height='40'></textarea>
+    <button id='uploadPhoto' onclick='uploadPhoto()'>  Upload Photo </button>
+    <button id='uploadComments' onclick='uploadComments()'> Upload Comments </button>
+  </div>
+
+</div>

@@ -1,0 +1,27 @@
+<div data-role='page' id='expenses'>
+  <script>
+    var fullDate = new Date()
+    console.log(fullDate);
+
+  </script>
+  <div data-role="header" data-theme="b">
+    <a href="index.html" data-icon="home">Home</a>
+    <h1>Expenses Form</h1>
+    <a href="#settings" data-rel="dialog" data-icon="gear">Settings</a>
+  </div>
+  <div data-role="content" class='scroll'>  <!-- scroll class needed for iScroll to scroll area -->
+    <form id='frm1' name='frm1'>
+
+      <label class='label' for='refNo'> Reference Number: </label>
+      <div name='refNo' id='refNo' class='info'>1234</div>
+      <br />
+      <br />
+      <br />
+      <button class="camera-control" onclick="expCapturePhoto()"> Capture Receipt </button><br>
+    <div style="text-align:center;margin:20px;">
+      <img id="cameraPicExp" src="" style="width:350px;height:550px;"></img>
+    </div>
+
+    </form>
+  </div>
+</div>

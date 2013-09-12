@@ -1,0 +1,25 @@
+<title>Barcode Scanner</title>
+ <script type="text/javascript" charset="utf-8" src="lib/barcodescanner.js"></script>
+<div id="scanner" data-role="page" data-add-back-btn="true">
+  <div data-role="header" data-position="fixed" id="camera" data-theme="b">
+    <h1> Barcode Scanner </h1>
+  </div><!-- /header -->
+
+  <div data-role="content">
+    <button onclick='scanProduct()'> Scan a Product </button>
+  </div><!-- /camera -->
+  <script type="text/javascript" charset="utf-8" src="lib/barcodescanner.js"></script>
+  <script>
+    function scanProduct() {
+      alert('Scanning');
+      var scanner = window.PhoneGap.require("cordova/plugin/BarcodeScanner");
+
+      scanner.scan( function (result) { alert("We got a barcode\n" + "Result: " + result.text + "\n" + "Format: " + result.format + "\n" + "Cancelled: " + result.cancelled); },
+      function (error) { alert("Scanning failed: " + error); } );
+
+    }
+  </script>
+
+</div>
+
+
