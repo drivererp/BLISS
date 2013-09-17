@@ -1,4 +1,0 @@
-BLISS
-=====
-
-BLISS framework application
